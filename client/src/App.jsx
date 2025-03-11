@@ -1,9 +1,27 @@
 import "./App.scss";
+import "./styles/partials/_global.scss";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import HomePage from "./pages/HomePage/HomePage";
+import ItinerariesPage from "./pages/ItinerariesPage/ItinerariesPage";
+import ItineraryPlanningPage from "./pages/ItineraryPlanningPage/ItineraryPlanningPage";
 
 function App() {
   return (
     <>
-      <h1 className="Header">Capstone- Lagoon</h1>
+      <BrowserRouter>
+        <Header />
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/itineraries" element={<ItinerariesPage />} />
+            <Route path="/itineraries/:id" element={<ItineraryPlanningPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }
