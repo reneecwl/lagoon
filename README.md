@@ -94,54 +94,132 @@ Custom endpoints for fetching attractions, saving itineraries, and managing user
 **POST /api/users**
 
 - Creates or retrieves a user based on user_name.
-- Parameters: Request Body: { "user_name": "JohnDoe" }
-- Response: If user exists: Returns the existing user_id. If new user: Creates the user and returns the new user_id.
+- Parameters:
+Request Body:
+```
+{
+  "user_name": "JohnDoe"
+}
+```
+Response: If user exists: Returns the existing user_id. If new user: Creates the user and returns the new user_id.
 
-{ "user_id": 1, "user_name": "John Doe", "message": "User retrieved/created" }
+```
+{
+ "user_id": 1,
+ "user_name": "John Doe",
+ "message": "User retrieved/created"
+}
+```
 
 **GET /api/itineraries**
 
 - Retrieves a list of all itineraries in the system (for demo purposes, assuming one user).
 - Parameters: None
-- Response ` [ { "itinerary_id": 1, "location": "London", "date": "May 13-20", "days": 4, "itinerary_name": "Autumn in London", "attractions": [...] }, ... ]`
+Response
+```
+[
+ {
+ "itinerary_id": 1,
+ "location": "London",
+ "date": "May 13-20",
+ "days": 4,
+ "itinerary_name": "Autumn in London",
+ "attractions": [...]
+ }, ...
+]
+```
 
 **POST /api/itineraries**
 
-- Creates a new itinerary with weather, holiday, and attractions data, associating it with a user -Parameters: Request body: `{ "location": "London", "date": "May 13-20", "days": 4, "itinerary_name": "Autumn in London", "user_name": "John Doe" }`
+- Creates a new itinerary with weather, holiday, and attractions data, associating it with a user
+- -Parameters:
+Request body:
+```
+{
+ "location": "London",
+ "date": "May 13-20",
+ "days": 4,
+ "itinerary_name": "Autumn in London",
+ "user_name": "John Doe"
+}
+```
 
-- Response: `{ "itinerary_id": 1, "user_id": 1, "weather": {...}, "holidays": [...], "attractions": [...], "cityImage": "/images/london-city.jpg" } `
+Response: 
+```
+{
+ "itinerary_id": 1,
+ "user_id": 1, "weather": {...},
+ "holidays": [...],
+ "attractions": [...],
+ "cityImage": "/images/london-city.jpg"
+}
+```
 
 **GET /api/itineraries/:id**
-
 - Retrieves a single itinerary with its associated attractions.
 - Parameters: URL: itinerary_id
-- Response:
+Response:
 
 ```
 {
-"itinerary_id": 1,
-"location": "London",
-"date": "May 13-20",
-"days": 4,
-"itinerary_name": "Autumn in London",
-""attractions": [{ "attraction_id": 1, attraction_name": "London Eye", "description": "Iconic Ferris wheel", "tags": "outdoor,family", "image": "/images/london-eye.jpg", "user_notes": "Visit at sunset" }, ...] }
+ "itinerary_id": 1,
+ "location": "London",
+ "date": "May 13-20",
+ "days": 4,
+ "itinerary_name": "Autumn in London",
+ "attractions":
+  [
+    { "attraction_id": 1,
+       "attraction_name": "London Eye",
+      "description": "Iconic Ferris wheel",
+      "tags": "outdoor,family",
+      "image": "/images/london-eye.jpg",
+      "user_notes": "Visit at sunset" }
+, ...
+  ]
+}
 ```
 
 **PUT /api/itineraries/:id**
 
 - Updates an existing itinerary by adding attractions to the itinerary_attractions table
-- Parameters: URL:itinerary_id Request Body:
+- Parameters: URL:itinerary_id
+Request Body:
 
-`{ "activity_id": 1, "user_notes": "Visit at sunset", "itinerary_name": "Autumn in London" }`
+```
+{
+ "activity_id": 1,
+ "user_notes": "Visit at sunset",
+ "itinerary_name": "Autumn in London"
+}
+```
 
-Response: { "itinerary_id": 1, "message": "Itinerary updated" }
+Response: 
+```
+{
+ "itinerary_id": 1,
+ "message": "Itinerary updated"
+}
+```
 
 **GET /api/attractions**
 
 - Retrieves a static list of pre-prepared attractions for the fixed location.
 - Parameters: Query: location (e.g., /api/attractions?location=London)
 
-Response: `[{ "activity_id": 1, "location": "London", "activity_name": "London Eye", "description": "Iconic Ferris wheel", "tags": "outdoor,family", "image": "/images/london-eye.jpg" }, ...]`
+Response:
+```
+[
+ {
+   "activity_id": 1,
+   "location": "London",
+   "activity_name": "London Eye",
+   "description": "Iconic Ferris wheel",
+   "tags": "outdoor,family",
+   "image": "/images/london-eye.jpg"
+ }, ...
+]
+```
 
 ## Roadmap
 
