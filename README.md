@@ -68,7 +68,8 @@ Custom endpoints for fetching attractions, saving itineraries, and managing user
 
 ### Sitemap
 
-<img width="1364" alt="sitemap" src="https://github.com/user-attachments/assets/f6a6823c-ef80-4f00-afed-dc403d4db001" />
+<img width="1364" alt="sitemap" src="https://github.com/user-attachments/assets/ba40e23f-2096-4f67-9c5a-e1b80c336eef" />
+
 
 1. **Homepage**:
 
@@ -80,15 +81,13 @@ Custom endpoints for fetching attractions, saving itineraries, and managing user
 3. **Itinerary Page**: Shows the finalized itinerary with weather, holidays, and selected attractions. Connection: Links back to Trip Planning Page for edits or Homepage to start over.
 
 ### Mockups
-
-![HomePage](https://github.com/user-attachments/assets/3cce8bf6-0098-459a-8c24-47f7644f304e)
-![HomePage-create](https://github.com/user-attachments/assets/2bb9da68-63b8-4e78-a02a-f59746f32ff8)
-![TripPlanningPage](https://github.com/user-attachments/assets/08591d56-6879-40cd-b405-5449d0a57461)
-![ItineraryPage](https://github.com/user-attachments/assets/d7e51dc4-25b7-4df7-8dca-e319303bcf50)
+![HomePage](https://github.com/user-attachments/assets/c5e26d81-5989-4d60-8a73-c1d4fe05322f)
+![HomePage-create](https://github.com/user-attachments/assets/593cfc87-339b-4906-bd64-bb5fb52268a4)
+![TripPlanningPage](https://github.com/user-attachments/assets/74fa13a9-efee-439d-a288-695464573de1)
+![ItineraryPage](https://github.com/user-attachments/assets/d12cd7d8-0164-4d09-8563-efde021f2bd8)
 
 ### Data
-
-![sql-diagram](https://github.com/user-attachments/assets/f92f4154-7147-4d56-999f-d1a08386d6e6)
+![sql-diagram](https://github.com/user-attachments/assets/bb4938e5-345a-473d-8602-4b0c44c3f296)
 
 ### Endpoints
 
