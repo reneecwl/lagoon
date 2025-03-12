@@ -82,11 +82,11 @@ Custom endpoints for fetching attractions, saving itineraries, and managing user
 
 ### Mockups
 
-![HomePage](https://github.com/user-attachments/assets/c5e26d81-5989-4d60-8a73-c1d4fe05322f) ![HomePage-create](https://github.com/user-attachments/assets/593cfc87-339b-4906-bd64-bb5fb52268a4) ![TripPlanningPage](https://github.com/user-attachments/assets/74fa13a9-efee-439d-a288-695464573de1) ![ItineraryPage](https://github.com/user-attachments/assets/d12cd7d8-0164-4d09-8563-efde021f2bd8)
+![HomePage](https://github.com/user-attachments/assets/c5e26d81-5989-4d60-8a73-c1d4fe05322f) ![HomePage-create](https://github.com/user-attachments/assets/da39b1ff-7fd1-4eb5-b9f6-78187eae30d6) ![TripPlanningPage](https://github.com/user-attachments/assets/74fa13a9-efee-439d-a288-695464573de1) ![ItineraryPage](https://github.com/user-attachments/assets/d12cd7d8-0164-4d09-8563-efde021f2bd8)
 
 ### Data
 
-![sql-diagram](https://github.com/user-attachments/assets/95c77306-23a5-4dd3-986f-60ea8926f7b9)
+![sql-diagram](https://github.com/user-attachments/assets/0522c6b3-22d8-4c5d-b769-0c159a4d1424)
 
 ### Endpoints
 
