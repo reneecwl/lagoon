@@ -119,14 +119,26 @@ Response: If user exists: Returns the existing user_id. If new user: Creates the
 
 ```
 [
- {
- "itinerary_id": 1,
- "location": "London",
- "date": "May 13-20",
- "days": 4,
- "itinerary_name": "Autumn in London",
- "attractions": [...]
- }, ...
+    {
+        "id": 1,
+        "user_id": 1,
+        "location": "London",
+        "start_date": "2025-03-12T04:00:00.000Z",
+        "end_date": "2025-03-15T04:00:00.000Z",
+        "itinerary_name": "Spring in London",
+        "created_at": "2025-03-12T19:11:29.000Z",
+        "updated_at": "2025-03-12T19:11:29.000Z"
+    },
+    {
+        "id": 2,
+        "user_id": 2,
+        "location": "Tokyo",
+        "start_date": "2025-03-13T04:00:00.000Z",
+        "end_date": "2025-03-17T04:00:00.000Z",
+        "itinerary_name": "Golden Week in Tokyo",
+        "created_at": "2025-03-12T19:11:29.000Z",
+        "updated_at": "2025-03-12T19:11:29.000Z"
+    }
 ]
 ```
 
@@ -136,24 +148,27 @@ Response: If user exists: Returns the existing user_id. If new user: Creates the
 - -Parameters: Request body:
 
 ```
-{
+ {
+"user_id":4,
  "location": "London",
- "date": "May 13-20",
- "days": 4,
- "itinerary_name": "Autumn in London",
- "user_name": "John Doe"
-}
+ "start_date": "2025-03-20",
+ "end_date": "2025-03-24",
+ "itinerary_name": "Spring Break in London"
+ }
 ```
 
 Response:
 
 ```
 {
- "itinerary_id": 1,
- "user_id": 1, "weather": {...},
- "holidays": [...],
- "attractions": [...],
- "cityImage": "/images/london-city.jpg"
+ "id": 4,
+  "user_id": 4,
+  "location": "London",
+  "start_date": "2025-03-20T04:00:00.000Z",
+  "end_date": "2025-03-24T04:00:00.000Z",
+  "itinerary_name": "Spring Break in London",
+  "created_at": "2025-03-12T22:44:03.000Z",
+  "updated_at": "2025-03-12T22:44:03.000Z"
 }
 ```
 

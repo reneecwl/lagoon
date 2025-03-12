@@ -2,6 +2,16 @@ import initKnex from "knex";
 import configuration from "../knexfile.js";
 const knex = initKnex(configuration);
 
+const itineraryList = async (_req, res) => {
+  try {
+    const allitineraries = await knex("itineraries");
+    res.status(200).json(allitineraries);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("Error retrieving itinerary list.");
+  }
+};
+
 const add = async (req, res) => {
   try {
     const result = await knex("itineraries").insert({
@@ -22,4 +32,4 @@ const add = async (req, res) => {
   }
 };
 
-export { add };
+export { add, itineraryList };
