@@ -3,6 +3,6 @@ import * as itineraryController from "../controllers/itinerary-controller.js";
 
 const router = express.Router();
 
-// router.route("/").post(userController.addUsername);
+router.route("/").post(itineraryController.add);
 
 export default router;

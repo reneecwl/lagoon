@@ -2,7 +2,7 @@ import initKnex from "knex";
 import configuration from "../knexfile.js";
 const knex = initKnex(configuration);
 
-const addUsername = async (req, res) => {
+const add = async (req, res) => {
   if (!req.body.user_name) {
     return res.status(400).json({
       message: "Please provide a valid username ",
@@ -22,4 +22,4 @@ const addUsername = async (req, res) => {
   }
 };
 
-export { addUsername };
+export { add };

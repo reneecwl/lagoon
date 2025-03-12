@@ -97,17 +97,18 @@ Custom endpoints for fetching attractions, saving itineraries, and managing user
 
 ```
 {
-  "user_name": "JohnDoe"
+  "user_name": "John"
 }
 ```
 
 Response: If user exists: Returns the existing user_id. If new user: Creates the user and returns the new user_id.
 
 ```
-{
- "user_id": 1,
- "user_name": "John Doe",
- "message": "User retrieved/created"
+ {
+   "id": 4,
+    "user_name": "John",
+    "created_at": "2025-03-12T22:27:36.000Z",
+    "updated_at": "2025-03-12T22:27:36.000Z"
 }
 ```
 
