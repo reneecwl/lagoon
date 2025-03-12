@@ -87,7 +87,7 @@ Custom endpoints for fetching attractions, saving itineraries, and managing user
 ![ItineraryPage](https://github.com/user-attachments/assets/d12cd7d8-0164-4d09-8563-efde021f2bd8)
 
 ### Data
-![sql-diagram](https://github.com/user-attachments/assets/bb4938e5-345a-473d-8602-4b0c44c3f296)
+![sql-diagram](https://github.com/user-attachments/assets/95c77306-23a5-4dd3-986f-60ea8926f7b9)
 
 ### Endpoints
 
