@@ -1,5 +1,11 @@
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   &__title {
+    color: darkblue;
+  }
+  &__mytrip {
     color: darkblue;
   }
 }

@@ -10,7 +10,7 @@ export default function HomePage({ createItinerary, setCreateItinerary }) {
           <button onClick={() => setCreateItinerary(true)}>Let's Wander</button>
         </div>
       )}
-      {createItinerary && <CreateNewItinerary />}
+      {createItinerary && <CreateNewItinerary setCreateItinerary={setCreateItinerary} />}
     </>
   );
 }
