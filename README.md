@@ -14,6 +14,7 @@
 12. [Future Implementations](#future-implementations)
 
 # Project Title
+
 Lagoon: Your Travel Planner 🌍✈️
 
 ## Overview
@@ -70,7 +71,6 @@ Custom endpoints for fetching attractions, saving itineraries, and managing user
 
 <img width="1364" alt="sitemap" src="https://github.com/user-attachments/assets/ba40e23f-2096-4f67-9c5a-e1b80c336eef" />
 
-
 1. **Homepage**:
 
 - Users create new itinerary by input location, travel dates days and name; submits to fetch data. Connection: Leads to Trip Planning Page on submission.
@@ -81,26 +81,26 @@ Custom endpoints for fetching attractions, saving itineraries, and managing user
 3. **Itinerary Page**: Shows the finalized itinerary with weather, holidays, and selected attractions. Connection: Links back to Trip Planning Page for edits or Homepage to start over.
 
 ### Mockups
-![HomePage](https://github.com/user-attachments/assets/c5e26d81-5989-4d60-8a73-c1d4fe05322f)
-![HomePage-create](https://github.com/user-attachments/assets/593cfc87-339b-4906-bd64-bb5fb52268a4)
-![TripPlanningPage](https://github.com/user-attachments/assets/74fa13a9-efee-439d-a288-695464573de1)
-![ItineraryPage](https://github.com/user-attachments/assets/d12cd7d8-0164-4d09-8563-efde021f2bd8)
+
+![HomePage](https://github.com/user-attachments/assets/c5e26d81-5989-4d60-8a73-c1d4fe05322f) ![HomePage-create](https://github.com/user-attachments/assets/593cfc87-339b-4906-bd64-bb5fb52268a4) ![TripPlanningPage](https://github.com/user-attachments/assets/74fa13a9-efee-439d-a288-695464573de1) ![ItineraryPage](https://github.com/user-attachments/assets/d12cd7d8-0164-4d09-8563-efde021f2bd8)
 
 ### Data
-![sql-diagram](https://github.com/user-attachments/assets/bb4938e5-345a-473d-8602-4b0c44c3f296)
+
+![sql-diagram](https://github.com/user-attachments/assets/95c77306-23a5-4dd3-986f-60ea8926f7b9)
 
 ### Endpoints
 
 **POST /api/users**
 
 - Creates or retrieves a user based on user_name.
-- Parameters:
-Request Body:
+- Parameters: Request Body:
+
 ```
 {
   "user_name": "JohnDoe"
 }
 ```
+
 Response: If user exists: Returns the existing user_id. If new user: Creates the user and returns the new user_id.
 
 ```
@@ -114,8 +114,8 @@ Response: If user exists: Returns the existing user_id. If new user: Creates the
 **GET /api/itineraries**
 
 - Retrieves a list of all itineraries in the system (for demo purposes, assuming one user).
-- Parameters: None
-Response
+- Parameters: None Response
+
 ```
 [
  {
@@ -132,8 +132,8 @@ Response
 **POST /api/itineraries**
 
 - Creates a new itinerary with weather, holiday, and attractions data, associating it with a user
-- -Parameters:
-Request body:
+- -Parameters: Request body:
+
 ```
 {
  "location": "London",
@@ -144,7 +144,8 @@ Request body:
 }
 ```
 
-Response: 
+Response:
+
 ```
 {
  "itinerary_id": 1,
@@ -156,9 +157,9 @@ Response:
 ```
 
 **GET /api/itineraries/:id**
+
 - Retrieves a single itinerary with its associated attractions.
-- Parameters: URL: itinerary_id
-Response:
+- Parameters: URL: itinerary_id Response:
 
 ```
 {
@@ -183,8 +184,7 @@ Response:
 **PUT /api/itineraries/:id**
 
 - Updates an existing itinerary by adding attractions to the itinerary_attractions table
-- Parameters: URL:itinerary_id
-Request Body:
+- Parameters: URL:itinerary_id Request Body:
 
 ```
 {
@@ -194,7 +194,8 @@ Request Body:
 }
 ```
 
-Response: 
+Response:
+
 ```
 {
  "itinerary_id": 1,
@@ -208,6 +209,7 @@ Response:
 - Parameters: Query: location (e.g., /api/attractions?location=London)
 
 Response:
+
 ```
 [
  {
