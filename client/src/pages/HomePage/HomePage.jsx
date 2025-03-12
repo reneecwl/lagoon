@@ -1,5 +1,16 @@
 import "./HomePage.scss";
+import CreateNewItinerary from "../../components/CreateNewItinerary/CreateNewItinerary";
 
-export default function HomePage() {
-  return <h3 className="homepage__title">This is the Home Page</h3>;
+export default function HomePage({ createItinerary, setCreateItinerary }) {
+  return (
+    <>
+      {!createItinerary && (
+        <div>
+          <h3 className="homepage__title">Time for your next adventure?</h3>
+          <button onClick={() => setCreateItinerary(true)}>Let's Wander</button>
+        </div>
+      )}
+      {createItinerary && <CreateNewItinerary />}
+    </>
+  );
 }
