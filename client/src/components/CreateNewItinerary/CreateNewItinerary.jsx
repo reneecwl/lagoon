@@ -38,14 +38,14 @@ export default function CreateNewItinerary({ setCreateItinerary }) {
     <>
       <div className="form__container">
         <form className="form" onSubmit={handleSubmit}>
-          <label htmlFor="name" className="form__label">
+          <label htmlFor="username" className="form__label">
             What should we call you, explorer?
           </label>
           <input
             type="text"
-            name="name"
-            id="name"
-            className="form__input--name"
+            name="username"
+            id="username"
+            className="form__input--username"
             // className={`form__inputname ${!name && isTouched ? "form__input--invalid" : ""}`}
             // onChange={(event) => {
             //   setName(event.target.value);
