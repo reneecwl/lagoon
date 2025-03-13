@@ -41,6 +41,7 @@ const findOne = async (req, res) => {
       });
     }
     const itineraryData = itineraryFound[0];
+    console.log(itineraryData);
     res.status(200).json(itineraryData);
   } catch (error) {
     res.status(500).json({
