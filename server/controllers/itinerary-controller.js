@@ -24,6 +24,7 @@ const add = async (req, res) => {
 
     const newItineraryId = result[0];
     const createdItinerary = await knex("itineraries").where({ id: newItineraryId });
+    console.log(createdItinerary);
     res.status(201).json(createdItinerary);
   } catch (error) {
     res.status(500).json({
@@ -41,7 +42,7 @@ const findOne = async (req, res) => {
       });
     }
     const itineraryData = itineraryFound[0];
-    console.log(itineraryData);
+
     res.status(200).json(itineraryData);
   } catch (error) {
     res.status(500).json({

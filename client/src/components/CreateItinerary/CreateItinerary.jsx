@@ -2,7 +2,7 @@ import "./CreateItinerary.scss";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -19,6 +19,7 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
   const [isClicked, setIsClicked] = useState(false);
 
   const baseUrl = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
 
   const addUser = async () => {
     try {
@@ -67,8 +68,9 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
       };
 
       try {
-        await axios.post(`${baseUrl}/itineraries`, newItinerary);
-
+        const response = await axios.post(`${baseUrl}/itineraries`, newItinerary);
+        const newItineraryId = response.data[0].id;
+        console.log(response.data);
         setIsClicked(false);
         setFormData({
           username: "",
@@ -76,6 +78,7 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
           startDate: null,
           endDate: null,
         });
+        navigate(`/itineraries/${newItineraryId}`);
       } catch (error) {
         console.error("Error submitting form", error);
       }
@@ -93,7 +96,6 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
             type="text"
             name="username"
             id="username"
-            // className="form__input--username"
             value={formData.username}
             className={`form__input-name ${!formData.username && isClicked ? "form__input--invalid" : ""}`}
             onChange={(event) => {
@@ -141,11 +143,10 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
             {" "}
             Cancel{" "}
           </button>
-          {/* <Link to={`/itineraries/${itinerary.id}`}> */}
+
           <button type="submit" className="form__submit">
             Start My Journey!
           </button>
-          {/* </Link > */}
         </form>
       </div>
     </>

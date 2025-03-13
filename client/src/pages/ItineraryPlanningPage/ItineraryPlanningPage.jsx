@@ -25,14 +25,12 @@ export default function ItineraryPlanningPage({}) {
   // const formattedStartDate = format(itinerary.start_date, "yyyy/MM/dd");
   // const formattedEndDate = format(itinerary.end_date, "yyyy/MM/dd");
 
-  // console.log(formattedStartDate);
-
   return (
     <>
       <h3 className="itineraryplanningpage__title">
         This is the Itinerary Planning Page for itinerary ID {itinerary.id}{" "}
       </h3>
-      <p> Trip Name: {itinerary.itinerary_name}</p>
+      <p> Trip Name: </p>
       {/* <p>
         {" "}
         Date: {formattedStartDate} -{formattedEndDate}{" "}
