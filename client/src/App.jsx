@@ -9,17 +9,14 @@ import ItinerariesPage from "./pages/ItinerariesPage/ItinerariesPage";
 import ItineraryPlanningPage from "./pages/ItineraryPlanningPage/ItineraryPlanningPage";
 
 function App() {
-  const [createItinerary, setCreateItinerary] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <BrowserRouter>
-      <Header setCreateItinerary={setCreateItinerary} />
+      <Header setIsOpen={setIsOpen} />
       <main className="main">
         <Routes>
-          <Route
-            path="/"
-            element={<HomePage createItinerary={createItinerary} setCreateItinerary={setCreateItinerary} />}
-          />
+          <Route path="/" element={<HomePage isOpen={isOpen} setIsOpen={setIsOpen} />} />
           <Route path="/itineraries" element={<ItinerariesPage />} />
           <Route path="/itineraries/:id" element={<ItineraryPlanningPage />} />
         </Routes>

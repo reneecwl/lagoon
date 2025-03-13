@@ -1,16 +1,16 @@
 import "./HomePage.scss";
-import CreateNewItinerary from "../../components/CreateNewItinerary/CreateNewItinerary";
+import CreateItinerary from "../../components/CreateItinerary/CreateItinerary";
 
-export default function HomePage({ createItinerary, setCreateItinerary }) {
+export default function HomePage({ isOpen, setIsOpen }) {
   return (
     <>
-      {!createItinerary && (
+      {!isOpen && (
         <div>
           <h3 className="homepage__title">Time for your next adventure?</h3>
-          <button onClick={() => setCreateItinerary(true)}>Let's Wander</button>
+          <button onClick={() => setIsOpen(true)}>Let's Wander</button>
         </div>
       )}
-      {createItinerary && <CreateNewItinerary setCreateItinerary={setCreateItinerary} />}
+      {isOpen && <CreateItinerary setIsOpen={setIsOpen} />}
     </>
   );
 }

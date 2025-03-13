@@ -1,7 +1,7 @@
 import "./Header.scss";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Header({ setCreateItinerary }) {
+export default function Header({ setIsOpen }) {
   const navigate = useNavigate();
 
   return (
@@ -9,7 +9,7 @@ export default function Header({ setCreateItinerary }) {
       <h1
         className="header__title"
         onClick={() => {
-          setCreateItinerary(false);
+          setIsOpen(false);
           navigate("/");
         }}
         style={{ cursor: "pointer" }}
