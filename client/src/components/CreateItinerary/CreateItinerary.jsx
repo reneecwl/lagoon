@@ -69,7 +69,7 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
 
       try {
         const response = await axios.post(`${baseUrl}/itineraries`, newItinerary);
-        const newItineraryId = response.data[0].id;
+        const newItineraryId = response.data.id;
         console.log(response.data);
         setIsClicked(false);
         setFormData({

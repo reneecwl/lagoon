@@ -1,14 +1,16 @@
 import "./ItineraryPlanningPage.scss";
-import { format } from "date-fns";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import ItineraryOutline from "../../components/ItineraryOutline/ItineraryOutline";
 
 export default function ItineraryPlanningPage({}) {
-  const [itinerary, setItinerary] = useState([]);
+  const [itinerary, setItinerary] = useState(null);
   const { itineraryId } = useParams();
 
   const baseUrl = import.meta.env.VITE_API_URL;
+  const baseUrlWeather = import.meta.env.VITE_WEATHER_API_URL;
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   useEffect(() => {
     const fetchItinerary = async () => {
@@ -20,21 +22,20 @@ export default function ItineraryPlanningPage({}) {
       }
     };
     fetchItinerary();
-  }, []);
+  }, [itineraryId]);
 
-  // const formattedStartDate = format(itinerary.start_date, "yyyy/MM/dd");
-  // const formattedEndDate = format(itinerary.end_date, "yyyy/MM/dd");
+  if (!itinerary) {
+    return <div>Loading...</div>;
+  }
+  console.log(itinerary);
+  //make it a function?
 
   return (
     <>
       <h3 className="itineraryplanningpage__title">
         This is the Itinerary Planning Page for itinerary ID {itinerary.id}{" "}
       </h3>
-      <p> Trip Name: </p>
-      {/* <p>
-        {" "}
-        Date: {formattedStartDate} -{formattedEndDate}{" "}
-      </p> */}
+      <ItineraryOutline itinerary={itinerary} />
     </>
   );
 }

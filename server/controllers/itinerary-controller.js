@@ -23,7 +23,7 @@ const add = async (req, res) => {
     });
 
     const newItineraryId = result[0];
-    const createdItinerary = await knex("itineraries").where({ id: newItineraryId });
+    const createdItinerary = await knex("itineraries").where({ id: newItineraryId }).first();
     console.log(createdItinerary);
     res.status(201).json(createdItinerary);
   } catch (error) {
