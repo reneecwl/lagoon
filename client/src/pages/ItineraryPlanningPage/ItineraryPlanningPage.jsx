@@ -27,8 +27,7 @@ export default function ItineraryPlanningPage({}) {
   if (!itinerary) {
     return <div>Loading...</div>;
   }
-  console.log(itinerary);
-  //make it a function?
+  // console.log(itinerary);
 
   return (
     <>
