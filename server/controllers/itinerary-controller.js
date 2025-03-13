@@ -32,4 +32,20 @@ const add = async (req, res) => {
   }
 };
 
-export { add, itineraryList };
+const findOne = async (req, res) => {
+  try {
+    const itineraryFound = await knex("itineraries").where({ id: req.params.id });
+    if (itineraryFound.length === 0) {
+      return res.status(404).json({
+        message: `Itinerarywith ID ${req.params.id} not found`,
+      });
+    }
+    const itineraryData = itineraryFound[0];
+    res.status(200).json(itineraryData);
+  } catch (error) {
+    res.status(500).json({
+      message: `Unable to retrieve itinerary with ID ${req.params.id}`,
+    });
+  }
+};
+export { add, itineraryList, findOne };

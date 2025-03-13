@@ -1,11 +1,12 @@
 import "./CreateItinerary.scss";
 import DatePicker from "react-datepicker";
-import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function CreateItinerary({ setIsOpen }) {
+export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, itineraryId }) {
   const [formData, setFormData] = useState({
     username: "",
     location: "",
@@ -64,9 +65,10 @@ export default function CreateItinerary({ setIsOpen }) {
         start_date: formattedStartDate,
         end_date: formattedEndDate,
       };
-      console.log(newItinerary);
+
       try {
         await axios.post(`${baseUrl}/itineraries`, newItinerary);
+
         setIsClicked(false);
         setFormData({
           username: "",
@@ -91,16 +93,15 @@ export default function CreateItinerary({ setIsOpen }) {
             type="text"
             name="username"
             id="username"
-            className="form__input--username"
+            // className="form__input--username"
             value={formData.username}
-            // className={`form__inputname ${!name && isTouched ? "form__input--invalid" : ""}`}
+            className={`form__input-name ${!formData.username && isClicked ? "form__input--invalid" : ""}`}
             onChange={(event) => {
               setFormData({ ...formData, username: event.target.value });
             }}
-            // onBlur={() => {
-            //   setIsTouched(true);
-            // }}
-            // value={name}
+            onBlur={() => {
+              setIsClicked(true);
+            }}
           ></input>
 
           <label htmlFor="location" className="form__label">
@@ -110,10 +111,13 @@ export default function CreateItinerary({ setIsOpen }) {
             type="text"
             name="location"
             id="location"
-            className="form__input--location"
             value={formData.location}
+            className={`form__input-location ${!formData.location && isClicked ? "form__input--invalid" : ""}`}
             onChange={(event) => {
               setFormData({ ...formData, location: event.target.value });
+            }}
+            onBlur={() => {
+              setIsClicked(true);
             }}
           ></input>
 
@@ -137,9 +141,11 @@ export default function CreateItinerary({ setIsOpen }) {
             {" "}
             Cancel{" "}
           </button>
+          {/* <Link to={`/itineraries/${itinerary.id}`}> */}
           <button type="submit" className="form__submit">
             Start My Journey!
           </button>
+          {/* </Link > */}
         </form>
       </div>
     </>

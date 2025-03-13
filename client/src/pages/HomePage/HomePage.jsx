@@ -1,7 +1,7 @@
 import "./HomePage.scss";
 import CreateItinerary from "../../components/CreateItinerary/CreateItinerary";
 
-export default function HomePage({ isOpen, setIsOpen }) {
+export default function HomePage({ isOpen, setIsOpen, fetchItinerary, itinerary, itineraryId }) {
   return (
     <>
       {!isOpen && (
