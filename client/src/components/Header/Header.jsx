@@ -16,15 +16,15 @@ export default function Header({ setIsOpen }) {
       >
         Lagoon
       </h1>
-      <nav className="header__nav">
-        <ul className="header__nav-list">
-          <li className="header__nav-item">
+      <nav className="navbar">
+        <ul className="navbar__list">
+          <li className="navbar__item">
             <Link to="/itineraries">My Journey</Link>
           </li>
-          <li className="header__nav-item">
+          <li className="navbar__item">
             <Link to="/about">Discover</Link>
           </li>
-          <li className="header__nav-item">
+          <li className="navbar__item">
             <Link to="/contact">About</Link>
           </li>
         </ul>

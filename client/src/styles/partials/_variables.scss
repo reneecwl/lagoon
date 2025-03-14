@@ -1,15 +1,15 @@
 @use "./typography";
 
-// Colors
-$primary-color: #40e0d0;
-$secondary-color: #1e90ff;
-$accent-color: #087d8c;
-$background-color: #f0f8ff;
-$text-color: #333;
+// colours
+$primary-colour: #40e0d0;
+$secondary-colour: #1e90ff;
+$accent-colour: #087d8c;
+$background-colour: #f0f8ff;
+$text-colour: #333333;
 $white: #ffffff;
 $black: #000000;
 $grey: #cccccc;
-$error-color: #ff0000;
+$error-colour: #c94515;
 
 // Font Families
 $font-primary: "Cormorant";
@@ -24,15 +24,16 @@ $font-size-xxl: 2rem;
 
 // Spacing
 $spacing-xs: 0.5rem;
-$spacing-sm: 1rem;
-$spacing-md: 1.5rem;
-$spacing-lg: 2rem;
+$spacing-s: 1rem;
+$spacing-m: 1.5rem;
+$spacing-l: 2rem;
 $spacing-xl: 3rem;
 
 // Border Radius
-$border-radius-sm: 0.25rem;
-$border-radius-md: 0.5rem;
-$border-radius-lg: 1rem;
+$border-radius-s: 0.25rem;
+$border-radius-m: 0.5rem;
+$border-radius-l: 1rem;
+
 // Shadows
 $shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
 $shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);

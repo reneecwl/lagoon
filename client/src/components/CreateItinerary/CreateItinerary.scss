@@ -1,13 +1,14 @@
 @use "./../../styles/partials/typography" as *;
 @use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
 
 .form__container {
-  background-color: rgba(255, 255, 255, 0.9); // Semi-transparent white background
-  padding: $spacing-lg; // 2rem
-  border-radius: $border-radius-md; // 0.5rem
-  max-width: 37.5rem; // 600px
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: $spacing-l 3.5rem;
+  border-radius: $border-radius-m;
+  max-width: 37.5rem;
   width: 100%;
-  box-shadow: $shadow-md; // 0 4px 8px
+  box-shadow: $shadow-md;
   position: relative;
   z-index: 2;
 }
@@ -15,29 +16,36 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md; // 1.5rem
+  gap: $spacing-l;
 
+  &__tab {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-s;
+    align-items: center;
+  }
   &__label {
-    font-family: $font-primary;
-    font-size: $font-size-lg; // 1.5rem
-    color: $text-color;
+    font-family: $font-secondary;
+    font-size: $font-size-l;
+    color: $text-colour;
   }
 
-  &__input-name,
-  &__input-location {
-    padding: $spacing-xs; // 0.5rem
-    border: 1px solid $grey;
-    border-radius: $border-radius-sm; // 0.25rem
-    font-family: $font-primary;
-    font-size: $font-size-base; // 1rem
+  &__input {
+    padding: $spacing-xs;
+    border: 1.5px solid $grey;
+    border-radius: $border-radius-m;
+    font-family: $font-secondary;
+    font-size: $font-size-m;
     transition: border-color $transition-medium;
+    width: 100%;
 
     &--invalid {
-      border-color: $error-color;
+      border-color: $error-colour;
     }
 
     &:focus {
-      border-color: $primary-color;
+      // border-color: $primary-colour;
+      border: 1.5px solid $primary-colour;
       outline: none;
     }
   }
@@ -46,31 +54,36 @@
     width: 100%;
   }
 
-  .react-datepicker__input-container {
-    width: 100%;
-  }
+  // .react-datepicker__input-container {
+  //   width: 100%;
+  // }
 
   .react-datepicker__input-container input {
     width: 100%;
-    padding: $spacing-xs; // 0.5rem
+    padding: $spacing-xs;
     border: 1px solid $grey;
-    border-radius: $border-radius-sm; // 0.25rem
-    font-family: $font-primary;
-    font-size: $font-size-base; // 1rem
+    border-radius: $border-radius-m;
+    font-family: $font-secondary;
+    font-size: $font-size-m;
     transition: border-color $transition-medium;
 
     &:focus {
-      border-color: $primary-color;
+      border-color: $primary-colour;
       outline: none;
     }
+  }
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
   }
 
   &__cancel,
   &__submit {
-    font-family: $font-primary;
-    font-size: $font-size-base; // 1rem
-    padding: $spacing-xs $spacing-sm; // 0.5rem 1rem
-    border-radius: $border-radius-sm; // 0.25rem
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    padding: 0.5rem 1rem;
+    border-radius: $border-radius-s;
     cursor: pointer;
     transition: background-color $transition-medium;
 
@@ -80,28 +93,22 @@
   }
 
   &__submit {
-    background-color: $accent-color; // Use the new accent color
+    background-color: $accent-colour;
     color: $white;
     border: none;
 
     &:hover {
-      background-color: darken($accent-color, 10%);
+      background-color: darken($accent-colour, 10%);
     }
   }
 
   &__cancel {
     background-color: $grey;
-    color: $text-color;
+    color: $text-colour;
     border: none;
 
     &:hover {
       background-color: darken($grey, 10%);
     }
-  }
-
-  &__buttons {
-    display: flex;
-    gap: $spacing-sm; // 1rem
-    justify-content: flex-end;
   }
 }

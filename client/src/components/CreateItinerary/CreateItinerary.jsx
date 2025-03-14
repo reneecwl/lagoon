@@ -89,58 +89,66 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
     <>
       <div className="form__container">
         <form className="form" onSubmit={handleSubmit}>
-          <label htmlFor="username" className="form__label">
-            What should we call you, explorer?
-          </label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            value={formData.username}
-            className={`form__input-name ${!formData.username && isClicked ? "form__input--invalid" : ""}`}
-            onChange={(event) => {
-              setFormData({ ...formData, username: event.target.value });
-            }}
-            onBlur={() => {
-              setIsClicked(true);
-            }}
-          ></input>
-
-          <label htmlFor="location" className="form__label">
-            Where to next?
-          </label>
-          <input
-            type="text"
-            name="location"
-            id="location"
-            value={formData.location}
-            className={`form__input-location ${!formData.location && isClicked ? "form__input--invalid" : ""}`}
-            onChange={(event) => {
-              setFormData({ ...formData, location: event.target.value });
-            }}
-            onBlur={() => {
-              setIsClicked(true);
-            }}
-          ></input>
-
-          <label htmlFor="date" className="form__label">
-            When are you going?{" "}
-          </label>
-          <DatePicker
-            selectsRange
-            startDate={startDate}
-            endDate={endDate}
-            onChange={(dates) => {
-              const [start, end] = dates;
-              setStartDate(start);
-              setEndDate(end);
-            }}
-            dateFormat="dd/MM/yyyy"
-            isClearable
-            placeholderText="Select a date range"
-            minDate={new Date()}
-            monthsShown={2}
-          />
+          <div className="form__tab">
+            <label htmlFor="username" className="form__label">
+              What should we call you, explorer?
+            </label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value={formData.username}
+              className={`form__input form__input--name ${
+                !formData.username && isClicked ? "form__input--invalid" : ""
+              }`}
+              onChange={(event) => {
+                setFormData({ ...formData, username: event.target.value });
+              }}
+              onBlur={() => {
+                setIsClicked(true);
+              }}
+            ></input>
+          </div>
+          <div className="form__tab">
+            <label htmlFor="location" className="form__label">
+              Where to next?
+            </label>
+            <input
+              type="text"
+              name="location"
+              id="location"
+              value={formData.location}
+              className={`form__input form__input--location ${
+                !formData.location && isClicked ? "form__input--invalid" : ""
+              }`}
+              onChange={(event) => {
+                setFormData({ ...formData, location: event.target.value });
+              }}
+              onBlur={() => {
+                setIsClicked(true);
+              }}
+            ></input>
+          </div>
+          <div className="form__tab">
+            <label htmlFor="date" className="form__label">
+              When are you going?{" "}
+            </label>
+            <DatePicker
+              selectsRange
+              startDate={startDate}
+              endDate={endDate}
+              onChange={(dates) => {
+                const [start, end] = dates;
+                setStartDate(start);
+                setEndDate(end);
+              }}
+              dateFormat="dd/MM/yyyy"
+              isClearable
+              placeholderText="Select a date range"
+              minDate={new Date()}
+              monthsShown={2}
+            />
+          </div>
           <div className="form__buttons">
             <button className="form__cancel" onClick={() => setIsOpen(false)}>
               {" "}
@@ -148,7 +156,7 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
             </button>
 
             <button type="submit" className="form__submit">
-              Start My Journey!
+              Start My Journey
             </button>
           </div>
         </form>
