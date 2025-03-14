@@ -123,7 +123,9 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
             }}
           ></input>
 
-          <label htmlFor="date">When are you going? </label>
+          <label htmlFor="date" className="form__label">
+            When are you going?{" "}
+          </label>
           <DatePicker
             selectsRange
             startDate={startDate}
@@ -139,14 +141,16 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
             minDate={new Date()}
             monthsShown={2}
           />
-          <button className="form__cancel" onClick={() => setIsOpen(false)}>
-            {" "}
-            Cancel{" "}
-          </button>
+          <div className="form__buttons">
+            <button className="form__cancel" onClick={() => setIsOpen(false)}>
+              {" "}
+              Cancel{" "}
+            </button>
 
-          <button type="submit" className="form__submit">
-            Start My Journey!
-          </button>
+            <button type="submit" className="form__submit">
+              Start My Journey!
+            </button>
+          </div>
         </form>
       </div>
     </>

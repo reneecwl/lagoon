@@ -1,11 +1,53 @@
+@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/variables" as *;
+
 .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2em 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 3;
+
   &__title {
-    color: darkblue;
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
-  &__mytrip {
-    color: darkblue;
+
+  &__nav-list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-item {
+    font-family: "Cormorant", serif;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }

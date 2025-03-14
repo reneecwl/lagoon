@@ -16,9 +16,19 @@ export default function Header({ setIsOpen }) {
       >
         Lagoon
       </h1>
-      <Link to="/itineraries">
-        <p className="header__mytrip">My Trip</p>
-      </Link>
+      <nav className="header__nav">
+        <ul className="header__nav-list">
+          <li className="header__nav-item">
+            <Link to="/itineraries">My Journey</Link>
+          </li>
+          <li className="header__nav-item">
+            <Link to="/about">Discover</Link>
+          </li>
+          <li className="header__nav-item">
+            <Link to="/contact">About</Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }

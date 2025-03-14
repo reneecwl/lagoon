@@ -1,9 +1,107 @@
+@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/variables" as *;
+
+.form__container {
+  background-color: rgba(255, 255, 255, 0.9); // Semi-transparent white background
+  padding: $spacing-lg; // 2rem
+  border-radius: $border-radius-md; // 0.5rem
+  max-width: 37.5rem; // 600px
+  width: 100%;
+  box-shadow: $shadow-md; // 0 4px 8px
+  position: relative;
+  z-index: 2;
+}
+
 .form {
   display: flex;
   flex-direction: column;
-}
+  gap: $spacing-md; // 1.5rem
 
-.form__input--invalid {
-  border: 1px solid red;
-  outline: none;
+  &__label {
+    font-family: $font-primary;
+    font-size: $font-size-lg; // 1.5rem
+    color: $text-color;
+  }
+
+  &__input-name,
+  &__input-location {
+    padding: $spacing-xs; // 0.5rem
+    border: 1px solid $grey;
+    border-radius: $border-radius-sm; // 0.25rem
+    font-family: $font-primary;
+    font-size: $font-size-base; // 1rem
+    transition: border-color $transition-medium;
+
+    &--invalid {
+      border-color: $error-color;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+    }
+  }
+
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .react-datepicker__input-container {
+    width: 100%;
+  }
+
+  .react-datepicker__input-container input {
+    width: 100%;
+    padding: $spacing-xs; // 0.5rem
+    border: 1px solid $grey;
+    border-radius: $border-radius-sm; // 0.25rem
+    font-family: $font-primary;
+    font-size: $font-size-base; // 1rem
+    transition: border-color $transition-medium;
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+    }
+  }
+
+  &__cancel,
+  &__submit {
+    font-family: $font-primary;
+    font-size: $font-size-base; // 1rem
+    padding: $spacing-xs $spacing-sm; // 0.5rem 1rem
+    border-radius: $border-radius-sm; // 0.25rem
+    cursor: pointer;
+    transition: background-color $transition-medium;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__submit {
+    background-color: $accent-color; // Use the new accent color
+    color: $white;
+    border: none;
+
+    &:hover {
+      background-color: darken($accent-color, 10%);
+    }
+  }
+
+  &__cancel {
+    background-color: $grey;
+    color: $text-color;
+    border: none;
+
+    &:hover {
+      background-color: darken($grey, 10%);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $spacing-sm; // 1rem
+    justify-content: flex-end;
+  }
 }

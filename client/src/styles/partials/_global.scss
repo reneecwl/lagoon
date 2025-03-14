@@ -1,32 +1,11 @@
+@use "./typography";
+@use "./variables" as *;
+@use "./mixins" as *;
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  text-decoration: none;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "arial";
-  font-weight: 600;
-}
-
-h1 {
-  font-size: 1.8rem;
-  line-height: 2.2rem;
-}
-
-h2 {
-  font-size: 1.3rem;
-  line-height: 1.8rem;
-}
-
-body {
-  font-family: "arial";
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: normal;
   text-decoration: none;
 }
 
@@ -36,4 +15,26 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+body {
+  font-family: "Cormorant", serif;
+  font-weight: 400;
+  color: #333; // Default text color
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cormorant", serif; // Use Cormorant for now
+  font-weight: 700;
+  margin: 0;
+}
+
+button {
+  font-family: "Cormorant", serif;
+  font-weight: 700;
 }
