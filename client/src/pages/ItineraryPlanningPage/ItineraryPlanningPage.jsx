@@ -27,14 +27,15 @@ export default function ItineraryPlanningPage({}) {
   if (!itinerary) {
     return <div>Loading...</div>;
   }
-  // console.log(itinerary);
 
   return (
     <>
       <h3 className="itineraryplanningpage__title">
         This is the Itinerary Planning Page for itinerary ID {itinerary.id}{" "}
       </h3>
-      <ItineraryOutline itinerary={itinerary} />
+      <main>
+        <ItineraryOutline itinerary={itinerary} />
+      </main>
     </>
   );
 }

@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "arial";
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+
+body {
+  font-family: "arial";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

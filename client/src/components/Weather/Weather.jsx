@@ -17,10 +17,8 @@ export default function Weather({ itinerary }) {
         const startDateObj = new Date(itinerary.start_date);
         const endDateObj = new Date(itinerary.end_date);
 
-        console.log(response.data.forecast.forecastday);
         const filteredData = response.data.forecast.forecastday.filter((day) => {
           const dayDateObj = new Date(day.date + "T00:00:00");
-          console.log("Day Date:", day.date, dayDateObj);
 
           return dayDateObj >= startDateObj && dayDateObj <= endDateObj;
         });
@@ -47,7 +45,9 @@ export default function Weather({ itinerary }) {
 
   return (
     <>
-      <ul>
+      <h2 className="weather__title">Weather</h2>
+      <ul className="weather__container">
+        {/* <div className="weather__container"> */}
         {extractedData.map((day, index) => (
           <li key={index}>
             <h4>{day.date}</h4>
