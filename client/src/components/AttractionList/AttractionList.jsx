@@ -21,16 +21,22 @@ export default function AttractionList({ itinerary }) {
   if (!attractions) {
     return <div>Loading...</div>;
   }
-  // console.log(attractions);
 
   return (
     <>
-      <h4 className="attractions">This is the attraction List</h4>
-      {attractions.map((attraction) => (
-        <p key={attraction.id} className="attracion__name">
-          {attraction.attraction_name}
-        </p>
-      ))}
+      <div className="attraction">
+        <h4 className="attraction__title">Things To Do</h4>
+        <div className="attraction__list">
+          {attractions.map((attraction) => (
+            <div key={attraction.id} className="attraction__card">
+              <p className="attraction__name">{attraction.attraction_name}</p>
+              <p className="attraction__description">{attraction.description}</p>
+              <p className="attraction__tags">{attraction.tags}</p>
+              <img className="attraction__image" src={attraction.image} alt={attraction.attraction_name}></img>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
