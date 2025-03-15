@@ -1,6 +1,10 @@
 @use "./typography";
 @use "./variables" as *;
 
+@mixin content-padding {
+  padding: 2rem 3rem;
+}
+
 @mixin button-primary {
   background-color: $primary-colour;
   color: white;

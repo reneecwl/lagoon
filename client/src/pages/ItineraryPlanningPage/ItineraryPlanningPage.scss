@@ -1,0 +1,18 @@
+@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
+.planning {
+  @include content-padding;
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+  }
+}

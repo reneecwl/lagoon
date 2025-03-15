@@ -30,12 +30,16 @@ export default function ItineraryPlanningPage({}) {
 
   return (
     <>
-      <h3 className="itineraryplanningpage__title">
-        This is the Itinerary Planning Page for itinerary ID {itinerary.id}{" "}
-      </h3>
-      <main>
-        <ItineraryOutline itinerary={itinerary} />
-      </main>
+      <div className="planning">
+        <h3 className="planning__header">This is the Itinerary Planning Page for itinerary ID {itinerary.id} </h3>
+        <main className="planning__main">
+          <ItineraryOutline itinerary={itinerary} />
+          <div className="planning__content">
+            <div className="planning__days">Itinerary by day session</div>
+            <div className="planning__attractions">This is the place where we fetch data from</div>
+          </div>
+        </main>
+      </div>
     </>
   );
 }

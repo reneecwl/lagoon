@@ -1,7 +1,11 @@
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
 .weather {
   &__container {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    @include content-padding;
   }
 }

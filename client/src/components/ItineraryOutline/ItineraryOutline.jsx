@@ -13,13 +13,15 @@ export default function ItineraryOutline({ itinerary }) {
 
   return (
     <>
-      <p> {itinerary.itinerary_name || `${diferenceInDays} Days trip in ${itinerary.location}`}</p>
-      <h4>
-        {" "}
-        {formattedStartDate} to {formattedEndDate}
-      </h4>
-      <Weather itinerary={itinerary} />
-      <PublicHoliday itinerary={itinerary} />
+      <div className="outline">
+        <p> {itinerary.itinerary_name || `${diferenceInDays} Days trip in ${itinerary.location}`}</p>
+        <h4>
+          {" "}
+          {formattedStartDate} to {formattedEndDate}
+        </h4>
+        <Weather itinerary={itinerary} />
+        <PublicHoliday itinerary={itinerary} />
+      </div>
     </>
   );
 }
