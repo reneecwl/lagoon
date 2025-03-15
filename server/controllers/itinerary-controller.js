@@ -35,7 +35,9 @@ const add = async (req, res) => {
 
 const findOne = async (req, res) => {
   try {
-    const itineraryFound = await knex("itineraries").where({ id: req.params.id });
+    const itineraryFound = await knex("itineraries")
+      .where({ id: req.params.id })
+      .select("id", "user_id", "location", "start_date", "end_date", "itinerary_name");
     if (itineraryFound.length === 0) {
       return res.status(404).json({
         message: `Itinerarywith ID ${req.params.id} not found`,
@@ -43,6 +45,13 @@ const findOne = async (req, res) => {
     }
     const itineraryData = itineraryFound[0];
 
+    const attractionsFound = await knex("itinerary_attraction")
+      .join("attractions", "attractions.id", "itinerary_attraction.attraction_id")
+      .where({ itinerary_id: req.params.id })
+      .select("attraction_name", "description", "tags", "user_notes", "image");
+
+    itineraryData.attractions = attractionsFound;
+    console.log(attractionsFound);
     res.status(200).json(itineraryData);
   } catch (error) {
     res.status(500).json({
@@ -50,4 +59,5 @@ const findOne = async (req, res) => {
     });
   }
 };
+
 export { add, itineraryList, findOne };

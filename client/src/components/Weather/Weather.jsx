@@ -47,7 +47,6 @@ export default function Weather({ itinerary }) {
     <>
       <h2 className="weather__title">Weather</h2>
       <ul className="weather__container">
-        {/* <div className="weather__container"> */}
         {extractedData.map((day, index) => (
           <li key={index}>
             <h4>{day.date}</h4>

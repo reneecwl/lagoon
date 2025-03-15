@@ -179,21 +179,21 @@ Response:
 
 ```
 {
- "itinerary_id": 1,
- "location": "London",
- "date": "May 13-20",
- "days": 4,
- "itinerary_name": "Autumn in London",
- "attractions":
-  [
-    { "attraction_id": 1,
-       "attraction_name": "London Eye",
-      "description": "Iconic Ferris wheel",
-      "tags": "outdoor,family",
-      "image": "/images/london-eye.jpg",
-      "user_notes": "Visit at sunset" }
-, ...
-  ]
+    "id": 21,
+    "user_id": 22,
+    "location": "New York",
+    "start_date": "2025-03-14T04:00:00.000Z",
+    "end_date": "2025-03-18T04:00:00.000Z",
+    "itinerary_name": null,
+    "attractions": [
+        {
+            "attraction_name": "Big Ben",
+            "description": "Iconic clock tower and landmark in London.",
+            "tags": "historical,landmark",
+            "user_notes": "amazing",
+            "image": "https://example.com/bigben.jpg"
+        }
+    ]
 }
 ```
 

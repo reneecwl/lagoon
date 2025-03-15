@@ -2,13 +2,19 @@ import initKnex from "knex";
 import configuration from "../knexfile.js";
 const knex = initKnex(configuration);
 
-const attractionList = async (_req, res) => {
+const findAttractions = async (req, res) => {
   try {
-    const allAttractions = await knex("attractions");
-    res.status(200).json(allAttractions);
+    const attractionFound = await knex("attractions").where({ location: req.query.location });
+    if (attractionFound.length === 0) {
+      return res.status(404).json({
+        message: `We can't find any things to do in ${req.query.location}`,
+      });
+    }
+    res.status(200).json(attractionFound);
   } catch (error) {
     console.log(error);
-    res.status(400).send("Error retrieving Thinsg to do.");
+    res.status(400).send("Error retrieving Things to do.");
   }
 };
-export { attractionList };
+
+export { findAttractions };
