@@ -3,6 +3,6 @@ import * as attractionController from "../controllers/attraction-controller.js";
 
 const router = express.Router();
 
-// router.route("/").post(userController.addUsername);
+router.route("/").get(attractionController.attractionList);
 
 export default router;
