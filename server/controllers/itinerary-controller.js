@@ -48,7 +48,7 @@ const findOne = async (req, res) => {
     const attractionsFound = await knex("itinerary_attraction")
       .join("attractions", "attractions.id", "itinerary_attraction.attraction_id")
       .where({ itinerary_id: req.params.id })
-      .select("attraction_name", "description", "suggested_duration", "tags", "user_notes", "image");
+      .select("id", "day", "attraction_name", "description", "suggested_duration", "tags", "user_notes", "image");
 
     itineraryData.attractions = attractionsFound;
 
