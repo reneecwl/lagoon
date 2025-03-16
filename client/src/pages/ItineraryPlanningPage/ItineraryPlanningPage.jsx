@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ItineraryOutline from "../../components/ItineraryOutline/ItineraryOutline";
 import AttractionList from "../../components/AttractionList/AttractionList";
+import ItineraryDay from "../../components/ItineraryDay/ItineraryDay";
 
 export default function ItineraryPlanningPage({}) {
   const [itinerary, setItinerary] = useState(null);
@@ -34,7 +35,7 @@ export default function ItineraryPlanningPage({}) {
         <main className="planning__main">
           <ItineraryOutline itinerary={itinerary} />
           <div className="planning__content">
-            <div className="planning__days">Itinerary by day session</div>
+            <ItineraryDay itinerary={itinerary} />
             <AttractionList itinerary={itinerary} />
           </div>
         </main>
