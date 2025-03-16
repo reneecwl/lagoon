@@ -2,13 +2,21 @@ import "./ItineraryPlanningPage.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import FormatDate from "../../utility/FormatDate";
+import DaysCount from "../../utility/DaysCount";
 import ItineraryOutline from "../../components/ItineraryOutline/ItineraryOutline";
 import AttractionList from "../../components/AttractionList/AttractionList";
 import ItineraryDay from "../../components/ItineraryDay/ItineraryDay";
 
 export default function ItineraryPlanningPage({}) {
   const [itinerary, setItinerary] = useState(null);
+  const [dailyAttractions, setDailyAttractions] = useState([]);
   const { itineraryId } = useParams();
+  const [dates, setDates] = useState({
+    formattedStartDate: "",
+    formattedEndDate: "",
+    daysCount: 0,
+  });
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -24,6 +32,57 @@ export default function ItineraryPlanningPage({}) {
     fetchItinerary();
   }, [itineraryId]);
 
+  // console.log(itinerary.attractions);
+
+  useEffect(() => {
+    if (itinerary) {
+      const formattedStartDate = FormatDate(itinerary.start_date);
+      const formattedEndDate = FormatDate(itinerary.end_date);
+      const daysCount = DaysCount(formattedStartDate, formattedEndDate);
+
+      setDates({
+        formattedStartDate,
+        formattedEndDate,
+        daysCount,
+      });
+
+      const initialDailyAttractions = Array.from({ length: daysCount }, (_, i) => ({
+        day: i + 1,
+        attractions: [],
+      }));
+
+      if (itinerary.attractions && itinerary.attractions.length > 0) {
+        itinerary.attractions.forEach((attraction) => {
+          const dayArrayIndex = attraction.day - 1;
+
+          if (dayArrayIndex < daysCount) {
+            initialDailyAttractions[dayArrayIndex].attractions.push(attraction);
+          }
+        });
+      }
+      setDailyAttractions(initialDailyAttractions);
+    }
+  }, [itinerary]);
+
+  const handleAddAttraction = (day, attraction, notes) => {
+    const updatedDailyAttractions = [...dailyAttractions];
+    const dayToUpdate = updatedDailyAttractions.find((dayObj) => {
+      return (dayObj.day = day);
+    });
+
+    if (dayToUpdate) {
+      const attractionExist = dayToUpdate.attractions.find((existingAttraction) => {
+        return existingAttraction.id === attraction.id;
+      });
+
+      if (!attractionExist) {
+        dayToUpdate.attractions.push({ ...attraction, user_notes: notes, day: day });
+
+        setDailyAttractions(updatedDailyAttractions);
+      }
+    }
+  };
+
   if (!itinerary) {
     return <div>Loading...</div>;
   }
@@ -33,10 +92,19 @@ export default function ItineraryPlanningPage({}) {
       <div className="planning">
         <h3 className="planning__header">This is the Itinerary Planning Page for itinerary ID {itinerary.id} </h3>
         <main className="planning__main">
-          <ItineraryOutline itinerary={itinerary} />
+          <ItineraryOutline
+            itinerary={itinerary}
+            formattedStartDate={dates.formattedStartDate}
+            formattedEndDate={dates.formattedEndDate}
+            daysCount={dates.daysCount}
+          />
           <div className="planning__content">
-            <ItineraryDay itinerary={itinerary} />
-            <AttractionList itinerary={itinerary} />
+            <ItineraryDay dailyAttractions={dailyAttractions} />
+            <AttractionList
+              itinerary={itinerary}
+              daysCount={dates.daysCount}
+              handleAddAttraction={handleAddAttraction}
+            />
           </div>
         </main>
       </div>

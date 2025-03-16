@@ -1,16 +1,10 @@
 import "./ItineraryOutline.scss";
-import FormatDate from "../../utility/FormatDate";
-import DaysDifference from "../../utility/DaysDifference";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Weather from "../Weather/Weather";
 import PublicHoliday from "../PublicHoliday/PublicHoliday";
 
-export default function ItineraryOutline({ itinerary }) {
-  const formattedStartDate = FormatDate(itinerary.start_date);
-  const formattedEndDate = FormatDate(itinerary.end_date);
-  const diferenceInDays = DaysDifference(formattedStartDate, formattedEndDate);
-
+export default function ItineraryOutline({ itinerary, formattedStartDate, formattedEndDate, diferenceInDays }) {
   return (
     <>
       <div className="outline">

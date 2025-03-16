@@ -2,8 +2,12 @@ import "./AttractionList.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function AttractionList({ itinerary }) {
+export default function AttractionList({ itinerary, daysCount, handleAddAttraction }) {
   const [attractions, setAttractions] = useState([]);
+  const [selectedAttraction, setSelectedAttraction] = useState(null);
+  const [selectedDay, setSelectedDay] = useState(1);
+  const [notes, setNotes] = useState("");
+
   const baseUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -22,10 +26,74 @@ export default function AttractionList({ itinerary }) {
     return <div>Loading...</div>;
   }
 
+  const handleAddClick = (attraction) => {
+    setSelectedAttraction(attraction);
+    setSelectedDay(1);
+    setNotes("");
+  };
+
+  const handleAddToDay = () => {
+    handleAddAttraction(selectedDay, selectedAttraction, notes);
+    setSelectedAttraction(null);
+    setNotes("");
+  };
+
+  const handleCancel = () => {
+    setSelectedAttraction(null);
+    setNotes("");
+  };
+
+  const dayOptions = Array.from({ length: daysCount }, (_, i) => i + 1);
+
   return (
-    <>
-      <div className="attraction">
-        <h4 className="attraction__title">Things To Do</h4>
+    <div className="attraction">
+      <h4 className="attraction__title">Things To Do</h4>
+
+      {selectedAttraction ? (
+        <div className="attraction_form">
+          <h4 className="form__title">Add "{selectedAttraction.attraction_name}" to your itinerary</h4>
+
+          <div>
+            <label htmlFor="day" className="form__day">
+              {" "}
+              Select Day:{" "}
+            </label>
+            <select
+              className="form__day-select"
+              name="day-select"
+              id="day-select"
+              value={selectedDay}
+              onChange={(event) => setSelectedDay(event.target.value)}
+            >
+              {dayOptions.map((day) => (
+                <option key={day} value={day}>
+                  Day {day}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="notes" className="form__notes">
+              {" "}
+              Notes:{" "}
+            </label>
+            <textarea
+              className="form__notes-input"
+              placeholder="Add your notes..."
+              type="text"
+              id="notes"
+              value={notes}
+              onChange={(event) => setNotes(event.target.value)}
+            />
+          </div>
+
+          <div>
+            <button onClick={handleAddToDay}> Add to Day {selectedDay}</button>
+            <button onClick={handleCancel}>Cancel</button>
+          </div>
+        </div>
+      ) : (
         <div className="attraction__list">
           {attractions.map((attraction) => (
             <div key={attraction.id} className="attraction__card">
@@ -33,10 +101,13 @@ export default function AttractionList({ itinerary }) {
               <p className="attraction__description">{attraction.description}</p>
               <p className="attraction__tags">{attraction.tags}</p>
               <img className="attraction__image" src={attraction.image} alt={attraction.attraction_name}></img>
+              <button className="attraction_add" onClick={() => handleAddClick(attraction)}>
+                Add to Itinerary
+              </button>
             </div>
           ))}
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 }
