@@ -24,7 +24,7 @@ const add = async (req, res) => {
 
     const newItineraryId = result[0];
     const createdItinerary = await knex("itineraries").where({ id: newItineraryId }).first();
-    console.log(createdItinerary);
+
     res.status(201).json(createdItinerary);
   } catch (error) {
     res.status(500).json({
@@ -48,10 +48,10 @@ const findOne = async (req, res) => {
     const attractionsFound = await knex("itinerary_attraction")
       .join("attractions", "attractions.id", "itinerary_attraction.attraction_id")
       .where({ itinerary_id: req.params.id })
-      .select("attraction_name", "description", "tags", "user_notes", "image");
+      .select("attraction_name", "description", "suggested_duration", "tags", "user_notes", "image");
 
     itineraryData.attractions = attractionsFound;
-    console.log(attractionsFound);
+
     res.status(200).json(itineraryData);
   } catch (error) {
     res.status(500).json({
