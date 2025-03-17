@@ -5,22 +5,49 @@ import { useState, useEffect } from "react";
 import Weather from "../Weather/Weather";
 import PublicHoliday from "../PublicHoliday/PublicHoliday";
 
-export default function ItineraryOutline({ itinerary, formattedStartDate, formattedEndDate, daysCount }) {
-  console.log(itinerary);
+export default function ItineraryOutline({
+  itinerary,
+  formattedStartDate,
+  formattedEndDate,
+  daysCount,
+  fetchItinerary,
+}) {
+  // console.log(itinerary);
   const [isEditing, setIsEditing] = useState(false);
   const [tripName, setTripName] = useState(
     itinerary.itinerary_name || `${daysCount} Days trip in ${itinerary.location}`
   );
+
+  const baseUrl = import.meta.env.VITE_API_URL;
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
   const handleChange = (event) => {
-    setTripName = event.target.value;
+    setTripName(event.target.value);
   };
 
-  // const handleBlur= async () =>
+  const handleBlur = async () => {
+    setIsEditing(false);
+
+    const editTripDetails = {
+      ...itinerary,
+      itinerary_name: tripName,
+      start_date: formattedStartDate,
+      end_date: formattedEndDate,
+    };
+
+    console.log(editTripDetails);
+
+    try {
+      await axios.put(`${baseUrl}/itineraries/${itinerary.id}`, editTripDetails);
+      fetchItinerary();
+      console.log("Trip name updated");
+    } catch (error) {
+      console.error("Error updating trip name:", error);
+    }
+  };
 
   return (
     <>
@@ -31,7 +58,7 @@ export default function ItineraryOutline({ itinerary, formattedStartDate, format
               {isEditing ? (
                 <input
                   type="text"
-                  calssName="outline_name-input"
+                  className="outline_name-input"
                   value={tripName}
                   onChange={handleChange}
                   onBlur={handleBlur}

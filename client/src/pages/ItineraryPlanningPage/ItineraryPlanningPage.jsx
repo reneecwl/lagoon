@@ -78,6 +78,7 @@ export default function ItineraryPlanningPage({}) {
             formattedStartDate={dates.formattedStartDate}
             formattedEndDate={dates.formattedEndDate}
             daysCount={dates.daysCount}
+            fetchItinerary={fetchItinerary}
           />
           <div className="planning__content">
             <ItineraryPlanner dailyAttractions={dailyAttractions} />

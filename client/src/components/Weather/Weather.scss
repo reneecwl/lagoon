@@ -2,15 +2,96 @@
 @use "./../../styles/partials/variables" as *;
 @use "./../../styles/partials/mixins" as *;
 
+// .weather {
+//   &__container {
+//     display: flex;
+//     justify-content: space-between;
+//     gap: 1rem;
+//     padding: 1rem 1rem;
+//   }
+// }
+
+// .card {
+//   width: 10rem;
+// }
+
 .weather {
+  padding: $spacing-l;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  &__title {
+    font-family: $font-primary;
+    font-size: $font-size-l;
+    font-weight: 700;
+    color: $secondary-colour;
+    margin: 0 0 $spacing-m;
+    letter-spacing: 0.3px;
+  }
+
   &__container {
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 1rem;
+    gap: $spacing-s;
+    overflow-x: auto;
+    padding-bottom: $spacing-s;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $grey;
+      border-radius: 10px;
+    }
   }
 }
 
 .card {
-  width: 10rem;
+  min-width: 100px;
+  background-color: #f8f8f8;
+  border-radius: $border-radius-m;
+  padding: $spacing-s;
+  text-align: center;
+  transition: $transition-medium;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-sm;
+  }
+
+  &__date {
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    font-weight: 500;
+    margin-bottom: $spacing-xs;
+    color: $secondary-colour;
+  }
+
+  &__image {
+    width: 40px;
+    height: 40px;
+    margin: $spacing-xs auto;
+  }
+
+  &__temp {
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    font-weight: 500;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__rain {
+    font-family: $font-secondary;
+    background-color: rgba($accent-colour, 0.15);
+    color: $accent-colour;
+    font-size: $font-size-s;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 12px;
+    display: inline-block;
+  }
 }
