@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
 import ItinerariesPage from "./pages/ItinerariesPage/ItinerariesPage";
 import ItineraryPlanningPage from "./pages/ItineraryPlanningPage/ItineraryPlanningPage";
+import UserItinerariesPage from "./pages/UserItinerariesPage/UserItinerariesPage";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<HomePage isOpen={isOpen} setIsOpen={setIsOpen} />} />
           <Route path="/itineraries" element={<ItinerariesPage />} />
           <Route path="/itineraries/:itineraryId" element={<ItineraryPlanningPage />} />
+          <Route path="/users/:userId/itineraries" element={<UserItinerariesPage />} />
         </Routes>
       </main>
       <Footer />

@@ -91,7 +91,7 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
         <form className="form" onSubmit={handleSubmit}>
           <div className="form__tab">
             <label htmlFor="username" className="form__label">
-              What should we call you, explorer?
+              What should we call you, Explorer?
             </label>
             <input
               type="text"

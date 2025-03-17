@@ -13,11 +13,10 @@
   z-index: 3;
 
   &--itinerary {
-    background-color: $accent-colour;
+    background-color: $secondary-colour;
   }
 
   &__title {
-    font-family: "Libre Baskerville", serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: white;

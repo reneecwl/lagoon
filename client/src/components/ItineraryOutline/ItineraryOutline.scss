@@ -1,5 +1,94 @@
+// .outline {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 1rem;
+// }
+
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
 .outline {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  background-color: $white;
+  border-radius: $border-radius-m;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  margin-bottom: $spacing-l;
+
+  &__header {
+    position: relative;
+    background-color: $secondary-colour;
+    color: $white;
+    padding: $spacing-xl $spacing-l $spacing-l;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 12.5rem;
+
+    &--image {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: var(--header-image, url("../../assets/images/Seville.JPEG"));
+        background-size: cover;
+        background-position: center;
+        opacity: 0.8;
+        z-index: 0;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(17, 43, 60, 0.4), rgba(17, 43, 60, 0.8));
+        z-index: 1;
+      }
+    }
+  }
+
+  &__titles {
+    position: relative;
+    flex: 1;
+    z-index: 2;
+  }
+
+  &__name {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: $font-size-xxl;
+    margin: 0 0 $spacing-xs;
+    letter-spacing: 0.5px;
+    color: $white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &__dates {
+    font-family: $font-secondary;
+    font-weight: 400;
+    font-size: $font-size-m;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  &__location {
+    position: relative;
+    background-color: $primary-colour;
+    padding: $spacing-xs $spacing-s;
+    border-radius: $border-radius-s;
+    font-size: $font-size-s;
+    font-family: $font-secondary;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
 }
