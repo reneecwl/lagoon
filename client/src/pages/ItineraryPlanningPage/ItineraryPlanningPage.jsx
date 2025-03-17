@@ -86,7 +86,6 @@ export default function ItineraryPlanningPage({}) {
               itineraryId={itineraryId}
               daysCount={dates.daysCount}
               fetchItinerary={fetchItinerary}
-              // handleAddAttraction={handleAddAttraction}
             />
           </div>
         </main>
@@ -94,21 +93,3 @@ export default function ItineraryPlanningPage({}) {
     </>
   );
 }
-
-// const handleAddAttraction = (day, attraction, notes) => {
-//   const updatedDailyAttractions = [...dailyAttractions];
-//   const dayToUpdate = updatedDailyAttractions.find((dayObj) => {
-//     return (dayObj.day = day);
-//   });
-
-//   if (dayToUpdate) {
-//     const attractionExist = dayToUpdate.attractions.find((existingAttraction) => {
-//       return existingAttraction.id === attraction.id;
-//     });
-
-//     if (!attractionExist) {
-//       dayToUpdate.attractions.push({ ...attraction, user_notes: notes, day: day });
-//       setDailyAttractions(updatedDailyAttractions);
-//     }
-//   }
-// };
