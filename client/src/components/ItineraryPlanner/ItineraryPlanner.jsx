@@ -1,7 +1,7 @@
 import "./ItineraryPlanner.scss";
 
 export default function ItineraryPlanner({ dailyAttractions }) {
-  console.log(`Daily Attractions:`, dailyAttractions);
+  // console.log(`Daily Attractions:`, dailyAttractions);
 
   return (
     <div className="planner">
