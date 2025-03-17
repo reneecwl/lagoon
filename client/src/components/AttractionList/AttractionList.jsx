@@ -9,6 +9,7 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
   const [notes, setNotes] = useState("");
 
   const baseUrl = import.meta.env.VITE_API_URL;
+  const baseUrlImg = import.meta.env.VITE_API_URL_IMG;
 
   useEffect(() => {
     const fetchAttractions = async () => {
@@ -57,7 +58,7 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
   };
 
   const dayOptions = Array.from({ length: daysCount }, (_, i) => i + 1);
-
+  console.log(`${baseUrl}/images/${attractions[0].image}`);
   return (
     <div className="attraction">
       <h4 className="attraction__title">Things To Do</h4>
@@ -100,13 +101,7 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
               />
             </div>
             <div>
-              <button
-                type="submit"
-                // onClick={handleAddToDay}
-              >
-                {" "}
-                Add to Day {selectedDay}
-              </button>
+              <button type="submit"> Add to Day {selectedDay}</button>
               <button onClick={handleCancel}>Cancel</button>
             </div>
           </form>
@@ -120,7 +115,7 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
               <p className="attraction__tags">{attraction.tags}</p>
               <img
                 className="attraction__image"
-                src={`${baseUrl}/images/${attraction.image}`}
+                src={`${baseUrlImg}/images/${attraction.image}`}
                 alt={attraction.attraction_name}
               ></img>
               <button className="attraction_add" onClick={() => handleAddClick(attraction)}>

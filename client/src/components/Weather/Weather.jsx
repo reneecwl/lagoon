@@ -35,7 +35,6 @@ export default function Weather({ itinerary }) {
   if (!weatherData) {
     return <div>Loading...</div>;
   }
-  console.log(filteredWeatherData);
 
   const extractedData = filteredWeatherData.map((day) => ({
     date: format(new Date(day.date + "T00:00:00"), "dd MMM"),
@@ -44,8 +43,6 @@ export default function Weather({ itinerary }) {
     daily_chance_of_rain: day.day.daily_chance_of_rain,
     icon: day.day.condition.icon,
   }));
-
-  console.log(extractedData);
 
   return (
     <div className="weather">
