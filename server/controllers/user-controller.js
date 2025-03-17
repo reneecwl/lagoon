@@ -38,17 +38,25 @@ const add = async (req, res) => {
 
 const userItineraries = async (req, res) => {
   const userId = req.params.id;
-  console.log(userId);
+
   try {
-    const userExists = await knex("users").where({ id: userId });
-    if (userExists.length === 0) {
+    const userExists = await knex("users").where({ id: userId }).first();
+
+    if (!userExists) {
       return res.status(404).json({
         message: `User with ID ${userId} not found`,
       });
     }
+    const username = userExists.user_name;
 
-    const getItineraries = await knex("itineraries").where({ user_id: userId });
-    res.status(200).json(getItineraries);
+    const getItineraries = await knex("itineraries")
+      .select("id", "user_id", "location", "start_date", "end_date", "itinerary_name")
+      .where({ user_id: userId });
+
+    res.status(200).json({
+      username: username,
+      itineraries: getItineraries,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: `Unable to retrieve itineraries for user with ID ${userId}` });
