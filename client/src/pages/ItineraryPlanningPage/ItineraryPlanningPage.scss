@@ -3,17 +3,25 @@
 @use "./../../styles/partials/mixins" as *;
 
 .planning {
-  @include content-padding;
-  margin-top: 5rem;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $background-colour;
+  padding-top: 5rem;
+
   &__main {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: $spacing-l;
   }
 
   &__content {
-    display: flex;
-    flex-direction: row;
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $spacing-l;
+    margin-top: $spacing-l;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
