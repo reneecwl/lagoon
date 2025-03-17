@@ -1,6 +1,6 @@
-import "./ItineraryDay.scss";
+import "./ItineraryPlanner.scss";
 
-export default function ItineraryDay({ dailyAttractions }) {
+export default function ItineraryPlanner({ dailyAttractions }) {
   console.log(`Daily Attractions:`, dailyAttractions);
 
   return (

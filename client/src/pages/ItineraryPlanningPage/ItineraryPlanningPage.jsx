@@ -6,7 +6,7 @@ import FormatDate from "../../utility/FormatDate";
 import DaysCount from "../../utility/DaysCount";
 import ItineraryOutline from "../../components/ItineraryOutline/ItineraryOutline";
 import AttractionList from "../../components/AttractionList/AttractionList";
-import ItineraryDay from "../../components/ItineraryDay/ItineraryDay";
+import ItineraryPlanner from "../../components/ItineraryPlanner/ItineraryPlanner";
 
 export default function ItineraryPlanningPage({}) {
   const [itinerary, setItinerary] = useState(null);
@@ -20,15 +20,16 @@ export default function ItineraryPlanningPage({}) {
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
+  const fetchItinerary = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/itineraries/${itineraryId}`);
+      setItinerary(response.data);
+    } catch (error) {
+      console.error("There is an error loading the itinerary", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchItinerary = async () => {
-      try {
-        const response = await axios.get(`${baseUrl}/itineraries/${itineraryId}`);
-        setItinerary(response.data);
-      } catch (error) {
-        console.error("There is an error loading the itinerary", error);
-      }
-    };
     fetchItinerary();
   }, [itineraryId]);
 
@@ -64,23 +65,23 @@ export default function ItineraryPlanningPage({}) {
     }
   }, [itinerary]);
 
-  const handleAddAttraction = (day, attraction, notes) => {
-    const updatedDailyAttractions = [...dailyAttractions];
-    const dayToUpdate = updatedDailyAttractions.find((dayObj) => {
-      return (dayObj.day = day);
-    });
+  // const handleAddAttraction = (day, attraction, notes) => {
+  //   const updatedDailyAttractions = [...dailyAttractions];
+  //   const dayToUpdate = updatedDailyAttractions.find((dayObj) => {
+  //     return (dayObj.day = day);
+  //   });
 
-    if (dayToUpdate) {
-      const attractionExist = dayToUpdate.attractions.find((existingAttraction) => {
-        return existingAttraction.id === attraction.id;
-      });
+  //   if (dayToUpdate) {
+  //     const attractionExist = dayToUpdate.attractions.find((existingAttraction) => {
+  //       return existingAttraction.id === attraction.id;
+  //     });
 
-      if (!attractionExist) {
-        dayToUpdate.attractions.push({ ...attraction, user_notes: notes, day: day });
-        setDailyAttractions(updatedDailyAttractions);
-      }
-    }
-  };
+  //     if (!attractionExist) {
+  //       dayToUpdate.attractions.push({ ...attraction, user_notes: notes, day: day });
+  //       setDailyAttractions(updatedDailyAttractions);
+  //     }
+  //   }
+  // };
 
   if (!itinerary) {
     return <div>Loading...</div>;
@@ -98,11 +99,13 @@ export default function ItineraryPlanningPage({}) {
             daysCount={dates.daysCount}
           />
           <div className="planning__content">
-            <ItineraryDay dailyAttractions={dailyAttractions} />
+            <ItineraryPlanner dailyAttractions={dailyAttractions} />
             <AttractionList
               itinerary={itinerary}
+              itieneraryId={itineraryId}
               daysCount={dates.daysCount}
-              handleAddAttraction={handleAddAttraction}
+              fetchItinerary={fetchItinerary}
+              // handleAddAttraction={handleAddAttraction}
             />
           </div>
         </main>

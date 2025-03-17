@@ -2,7 +2,7 @@ import "./AttractionList.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function AttractionList({ itinerary, daysCount, handleAddAttraction }) {
+export default function AttractionList({ itinerary, itieneraryId, daysCount, fetchItinerary, handleAddAttraction }) {
   const [attractions, setAttractions] = useState([]);
   const [selectedAttraction, setSelectedAttraction] = useState(null);
   const [selectedDay, setSelectedDay] = useState(1);
@@ -32,10 +32,22 @@ export default function AttractionList({ itinerary, daysCount, handleAddAttracti
     setNotes("");
   };
 
-  const handleAddToDay = () => {
-    handleAddAttraction(selectedDay, selectedAttraction, notes);
-    setSelectedAttraction(null);
-    setNotes("");
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    // handleAddAttraction(selectedDay, selectedAttraction, notes);
+
+    const attraction_id = selectedAttraction.id;
+    const user_notes = notes;
+    const day = selectedDay;
+
+    try {
+      await axios.post(`${baseUrl}/itineraries/${itieneraryId}`, { attraction_id, user_notes, day });
+      fetchItinerary();
+      setSelectedAttraction(null);
+      setNotes("");
+    } catch (error) {
+      console.error("There is error adding the attraction", error);
+    }
   };
 
   const handleCancel = () => {
@@ -52,46 +64,51 @@ export default function AttractionList({ itinerary, daysCount, handleAddAttracti
       {selectedAttraction ? (
         <div className="attraction_form">
           <h4 className="form__title">Add "{selectedAttraction.attraction_name}" to your itinerary</h4>
-
-          <div>
-            <label htmlFor="day" className="form__day">
-              {" "}
-              Select Day:{" "}
-            </label>
-            <select
-              className="form__day-select"
-              name="day-select"
-              id="day-select"
-              value={selectedDay}
-              onChange={(event) => setSelectedDay(event.target.value)}
-            >
-              {dayOptions.map((day) => (
-                <option key={day} value={day}>
-                  Day {day}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label htmlFor="notes" className="form__notes">
-              {" "}
-              Notes:{" "}
-            </label>
-            <textarea
-              className="form__notes-input"
-              placeholder="Add your notes..."
-              type="text"
-              id="notes"
-              value={notes}
-              onChange={(event) => setNotes(event.target.value)}
-            />
-          </div>
-
-          <div>
-            <button onClick={handleAddToDay}> Add to Day {selectedDay}</button>
-            <button onClick={handleCancel}>Cancel</button>
-          </div>
+          <form onSubmit={submitHandler}>
+            <div>
+              <label htmlFor="day" className="form__day">
+                {" "}
+                Select Day:{" "}
+              </label>
+              <select
+                className="form__day-select"
+                name="day-select"
+                id="day-select"
+                value={selectedDay}
+                onChange={(event) => setSelectedDay(event.target.value)}
+              >
+                {dayOptions.map((day) => (
+                  <option key={day} value={day}>
+                    Day {day}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="notes" className="form__notes">
+                {" "}
+                Notes:{" "}
+              </label>
+              <textarea
+                className="form__notes-input"
+                placeholder="Add your notes..."
+                type="text"
+                id="notes"
+                value={notes}
+                onChange={(event) => setNotes(event.target.value)}
+              />
+            </div>
+            <div>
+              <button
+                type="submit"
+                // onClick={handleAddToDay}
+              >
+                {" "}
+                Add to Day {selectedDay}
+              </button>
+              <button onClick={handleCancel}>Cancel</button>
+            </div>
+          </form>
         </div>
       ) : (
         <div className="attraction__list">
