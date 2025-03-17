@@ -72,7 +72,6 @@ export default function ItineraryPlanningPage({}) {
   return (
     <>
       <div className="planning">
-        <h3 className="planning__header">This is the Itinerary Planning Page for itinerary ID {itinerary.id} </h3>
         <main className="planning__main">
           <ItineraryOutline
             itinerary={itinerary}

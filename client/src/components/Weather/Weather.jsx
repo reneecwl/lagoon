@@ -44,20 +44,20 @@ export default function Weather({ itinerary }) {
   }));
 
   return (
-    <>
-      <h2 className="weather__title">Weather</h2>
-      <ul className="weather__container">
+    <div className="weather">
+      <h3 className="weather__title">Weather</h3>
+      <div className="weather__container">
         {extractedData.map((day, index) => (
-          <li key={index}>
-            <h4>{day.date}</h4>
-            <p>
+          <div key={index} className="card">
+            <p className="card__date">{day.date}</p>
+            <p className="card__temp">
               {day.mintemp_c} - {day.maxtemp_c} °C
             </p>
-            <p>Chance of Rain: {day.daily_chance_of_rain}%</p>
-            <img src={`https:${day.icon}`} alt="Weather Icon" />
-          </li>
+            <p className="card__rain"> Chance of Rain: {day.daily_chance_of_rain}%</p>
+            <img className="card__image" src={`https:${day.icon}`} alt="Weather Icon" />
+          </div>
         ))}
-      </ul>
-    </>
+      </div>
+    </div>
   );
 }

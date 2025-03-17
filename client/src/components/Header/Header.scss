@@ -12,7 +12,24 @@
   align-items: center;
   z-index: 3;
 
+  &--itinerary {
+    background-color: $accent-colour;
+  }
+
   &__title {
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &__title--home {
     font-family: "Libre Baskerville", serif;
     font-size: 1.5rem;
     font-weight: 700;

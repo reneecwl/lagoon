@@ -4,6 +4,7 @@
 
 .planning {
   @include content-padding;
+  margin-top: 5rem;
   &__main {
     display: flex;
     flex-direction: column;

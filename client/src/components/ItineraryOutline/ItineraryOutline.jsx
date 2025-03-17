@@ -4,15 +4,15 @@ import { useState, useEffect } from "react";
 import Weather from "../Weather/Weather";
 import PublicHoliday from "../PublicHoliday/PublicHoliday";
 
-export default function ItineraryOutline({ itinerary, formattedStartDate, formattedEndDate, diferenceInDays }) {
+export default function ItineraryOutline({ itinerary, formattedStartDate, formattedEndDate, daysCount }) {
   return (
     <>
       <div className="outline">
-        <p> {itinerary.itinerary_name || `${diferenceInDays} Days trip in ${itinerary.location}`}</p>
-        <h4>
+        <h3> Trip: {itinerary.itinerary_name || `${daysCount} Days trip in ${itinerary.location}`}</h3>
+        <h3>
           {" "}
           {formattedStartDate} to {formattedEndDate}
-        </h4>
+        </h3>
         <Weather itinerary={itinerary} />
         <PublicHoliday itinerary={itinerary} />
       </div>

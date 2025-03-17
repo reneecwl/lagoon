@@ -6,6 +6,11 @@
   &__container {
     display: flex;
     justify-content: space-between;
-    @include content-padding;
+    gap: 1rem;
+    padding: 1rem 1rem;
   }
+}
+
+.card {
+  width: 10rem;
 }
