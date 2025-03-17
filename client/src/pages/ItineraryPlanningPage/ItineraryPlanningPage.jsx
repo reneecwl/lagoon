@@ -77,7 +77,6 @@ export default function ItineraryPlanningPage({}) {
 
       if (!attractionExist) {
         dayToUpdate.attractions.push({ ...attraction, user_notes: notes, day: day });
-
         setDailyAttractions(updatedDailyAttractions);
       }
     }

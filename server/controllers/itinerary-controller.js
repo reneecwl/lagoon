@@ -60,4 +60,21 @@ const findOne = async (req, res) => {
   }
 };
 
-export { add, itineraryList, findOne };
+const addAttraction = async (req, res) => {
+  try {
+    const result = await knex("itinerary_attraction").insert({
+      itinerary_id: req.params.id,
+      attraction_id: req.body.attraction_id,
+      user_notes: req.body.user_notes,
+      day: req.body.day,
+    });
+    res.status(201).json({
+      message: `Attraction with id ${req.body.attraction_id} is added to itienrary ${req.params.id} on Day ${req.body.day} `,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: `Unable to add attraction to itinerary with ID ${req.params.id}: ${error.message}`,
+    });
+  }
+};
+export { add, itineraryList, findOne, addAttraction };
