@@ -17,10 +17,10 @@ export async function seed(knex) {
     },
     {
       location: "London",
-      attraction_name: "Tower of London",
-      description: "Medieval castle and former prison.",
+      attraction_name: "Borough Market",
+      description: "One of the oldest food market in London",
       suggested_duration: "1hr - 2hr",
-      tags: "castle,history,leisure",
+      tags: "food,culture,leisure",
       image: "Photo-2.jpg",
     },
     {

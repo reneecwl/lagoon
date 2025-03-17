@@ -118,7 +118,11 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
               <p className="attraction__name">{attraction.attraction_name}</p>
               <p className="attraction__description">{attraction.description}</p>
               <p className="attraction__tags">{attraction.tags}</p>
-              <img className="attraction__image" src={attraction.image} alt={attraction.attraction_name}></img>
+              <img
+                className="attraction__image"
+                src={`${baseUrl}/images/${attraction.image}`}
+                alt={attraction.attraction_name}
+              ></img>
               <button className="attraction_add" onClick={() => handleAddClick(attraction)}>
                 Add to Itinerary
               </button>
