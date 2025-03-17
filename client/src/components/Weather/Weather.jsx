@@ -38,7 +38,7 @@ export default function Weather({ itinerary }) {
   console.log(filteredWeatherData);
 
   const extractedData = filteredWeatherData.map((day) => ({
-    date: format(new Date(day.date), "dd MMM"),
+    date: format(new Date(day.date + "T00:00:00"), "dd MMM"),
     mintemp_c: Math.round(day.day.mintemp_c),
     maxtemp_c: Math.round(day.day.maxtemp_c),
     daily_chance_of_rain: day.day.daily_chance_of_rain,
@@ -54,11 +54,11 @@ export default function Weather({ itinerary }) {
         {extractedData.map((day, index) => (
           <div key={index} className="card">
             <p className="card__date">{day.date}</p>
+            <img className="card__image" src={`https:${day.icon}`} alt="Weather Icon" />
             <p className="card__temp">
               {day.mintemp_c} - {day.maxtemp_c} °C
             </p>
             <p className="card__rain"> Chance of Rain: {day.daily_chance_of_rain}%</p>
-            <img className="card__image" src={`https:${day.icon}`} alt="Weather Icon" />
           </div>
         ))}
       </div>

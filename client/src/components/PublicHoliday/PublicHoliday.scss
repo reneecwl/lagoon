@@ -1,5 +1,39 @@
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
 .public-holiday {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
+  padding: $spacing-l;
+
+  &__title {
+    font-family: $font-primary;
+    font-size: $font-size-l;
+    font-weight: 700;
+    color: $secondary-colour;
+    margin: 0 0 $spacing-m;
+    letter-spacing: 0.3px;
+  }
+
+  &__date {
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    color: $text-colour;
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-xs 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__empty {
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    color: rgba($text-colour, 0.7);
+    font-style: italic;
+    padding: $spacing-xs 0;
+    // text-align: center;
+  }
 }

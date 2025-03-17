@@ -1,9 +1,15 @@
 import "./ItineraryOutline.scss";
 import axios from "axios";
-import { format } from "date-fns";
 import { useState, useEffect } from "react";
 import Weather from "../Weather/Weather";
 import PublicHoliday from "../PublicHoliday/PublicHoliday";
+import londonImage from "../../assets/images/destinations/london.jpg";
+import parisImage from "../../assets/images/destinations/paris.jpg";
+import barcelonaImage from "../../assets/images/destinations/barcelona.jpg";
+import sevilleImage from "../../assets/images/destinations/seville.jpg";
+import romeImage from "../../assets/images/destinations/rome.jpg";
+import tokyoImage from "../../assets/images/destinations/tokyo.jpg";
+import sydneyImage from "../../assets/images/destinations/sydney.jpg";
 
 export default function ItineraryOutline({
   itinerary,
@@ -12,11 +18,29 @@ export default function ItineraryOutline({
   daysCount,
   fetchItinerary,
 }) {
-  // console.log(itinerary);
   const [isEditing, setIsEditing] = useState(false);
   const [tripName, setTripName] = useState(
     itinerary.itinerary_name || `${daysCount} Days trip in ${itinerary.location}`
   );
+  const [backgroundImage, setBackgroundImage] = useState("");
+
+  const locationImages = {
+    London: londonImage,
+    Paris: parisImage,
+    Barcelona: barcelonaImage,
+    Seville: sevilleImage,
+    Rome: romeImage,
+    Tokyo: tokyoImage,
+    Sydney: sydneyImage,
+  };
+
+  useEffect(() => {
+    if (itinerary.location && locationImages[itinerary.location]) {
+      setBackgroundImage(locationImages[itinerary.location]);
+    } else {
+      setBackgroundImage(locationImages["Seville"]);
+    }
+  }, [itinerary.location]);
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -52,7 +76,7 @@ export default function ItineraryOutline({
   return (
     <>
       <div className="outline">
-        <div className="outline__header outline__header--image">
+        <div className="outline__header outline__header--image" style={{ "--header-image": `url(${backgroundImage})` }}>
           <div className="outline__titles">
             <div className="outline__name-container">
               {isEditing ? (

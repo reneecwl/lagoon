@@ -33,12 +33,16 @@ export default function PublicHoliday({ itinerary }) {
   const holidayMatched = filteredHoliday;
   return (
     <div className="public-holiday">
-      <h3> Public Holiday:</h3>
-      {filteredHoliday.map((holiday) => (
-        <p key={holiday.date}>
-          {holiday.name} - {holiday.date}
-        </p>
-      ))}
+      <h3 className="public-holiday__title"> Public Holiday:</h3>
+      {filteredHoliday.length > 0 ? (
+        filteredHoliday.map((holiday) => (
+          <p key={holiday.date} className="public-holiday__date">
+            {holiday.name} - {holiday.date}
+          </p>
+        ))
+      ) : (
+        <p className="public-holiday__empty">No public holidays during your time of travel.</p>
+      )}
     </div>
   );
 }
