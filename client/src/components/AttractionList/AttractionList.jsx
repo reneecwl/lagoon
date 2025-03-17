@@ -2,7 +2,7 @@ import "./AttractionList.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function AttractionList({ itinerary, itieneraryId, daysCount, fetchItinerary, handleAddAttraction }) {
+export default function AttractionList({ itinerary, itineraryId, daysCount, fetchItinerary }) {
   const [attractions, setAttractions] = useState([]);
   const [selectedAttraction, setSelectedAttraction] = useState(null);
   const [selectedDay, setSelectedDay] = useState(1);
@@ -20,9 +20,9 @@ export default function AttractionList({ itinerary, itieneraryId, daysCount, fet
       }
     };
     fetchAttractions();
-  }, []);
+  }, [itinerary]);
 
-  if (!attractions) {
+  if (attractions.length === 0) {
     return <div>Loading...</div>;
   }
 
@@ -34,14 +34,15 @@ export default function AttractionList({ itinerary, itieneraryId, daysCount, fet
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    // handleAddAttraction(selectedDay, selectedAttraction, notes);
 
-    const attraction_id = selectedAttraction.id;
-    const user_notes = notes;
-    const day = selectedDay;
-
+    const newItineraryAttraction = {
+      attraction_id: selectedAttraction.id,
+      user_notes: notes,
+      day: selectedDay,
+    };
+    console.log(`${baseUrl}/itineraries/${itineraryId}`);
     try {
-      await axios.post(`${baseUrl}/itineraries/${itieneraryId}`, { attraction_id, user_notes, day });
+      await axios.post(`${baseUrl}/itineraries/${itineraryId}`, newItineraryAttraction);
       fetchItinerary();
       setSelectedAttraction(null);
       setNotes("");
@@ -75,7 +76,7 @@ export default function AttractionList({ itinerary, itieneraryId, daysCount, fet
                 name="day-select"
                 id="day-select"
                 value={selectedDay}
-                onChange={(event) => setSelectedDay(event.target.value)}
+                onChange={(event) => setSelectedDay(Number(event.target.value))}
               >
                 {dayOptions.map((day) => (
                   <option key={day} value={day}>
