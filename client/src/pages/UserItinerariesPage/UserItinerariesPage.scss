@@ -3,10 +3,43 @@
 @use "./../../styles/partials/mixins" as *;
 
 .user {
-  display: flex;
-  flex-direction: column;
-  // border: 2px solid $secondary-colour;
-  margin-top: 10rem;
+  background-color: $white;
+  border-radius: $border-radius-m;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  margin-bottom: $spacing-l;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+
+  &__main {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: $spacing-l;
+  }
+
+  &__header {
+    background-color: $white;
+    border-radius: $border-radius-m;
+    box-shadow: $shadow-sm;
+    overflow: hidden;
+    margin-bottom: $spacing-l;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  &__title {
+    position: relative;
+    background-color: $secondary-colour;
+    color: $white;
+    padding: $spacing-xl $spacing-l $spacing-l;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 12.5rem;
+  }
+
+  &__statistics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .trips {

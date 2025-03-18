@@ -53,9 +53,12 @@ const userItineraries = async (req, res) => {
       .select("id", "user_id", "location", "start_date", "end_date", "itinerary_name")
       .where({ user_id: userId });
 
+    const sortedItineraries = getItineraries.sort((a, b) => {
+      return b.start_date - a.start_date;
+    });
     res.status(200).json({
       username: username,
-      itineraries: getItineraries,
+      itineraries: sortedItineraries,
     });
   } catch (error) {
     console.error(error);

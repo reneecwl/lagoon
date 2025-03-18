@@ -33,7 +33,8 @@ export default function ItineraryPlanningPage({}) {
     fetchItinerary();
   }, [itineraryId]);
 
-  // console.log(itinerary.attractions);
+  // console.log(itinerary);
+  // console.log(itinerary.end_date);
 
   useEffect(() => {
     if (itinerary) {
