@@ -236,11 +236,11 @@
     }
   }
 
-  div:last-child {
-    display: flex;
-    justify-content: space-between;
-    gap: $spacing-s;
-  }
+  // div:last-child {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   gap: $spacing-s;
+  // }
 
   &__addToDay {
     flex: 1;
@@ -259,7 +259,13 @@
     }
   }
 
-  &__cancel {
+  &__attraction-button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-s;
+  }
+
+  &__attraction-cancel {
     flex: 1;
     padding: $spacing-s;
     background-color: #f1f1f1;

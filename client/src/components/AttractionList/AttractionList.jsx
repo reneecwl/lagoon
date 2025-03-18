@@ -87,11 +87,11 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
             onChange={(e) => setNotes(e.target.value)}
           />
         </div>
-        <div>
+        <div className="form__attraction-button-container">
           <button type="submit" className="form__addToDay">
             Add to Day {selectedDay}
           </button>
-          <button type="button" className="form__cancel" onClick={handleCancel}>
+          <button type="button" className="form__attraction-cancel" onClick={handleCancel}>
             Cancel
           </button>
         </div>
