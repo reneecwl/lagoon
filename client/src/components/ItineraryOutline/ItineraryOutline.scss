@@ -8,6 +8,7 @@
   box-shadow: $shadow-sm;
   overflow: hidden;
   margin-bottom: $spacing-l;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 
   &__header {
     position: relative;

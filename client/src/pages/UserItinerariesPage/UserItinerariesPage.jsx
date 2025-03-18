@@ -24,16 +24,25 @@ export default function UserItinerariesPage() {
     return <div>Loading...</div>;
   }
 
-  // console.log(userItineraries);
-
   const trips = userItineraries.itineraries;
 
   console.log(trips);
 
   return (
     <div className="user">
-      <h3 className="user_header">{userItineraries.username} Upcoming Trips</h3>
+      <h3 className="user_header">{userItineraries.username} My Journeys</h3>
+      <div className="user__statistics">
+        <div className="statistics__left">
+          <h3 className="statistics__title">Trip Statistics</h3>
+          <div className="statistics__trip--upcoming">3 Upcoming Trips</div>
+          <div className="statistics__trip--completed">3 Completed Trips</div>
+        </div>
+        <div className="statistics__right">
+          <div className="statistics__countdown">Next Trip: London in 15 days</div>
+        </div>
+      </div>
       <div className="trips">
+        <h3 className="trips__header">All Trips</h3>
         {trips.map((trip, index) => (
           <div className="trips__trip" key={index}>
             <Link to={`/itineraries/${trip.id}`} className="trips__trip-name">

@@ -1,6 +1,7 @@
 @use "./../../styles/partials/typography" as *;
 @use "./../../styles/partials/variables" as *;
 @use "./../../styles/partials/mixins" as *;
+@use "sass:color";
 
 .homepage {
   height: 100vh;
@@ -21,7 +22,6 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-
     animation: zoomIn 20s ease-in-out infinite;
 
     &::before {
@@ -47,13 +47,14 @@
 
   &__title {
     font-family: $font-primary;
-    font-size: 3.6rem;
+    font-size: 3rem;
     letter-spacing: 2px;
     margin-bottom: $spacing-m;
     color: $white;
     text-transform: uppercase;
     text-shadow: $shadow-md;
     z-index: 3;
+    animation: float-up-down 3s ease-in-out infinite;
   }
 
   &__button {
@@ -63,6 +64,8 @@
     transition: background-color $transition-medium;
     position: relative;
     z-index: 4;
+    animation: float-up-down 3s ease-in-out infinite;
+    animation-delay: 0.5s;
 
     &:hover {
       background-color: darken($primary-colour, 20%);

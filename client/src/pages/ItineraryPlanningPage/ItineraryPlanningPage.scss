@@ -7,6 +7,13 @@
   min-height: 100vh;
   background-color: $background-colour;
   padding-top: 5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
 
   &__main {
     max-width: 70rem;
