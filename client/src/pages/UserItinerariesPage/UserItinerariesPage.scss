@@ -143,6 +143,7 @@
     color: $white;
     border: none;
     padding: 0.6rem 1.1rem 0.6rem 1rem;
+    margin-right: 1.5rem;
     border-radius: 1.1rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -297,14 +298,23 @@
     color: $white;
     border: none;
     padding: $spacing-xs $spacing-m;
-    border-radius: $border-radius-s;
-    font-weight: 500;
+    border-radius: $border-radius-m;
     cursor: pointer;
     text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
 
     &:hover {
       background-color: darken($accent-colour, 10%);
     }
+  }
+
+  &__edit-icon {
+    width: 0.9rem;
+    fill: currentColor;
   }
 
   &__view {
