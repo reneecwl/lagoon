@@ -7,38 +7,137 @@
   border-radius: $border-radius-m;
   box-shadow: $shadow-sm;
   overflow: hidden;
-  padding: $spacing-l;
+
+  &__header {
+    position: relative;
+    padding: $spacing-xl $spacing-l;
+    color: $white;
+    text-align: start;
+    margin-bottom: $spacing-l;
+    background-image: url("../../assets/images/destinations/granada.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: $secondary-colour;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to bottom, rgba($secondary-colour, 0.8), rgba($accent-colour, 0.7));
+      z-index: 1;
+    }
+
+    &-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    &-title {
+      font-family: $font-primary;
+      font-size: $font-size-xxl;
+      font-weight: 700;
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  &__content {
+    padding: $spacing-l;
+  }
 
   &__byday {
-    margin-bottom: $spacing-l;
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: $spacing-xl;
+
+    // Timeline vertical line with accent color
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 3px;
+      background-color: rgba($accent-colour, 0.6);
+      border-radius: $border-radius-m;
+      z-index: 1;
+    }
 
     &:last-child {
       margin-bottom: 0;
     }
   }
 
-  &__dayIndex {
-    font-family: $font-primary;
+  &__day-index {
+    font-family: $font-secondary;
     font-size: $font-size-l;
     font-weight: 700;
     color: $secondary-colour;
     margin: 0 0 $spacing-m;
-    padding-bottom: $spacing-xs;
-    border-bottom: 2px solid $accent-colour;
     display: inline-block;
+    position: relative;
+    padding-bottom: $spacing-xs;
+
+    border-bottom: 2px solid $accent-colour;
+
+    &--empty {
+      color: rgba($text-colour, 0.6);
+      border-bottom-color: rgba($accent-colour, 0.4);
+
+      &::after {
+        content: " (No attractions planned)";
+        font-size: $font-size-s;
+        font-weight: 400;
+        font-style: italic;
+      }
+    }
   }
 
   &__attraction {
-    background-color: #f8f8f8;
+    background: $white;
     border-radius: $border-radius-m;
     padding: $spacing-m;
     margin-bottom: $spacing-m;
-    border-left: 4px solid $accent-colour;
+    border: 1px solid rgba($text-colour, 0.1);
     transition: $transition-medium;
+    position: relative;
+    box-shadow: $shadow-sm;
+
+    // Square point using accent color
+    &::before {
+      content: "";
+      position: absolute;
+      left: -1.25rem;
+      top: 1.25rem;
+      width: 6px;
+      height: 6px;
+      background-color: $accent-colour;
+      z-index: 3;
+    }
+
+    // Horizontal connector line
+    &::after {
+      content: "";
+      position: absolute;
+      left: -1.25rem;
+      top: 1.4rem;
+      width: 1.25rem;
+      height: 1px;
+      background-color: rgba($accent-colour, 0.3);
+      z-index: 2;
+    }
 
     &:hover {
-      transform: translateY(-3px);
-      box-shadow: $shadow-sm;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+      border-color: rgba($accent-colour, 0.3);
+
+      .planner__delete {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     &:last-child {
@@ -47,11 +146,26 @@
   }
 
   &__attraction-name {
-    font-family: $font-secondary;
-    font-size: $font-size-m;
-    font-weight: 600;
-    color: $text-colour;
+    font-family: $font-primary;
+    font-size: $font-size-l;
+    font-weight: 700;
+    color: $secondary-colour;
     margin: 0 0 $spacing-xs;
+    padding-right: 2.5rem; // Make room for delete button
+    position: relative;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      margin-right: $spacing-xs;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23087d8c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3Cpath d='M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      vertical-align: middle;
+      opacity: 0.8;
+    }
   }
 
   &__duration {
@@ -61,16 +175,21 @@
     margin: 0 0 $spacing-xs;
     display: flex;
     align-items: center;
+    display: inline-flex;
+    padding: 0.35rem 0.9rem;
+    border-radius: 10px;
+    background-color: rgba($accent-colour, 0.1);
+    width: auto;
 
     &::before {
       content: "";
       display: inline-block;
-      width: 14px;
-      height: 14px;
-      background-image: url("../../assets/icons/clock.svg");
+      width: 1.1rem;
+      height: 1.1rem;
+      background-image: url("../../assets/icon/timer-24px.svg");
       background-size: contain;
       background-repeat: no-repeat;
-      margin-right: $spacing-xs;
+      margin-right: 0.2rem;
       opacity: 0.7;
     }
   }
@@ -80,9 +199,69 @@
     font-size: $font-size-s;
     color: rgba($text-colour, 0.8);
     margin: $spacing-s 0 0;
-    padding-top: $spacing-xs;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    background-color: rgba($secondary-colour, 0.03);
+    border-radius: $border-radius-s;
     font-style: italic;
+    border-left: 3px solid rgba($secondary-colour, 0.1);
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.4rem;
+      top: 0.6rem;
+      width: 14px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cline x1='16' y1='13' x2='8' y2='13'/%3E%3Cline x1='16' y1='17' x2='8' y2='17'/%3E%3Cpolyline points='10 9 9 9 8 9'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+    }
+  }
+
+  &__delete {
+    position: absolute;
+    top: $spacing-m;
+    right: $spacing-m;
+    background-color: rgba($error-colour, 0.1);
+    border: none;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: $transition-medium;
+    opacity: 0;
+    transform: translateX(10px);
+
+    &:hover {
+      background-color: $error-colour;
+
+      .planner__delete-icon {
+        fill: $white;
+      }
+    }
+  }
+
+  &__delete-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: $error-colour;
+    transition: $transition-fast;
+  }
+
+  &__empty-day {
+    padding: $spacing-m;
+    background-color: rgba($secondary-colour, 0.03);
+    border-radius: $border-radius-m;
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    color: rgba($text-colour, 0.6);
+    font-style: italic;
+    text-align: center;
   }
 
   &:empty {
@@ -95,16 +274,6 @@
       display: block;
       text-align: center;
       padding: $spacing-xl 0;
-    }
-  }
-
-  &__byday:has(.planner__attraction:empty) {
-    .planner__dayIndex::after {
-      content: " (No attractions planned)";
-      font-size: $font-size-s;
-      font-weight: 400;
-      font-style: italic;
-      color: rgba($text-colour, 0.6);
     }
   }
 }
