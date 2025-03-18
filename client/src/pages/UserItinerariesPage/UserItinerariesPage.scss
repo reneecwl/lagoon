@@ -4,11 +4,9 @@
 
 .user {
   background-color: $white;
-  border-radius: $border-radius-m;
-  box-shadow: $shadow-sm;
   overflow: hidden;
-  margin-bottom: $spacing-l;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  // margin-bottom: $spacing-l;
+  padding-top: 5rem;
 
   &__main {
     max-width: 70rem;
@@ -17,28 +15,106 @@
   }
 
   &__header {
-    background-color: $white;
-    border-radius: $border-radius-m;
-    box-shadow: $shadow-sm;
-    overflow: hidden;
     margin-bottom: $spacing-l;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    border-radius: $border-radius-m;
+    overflow: hidden;
+    box-shadow: $shadow-sm;
   }
 
   &__title {
     position: relative;
-    background-color: $secondary-colour;
+    background-image: url("../../assets/images/destinations/norway2.jpg");
+    background-size: cover;
+    background-position: center;
     color: $white;
     padding: $spacing-xl $spacing-l $spacing-l;
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-align: center;
+    min-height: 15rem;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    min-height: 12.5rem;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      // background: linear-gradient(rgba($primary-colour, 0.7), rgba($accent-colour, 0.7));
+      z-index: 1;
+    }
+    span {
+      position: relative;
+      z-index: 2;
+    }
   }
 
   &__statistics {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    background-color: $white;
+    padding: $spacing-m;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e1e1e1; /* Replacing $grey-light */
+  }
+}
+
+.statistics {
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+  &__title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: $spacing-xs;
+    color: $text-colour;
+    // font-family: $font-secondary;
+  }
+  &__trip {
+    &--upcoming,
+    &--completed {
+      display: inline-block;
+      padding: $spacing-xs $spacing-s;
+      border-radius: 20px;
+      font-family: $font-secondary;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-right: $spacing-s;
+    }
+
+    &--upcoming {
+      background-color: rgba($accent-colour, 0.2);
+      color: $accent-colour;
+    }
+
+    &--completed {
+      background-color: rgba(#adadad, 0.2); /* Replacing rgba($grey, 0.2) */
+      color: #4a4a4a; /* Replacing $grey-dark */
+    }
+  }
+
+  &__countdown {
+    background-color: rgba($accent-colour, 0.1);
+    border: none;
+    padding: $spacing-s $spacing-m;
+    border-radius: $border-radius-m;
+    font-weight: 600;
+    color: $accent-colour;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    font-family: $font-secondary;
+
+    &::before {
+      content: "🗓️"; // Calendar emoji
+      margin-right: $spacing-xs;
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -47,9 +123,154 @@
   flex-direction: column;
   gap: 2rem;
 
-  &__trip {
+  &__header {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: $spacing-s;
+    color: $text-colour;
+  }
+}
+
+.trip {
+  display: flex;
+  background-color: $white;
+  border-radius: $border-radius-m;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+  padding-left: 1rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background-color: $accent-colour;
+  }
+
+  &--completed::before {
+    background-color: #adadad;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-md;
+    border-color: rgba($accent-colour, 0.4);
+  }
+
+  &__image-container {
     display: flex;
-    flex-direction: row;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    margin: $spacing-s;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: $border-radius-s;
+  }
+
+  &__status {
+    position: absolute;
+    top: $spacing-xs;
+    left: $spacing-xs;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: $text-colour;
+  }
+
+  &__summary {
+    flex: 1;
+    padding: $spacing-m $spacing-s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $text-colour;
+    margin-bottom: $spacing-xs;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary-colour;
+    }
+  }
+
+  &__date-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+  &__date {
+    font-family: $font-secondary;
+    color: $text-colour;
+    font-size: 0.8rem;
+  }
+
+  &__days-count {
+    font-family: $font-secondary;
+    color: #767676; /* Replacing $text-colour-light */
+    font-size: 0.8rem;
+  }
+
+  &__attractions {
+    margin-top: $spacing-xs;
+    margin-bottom: $spacing-xs;
+    font-family: $font-secondary;
+    color: $text-colour;
+    font-size: 0.8rem;
+  }
+
+  &__type {
+    display: inline-block;
+    width: 4rem;
+    text-align: center;
+    font-family: $font-secondary;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border: 1px solid $accent-colour;
+    border-radius: 16px;
+    background-color: rgba($accent-colour, 0.05);
+    color: $accent-colour;
+    text-transform: capitalize;
+  }
+
+  &__edit {
+    align-self: center;
+    margin-right: $spacing-m;
+    background-color: $accent-colour;
+    color: $white;
+    border: none;
+    padding: $spacing-xs $spacing-m;
+    border-radius: $border-radius-s;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($accent-colour, 10%);
+    }
+  }
+
+  &__view {
+    @extend .trip__edit;
+    background-color: #767676;
+    &:hover {
+      background-color: darken(#767676, 10%);
+    }
   }
 }
