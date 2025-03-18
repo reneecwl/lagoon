@@ -83,7 +83,6 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
     if (location && locationImages[location]) {
       return locationImages[location];
     }
-    // Default fallback image
     return locationImages["HongKong"];
   };
 

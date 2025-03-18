@@ -6,7 +6,7 @@ import FormatDate from "../../utility/FormatDate";
 import DaysCount from "../../utility/DaysCount";
 import ItineraryOutline from "../../components/ItineraryOutline/ItineraryOutline";
 import AttractionList from "../../components/AttractionList/AttractionList";
-import ItineraryPlanner from "../../components/ItineraryPlanner/ItineraryPlanner";
+import Planner from "../../components/Planner/Planner";
 
 export default function ItineraryPlanningPage({}) {
   const [itinerary, setItinerary] = useState(null);
@@ -32,9 +32,6 @@ export default function ItineraryPlanningPage({}) {
   useEffect(() => {
     fetchItinerary();
   }, [itineraryId]);
-
-  // console.log(itinerary);
-  // console.log(itinerary.end_date);
 
   useEffect(() => {
     if (itinerary) {
@@ -82,7 +79,7 @@ export default function ItineraryPlanningPage({}) {
             fetchItinerary={fetchItinerary}
           />
           <div className="planning__content">
-            <ItineraryPlanner dailyAttractions={dailyAttractions} />
+            <Planner dailyAttractions={dailyAttractions} itineraryId={itineraryId} fetchItinerary={fetchItinerary} />
             <AttractionList
               itinerary={itinerary}
               itineraryId={itineraryId}
