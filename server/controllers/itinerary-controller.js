@@ -102,4 +102,23 @@ const addAttraction = async (req, res) => {
     });
   }
 };
-export { add, itineraryList, findOne, addAttraction, edit };
+
+const removeAttraction = async (req, res) => {
+  try {
+    const rowDeleted = await knex("itinerary_attraction")
+      .where({ itinerary_id: req.params.id, attraction_id: req.body.attraction_id })
+      .delete();
+
+    if (rowDeleted === 0) {
+      return res
+        .status(404)
+        .json({ message: `Itinerary with ID ${req.params.id} and attraction_id ${req.body.attraction_id} not found` });
+    }
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({
+      message: `Unable to delete attraction with ID:${req.body.attraction_id} in itinerary with ID:${req.params.id}: ${error.message}`,
+    });
+  }
+};
+export { add, itineraryList, findOne, addAttraction, edit, removeAttraction };

@@ -9,6 +9,7 @@ router
   .route("/:id")
   .get(itineraryController.findOne)
   .post(itineraryController.addAttraction)
-  .put(itineraryController.edit);
+  .put(itineraryController.edit)
+  .delete(itineraryController.removeAttraction);
 
 export default router;
