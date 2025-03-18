@@ -20,7 +20,10 @@ function App() {
           <Route path="/" element={<HomePage isOpen={isOpen} setIsOpen={setIsOpen} />} />
           <Route path="/itineraries" element={<ItinerariesPage />} />
           <Route path="/itineraries/:itineraryId" element={<ItineraryPlanningPage />} />
-          <Route path="/users/:userId/itineraries" element={<UserItinerariesPage />} />
+          <Route
+            path="/users/:userId/itineraries"
+            element={<UserItinerariesPage isOpen={isOpen} setIsOpen={setIsOpen} />}
+          />
         </Routes>
       </main>
       <Footer />

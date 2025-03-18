@@ -6,6 +6,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import londonImage from "../../assets/images/destinations/london.jpg";
+import CreateItinerary from "../../components/CreateItinerary/CreateItinerary";
 import parisImage from "../../assets/images/destinations/paris.jpg";
 import aarhusImage from "../../assets/images/destinations/aarhus.jpg";
 import romeImage from "../../assets/images/destinations/rome.jpg";
@@ -14,9 +15,9 @@ import tokyoImage from "../../assets/images/destinations/tokyo.jpg";
 import sydneyImage from "../../assets/images/destinations/sydney.jpg";
 import hkImage from "../../assets/images/destinations/hongkong.jpg";
 
-export default function UserItinerariesPage() {
+export default function UserItinerariesPage({ isOpen, setIsOpen }) {
   const [userItineraries, setUserItineraries] = useState(null);
-  // const [completed, setCompleted] = useState(false);
+
   const baseUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -107,7 +108,25 @@ export default function UserItinerariesPage() {
           </div>
         </div>
         <div className="trips">
-          <h3 className="trips__header">All Trips</h3>
+          <div className="trips__header">
+            <h3 className="trips__title">All Trips</h3>
+            <button
+              className="trips__add-container"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              <svg className="trips__add-icon" viewBox="0 -960 960 960">
+                <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+              </svg>
+              <span className="trips__add-trip">Add a Trip</span>
+            </button>
+          </div>
+          {isOpen && (
+            <div className="create-itinerary__overlay">
+              <CreateItinerary setIsOpen={setIsOpen} />
+            </div>
+          )}
           {trips.map((trip, index) => (
             <div
               className={`trip ${
@@ -132,14 +151,16 @@ export default function UserItinerariesPage() {
                 <p className="trip__attractions">5 Attractions planned</p>
                 <p className="trip__type">City Trip</p>
               </div>
-              <Link to={`/itineraries/${trip.id}`} className="trip__name">
-                {" "}
-                <button
-                  className={tripStatus(trip.start_date, trip.end_date) === "Completed" ? "trip__view" : "trip__edit"}
-                >
-                  {tripStatus(trip.start_date, trip.end_date) === "Completed" ? "View" : "Edit"}
-                </button>{" "}
-              </Link>
+              <div className="trip__button-container">
+                <Link to={`/itineraries/${trip.id}`} className="trip__name">
+                  {" "}
+                  <button
+                    className={tripStatus(trip.start_date, trip.end_date) === "Completed" ? "trip__view" : "trip__edit"}
+                  >
+                    {tripStatus(trip.start_date, trip.end_date) === "Completed" ? "View" : "Edit"}
+                  </button>{" "}
+                </Link>
+              </div>
             </div>
           ))}
         </div>
