@@ -2,18 +2,28 @@
 @use "./../../styles/partials/variables" as *;
 @use "sass:color";
 
-.form {
-  padding: $spacing-m;
+.attraction-form {
+  padding: $spacing-l $spacing-s $spacing-m $spacing-s;
   background-color: $white;
   border-radius: $border-radius-s;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   &__title {
-    font-family: $font-primary;
+    font-family: $font-secondary;
     font-size: $font-size-m;
-    font-weight: 700;
+    font-weight: 400;
     // margin-bottom: $spacing-m;
     color: $secondary-colour;
     text-align: center;
+
+    &--attraction-name {
+      // font-weight: 700;
+      color: #e07a5f;
+      font-weight: bold;
+      // font-family: $font-secondary;
+    }
   }
 
   &__day,
@@ -35,9 +45,12 @@
     transition: all 0.3s;
 
     &:focus {
-      border-color: $accent-colour;
-      box-shadow: 0 0 0 2px rgba($accent-colour, 0.2);
+      // border-color: $accent-colour;
+      // box-shadow: 0 0 0 2px rgba($accent-colour, 0.2);
+      // outline: none;
       outline: none;
+      border: none;
+      box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
     }
   }
 
@@ -53,9 +66,12 @@
     transition: all 0.3s;
 
     &:focus {
-      border-color: $accent-colour;
-      box-shadow: 0 0 0 2px rgba($accent-colour, 0.2);
+      // border-color: $accent-colour;
+      // box-shadow: 0 0 0 2px rgba($accent-colour, 0.2);
+      // outline: none;
       outline: none;
+      border: none;
+      box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
     }
   }
 

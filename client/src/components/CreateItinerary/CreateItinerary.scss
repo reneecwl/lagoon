@@ -45,8 +45,12 @@
 
     &:focus {
       // border-color: $primary-colour;
-      border: 1.5px solid $primary-colour;
+      // border: 1.5px solid $primary-colour;
+      // outline: none;
+      // border-color: $accent-colour;
       outline: none;
+      border: none;
+      box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
     }
   }
 
@@ -68,8 +72,11 @@
     transition: border-color $transition-medium;
 
     &:focus {
-      border-color: $primary-colour;
+      // border-color: $primary-colour;
+      // outline: none;
       outline: none;
+      border: none;
+      box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
     }
   }
   &__buttons {

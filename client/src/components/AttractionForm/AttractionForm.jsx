@@ -30,15 +30,17 @@ export default function AttractionForm({ attraction, itineraryId, fetchItinerary
   };
 
   return (
-    <div className="form">
-      <h4 className="form__title">Add "{attraction.attraction_name}" to your itinerary</h4>
+    <div className="attraction-form">
+      <h4 className="attraction-form__title">
+        Add <span className="attraction-form__title--attraction-name">{attraction.attraction_name}</span> to itinerary
+      </h4>
       <form onSubmit={submitHandler}>
         <div>
-          <label htmlFor="day" className="form__day">
-            Select Day:
+          <label htmlFor="day" className="attraction-form__day">
+            Day:
           </label>
           <select
-            className="form__day-select"
+            className="attraction-form__day-select"
             value={selectedDay}
             onChange={(e) => setSelectedDay(Number(e.target.value))}
           >
@@ -50,21 +52,22 @@ export default function AttractionForm({ attraction, itineraryId, fetchItinerary
           </select>
         </div>
         <div>
-          <label htmlFor="notes" className="form__notes">
+          <label htmlFor="notes" className="attraction-form__notes">
             Notes:
           </label>
           <textarea
-            className="form__notes-input"
+            className="attraction-form__notes-input"
             placeholder="Add your notes..."
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
           />
         </div>
-        <div className="form__attraction-button-container">
-          <button type="submit" className="form__addToDay">
-            Add to Day {selectedDay}
+        <div className="attraction-form__attraction-button-container">
+          <button type="submit" className="attraction-form__addToDay">
+            Add to Day
+            {/* {selectedDay} */}
           </button>
-          <button type="button" className="form__attraction-cancel" onClick={handleCancel}>
+          <button type="button" className="attraction-form__attraction-cancel" onClick={handleCancel}>
             Cancel
           </button>
         </div>
