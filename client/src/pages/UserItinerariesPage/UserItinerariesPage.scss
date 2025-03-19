@@ -35,6 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 3;
 
     &::before {
       content: "";
@@ -44,12 +45,13 @@
       right: 0;
       bottom: 0;
       // background: linear-gradient(rgba($primary-colour, 0.7), rgba($accent-colour, 0.7));
+      background: linear-gradient(to bottom, rgba(17, 43, 60, 0), rgba(17, 43, 60, 0.5));
       z-index: 1;
     }
-    span {
-      position: relative;
-      z-index: 2;
-    }
+    // span {
+    //   position: relative;
+    //   z-index: 2;
+    // }
   }
 
   &__statistics {

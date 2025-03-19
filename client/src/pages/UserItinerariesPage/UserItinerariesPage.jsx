@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import DaysCount from "../../utility/DaysCount";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import londonImage from "../../assets/images/destinations/london.jpg";
 import CreateItinerary from "../../components/CreateItinerary/CreateItinerary";
@@ -18,13 +19,14 @@ import UserStatistics from "../../components/UserStatistics/UserStatistics.jsx";
 
 export default function UserItinerariesPage({ isOpen, setIsOpen }) {
   const [userItineraries, setUserItineraries] = useState(null);
+  const { userId } = useParams();
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchUserItineraries = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/users/1/itineraries`);
+        const response = await axios.get(`${baseUrl}/users/${userId}/itineraries`);
         setUserItineraries(response.data);
       } catch (error) {
         console.error("There is an error loading the user's itineraries", error);

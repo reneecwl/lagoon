@@ -1,6 +1,7 @@
 import "./AttractionList.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
+// import AddAttractionForm from "../AddAttractionForm/AddAttractionForm";
 
 export default function AttractionList({ itinerary, itineraryId, daysCount, fetchItinerary }) {
   const [attractions, setAttractions] = useState([]);
@@ -106,7 +107,6 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
   return (
     <div className="attraction">
       <h4 className="attraction__title">Things To Do</h4>
-      {selectedAttraction && <AddAttractionForm attraction={selectedAttraction} />}
       <div className="attraction__list-container">
         <div className="attraction__list">
           {attractions.map((attraction) => (
@@ -131,6 +131,14 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
                 <button className="attraction__add" onClick={() => handleAddClick(attraction)}>
                   Add to Itinerary
                 </button>
+                {selectedAttraction?.id === attraction.id && (
+                  <AddAttractionForm
+                    attraction={attraction}
+                    submitHandler={submitHandler}
+                    selectedDay={selectedDay}
+                    setSelectedDay={setSelectedDay}
+                  />
+                )}
               </div>
             </div>
           ))}

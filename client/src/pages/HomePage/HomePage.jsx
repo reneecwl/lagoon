@@ -1,5 +1,6 @@
 import "./HomePage.scss";
 import CreateItinerary from "../../components/CreateItinerary/CreateItinerary";
+import { Link } from "react-router-dom";
 
 export default function HomePage({ isOpen, setIsOpen }) {
   return (
@@ -8,12 +9,17 @@ export default function HomePage({ isOpen, setIsOpen }) {
       {!isOpen && (
         <div className="homepage__content">
           <h3 className="homepage__title">Time for your next adventure?</h3>
-          <button className="homepage__button" onClick={() => setIsOpen(true)}>
-            Explore Now
-          </button>
+          <Link to="/users/1/itineraries" className="homepage__button">
+            {" "}
+            My Journey{" "}
+          </Link>{" "}
+          <button
+
+          // onClick={() => setIsOpen(true)}
+          ></button>
         </div>
       )}
-      {isOpen && <CreateItinerary setIsOpen={setIsOpen} />}
+      {/* {isOpen && <CreateItinerary setIsOpen={setIsOpen} />} */}
     </div>
   );
 }

@@ -22,7 +22,7 @@ export default function Header({ setIsOpen }) {
       <nav className="navbar">
         <ul className="navbar__list">
           <li className={isItineraryPage ? "navbar__item navbar__itinerary" : "navbar__item"}>
-            <Link to="/users/:userId/itineraries">My Journey</Link>
+            <Link to="/users/1/itineraries">My Journey</Link>
           </li>
           <li className={isItineraryPage ? "navbar__item navbar__item--itinerary" : "navbar__item"}>
             <Link to="/about">Discover</Link>
