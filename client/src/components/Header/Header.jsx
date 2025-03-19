@@ -19,19 +19,36 @@ export default function Header({ setIsOpen }) {
       >
         Lagoon
       </h1>
-      <nav className="navbar">
-        <ul className="navbar__list">
-          <li className={isItineraryPage ? "navbar__item navbar__itinerary" : "navbar__item"}>
-            <Link to="/users/1/itineraries">My Journey</Link>
-          </li>
-          <li className={isItineraryPage ? "navbar__item navbar__item--itinerary" : "navbar__item"}>
-            <Link to="/about">Discover</Link>
-          </li>
-          <li className={isItineraryPage ? "navbar__item navbar__item--itinerary" : "navbar__item"}>
-            <Link to="/contact">About</Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="header__right">
+        <nav className="navbar">
+          <ul className="navbar__list">
+            <li className={isItineraryPage ? "navbar__subtitle navbar__itinerary" : "navbar__subtitle"}>
+              <Link className="nav-link" to="/users/1/itineraries">
+                My Journey
+              </Link>
+            </li>
+            <li className={isItineraryPage ? "navbar__subtitle navbar__subtitle--itinerary" : "navbar__subtitle"}>
+              <Link className="nav-link" to="/about">
+                Discover
+              </Link>
+            </li>
+            <li className={isItineraryPage ? "navbar__subtitle navbar__subtitle--itinerary" : "navbar__subtitle"}>
+              <Link className="nav-link" to="/contact">
+                About
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <div className="user-avatar">
+          <div className="user-avatar__logo">
+            <Link className="user-avatar__initial" to="/users/1/itineraries">
+              {" "}
+              A{" "}
+            </Link>
+            {/* <span className="user-avatar__initial"></span> */}
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
