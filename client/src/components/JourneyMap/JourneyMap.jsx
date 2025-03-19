@@ -1,14 +1,21 @@
 import "./JourneyMap.scss";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import axios from "axios";
+import markerIcon from "../../assets/icon/location-24px.svg";
 
 export default function JourneyMap({ trips }) {
   const mapRef = useRef(null);
   const baseUrl = import.meta.env.VITE_API_URL_GEOCODE;
   const apiKey = import.meta.env.VITE_API_KEY_GOOGLE;
+  const iconUrl = markerIcon;
+  const [markers, setMarkers] = useState([]);
 
-  console.log(trips);
+  // const tripLocations = trips.map((trip) => {
+  //   return trip.location;
+  // });
+  // console.log(tripLocations);
+
   const getGeocode = async (location) => {
     const encodedAddress = encodeURIComponent(location);
     const url = `${baseUrl}=${encodedAddress}&key=${apiKey}`;
@@ -16,11 +23,9 @@ export default function JourneyMap({ trips }) {
     try {
       const response = await axios.get(url);
       const data = response.data;
+
       if (data.status === "OK") {
-        const location = data.results[0].geometry.location;
-        console.log("Latitude:", location.lat);
-        console.log("Longitude:", location.lng);
-        return location;
+        return data.results[0].geometry.location;
       } else {
         console.error("Geocoding error:", data.status);
       }
@@ -29,11 +34,30 @@ export default function JourneyMap({ trips }) {
     }
   };
 
-  // console.log(getGeocode("london"));
+  useEffect(() => {
+    const fetchGeocodes = async () => {
+      const markerData = [];
+
+      for (const trip of trips) {
+        const location = await getGeocode(trip.location);
+        if (location) {
+          markerData.push({
+            name: trip.location,
+            lat: location.lat,
+            lng: location.lng,
+          });
+        }
+      }
+      setMarkers(markerData);
+    };
+    fetchGeocodes();
+  }, [trips]);
 
   useEffect(() => {
+    if (markers.length === 0) return;
+    console.log(markers);
     const loader = new Loader({
-      apiKey: "AIzaSyATNBOh5c31viKT8ATAs-IufhVyT1PJzdk",
+      apiKey: apiKey,
       version: "weekly",
     });
 
@@ -43,18 +67,13 @@ export default function JourneyMap({ trips }) {
         zoom: 2,
       });
 
-      const locations = [
-        { name: "Sydney, Australia", lat: -33.8688, lng: 151.2093 },
-        { name: "Tokyo, Japan", lat: 35.6762, lng: 139.6503 },
-        { name: "Aarhus, Denmark", lat: 56.1629, lng: 10.2039 },
-        { name: "London, UK", lat: 51.5074, lng: -0.1278 },
-      ];
-
-      locations.forEach((location) => {
+      markers.forEach((location) => {
         const marker = new google.maps.Marker({
           position: { lat: location.lat, lng: location.lng },
           map: map,
           title: location.name,
+          // icon: markerIcon,
+          animation: google.maps.Animation.DROP,
         });
 
         const infoWindow = new google.maps.InfoWindow({
@@ -66,7 +85,7 @@ export default function JourneyMap({ trips }) {
         });
       });
     });
-  }, []);
+  }, [markers]);
 
   return (
     <div className="map">
