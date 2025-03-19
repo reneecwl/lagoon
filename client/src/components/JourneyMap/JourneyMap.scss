@@ -3,8 +3,20 @@
 @use "./../../styles/partials/mixins" as *;
 
 .map {
+  padding: 1rem;
+  text-align: start;
+
   &__title {
-    color: $text-colour;
-    font-size: 10rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__journey {
+    width: 100%;
+    height: 300px; // adjust this for your preference
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
   }
 }

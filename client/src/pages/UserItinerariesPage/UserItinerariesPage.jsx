@@ -39,7 +39,7 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
 
   const trips = userItineraries.itineraries;
 
-  console.log("Trips data:", trips);
+  // console.log("Trips data:", trips);
 
   const formattedDate = (dateString) => {
     return format(new Date(dateString), "MMM dd");
@@ -89,7 +89,7 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
           <div className="user__title"> My Journeys</div>
           <UserStatistics trips={trips} tripStatus={tripStatus} />
         </div>
-        {/* <JourneyMap /> */}
+        <JourneyMap trips={trips} />
         <div className="trips">
           <div className="trips__header">
             <h3 className="trips__title">All Trips</h3>
