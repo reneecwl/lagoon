@@ -14,7 +14,7 @@ import sevilleImage from "../../assets/images/destinations/seville.jpg";
 import tokyoImage from "../../assets/images/destinations/tokyo.jpg";
 import sydneyImage from "../../assets/images/destinations/sydney.jpg";
 import hkImage from "../../assets/images/destinations/hongkong.jpg";
-import UserStatistics from "../../components/UserStatistics/UserStatistics";
+import UserStatistics from "../../components/UserStatistics/UserStatistics.jsx";
 
 export default function UserItinerariesPage({ isOpen, setIsOpen }) {
   const [userItineraries, setUserItineraries] = useState(null);
@@ -39,6 +39,8 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
 
   const trips = userItineraries.itineraries;
 
+  console.log("Trips data:", trips);
+
   const formattedDate = (dateString) => {
     return format(new Date(dateString), "MMM dd");
   };
@@ -61,10 +63,6 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
       return "Happening";
     }
   };
-
-  // const upcomingTrip = trips.find((trip) => tripStatus(trip.start_date, trip.end_date) === "Upcoming");
-  // console.log(upcomingTrip);
-  // const countDown = DaysCount(new Date(), new Date(upcomingTrip.start_date));
 
   const locationImages = {
     London: londonImage,
@@ -89,9 +87,9 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
       <main className="user__main">
         <div className="user__header">
           <div className="user__title"> My Journeys</div>
+          <UserStatistics trips={trips} tripStatus={tripStatus} />
         </div>
-        <UserStatistics trips={trips} tripStatus={tripStatus} />
-        <JourneyMap />
+        {/* <JourneyMap /> */}
         <div className="trips">
           <div className="trips__header">
             <h3 className="trips__title">All Trips</h3>
