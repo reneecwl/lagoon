@@ -1,13 +1,11 @@
 import "./AttractionList.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import AddAttractionForm from "../AddAttractionForm/AddAttractionForm";
+import AttractionForm from "../AttractionForm/AttractionForm.jsx";
 
 export default function AttractionList({ itinerary, itineraryId, daysCount, fetchItinerary }) {
   const [attractions, setAttractions] = useState([]);
   const [selectedAttraction, setSelectedAttraction] = useState(null);
-  const [selectedDay, setSelectedDay] = useState(1);
-  const [notes, setNotes] = useState("");
 
   const baseUrl = import.meta.env.VITE_API_URL;
   const baseUrlImg = import.meta.env.VITE_API_URL_IMG;
@@ -18,7 +16,7 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
         const response = await axios.get(`${baseUrl}/attractions/?location=${itinerary.location}`);
         setAttractions(response.data);
       } catch (error) {
-        console.error("There is an error loading the Things To Do", error);
+        console.error("Error loading Things To Do", error);
       }
     };
     fetchAttractions();
@@ -26,79 +24,7 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
 
   const handleAddClick = (attraction) => {
     setSelectedAttraction(attraction);
-    setSelectedDay(1);
-    setNotes("");
   };
-
-  const submitHandler = async (event) => {
-    event.preventDefault();
-
-    const newItineraryAttraction = {
-      attraction_id: selectedAttraction.id,
-      user_notes: notes,
-      day: selectedDay,
-    };
-    try {
-      await axios.post(`${baseUrl}/itineraries/${itineraryId}`, newItineraryAttraction);
-      fetchItinerary();
-      setSelectedAttraction(null);
-      setNotes("");
-    } catch (error) {
-      console.error("There is error adding the attraction", error);
-    }
-  };
-
-  const handleCancel = () => {
-    setSelectedAttraction(null);
-    setNotes("");
-  };
-
-  const dayOptions = Array.from({ length: daysCount }, (_, i) => i + 1);
-
-  const AddAttractionForm = ({ attraction }) => (
-    <div className="form">
-      <h4 className="form__title">Add "{attraction.attraction_name}" to your itinerary</h4>
-      <form onSubmit={submitHandler} key={attraction.id}>
-        <div>
-          <label htmlFor="day" className="form__day">
-            Select Day:
-          </label>
-          <select
-            className="form__day-select"
-            id="day-select"
-            value={selectedDay}
-            onChange={(e) => setSelectedDay(Number(e.target.value))}
-          >
-            {dayOptions.map((day) => (
-              <option key={day} value={day}>
-                Day {day}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="notes" className="form__notes">
-            Notes:
-          </label>
-          <textarea
-            className="form__notes-input"
-            placeholder="Add your notes..."
-            id="notes"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-          />
-        </div>
-        <div className="form__attraction-button-container">
-          <button type="submit" className="form__addToDay">
-            Add to Day {selectedDay}
-          </button>
-          <button type="button" className="form__attraction-cancel" onClick={handleCancel}>
-            Cancel
-          </button>
-        </div>
-      </form>
-    </div>
-  );
 
   if (attractions.length === 0) {
     return <div>Loading...</div>;
@@ -132,11 +58,12 @@ export default function AttractionList({ itinerary, itineraryId, daysCount, fetc
                   Add to Itinerary
                 </button>
                 {selectedAttraction?.id === attraction.id && (
-                  <AddAttractionForm
+                  <AttractionForm
                     attraction={attraction}
-                    submitHandler={submitHandler}
-                    selectedDay={selectedDay}
-                    setSelectedDay={setSelectedDay}
+                    itineraryId={itineraryId}
+                    fetchItinerary={fetchItinerary}
+                    setSelectedAttraction={setSelectedAttraction}
+                    daysCount={daysCount}
                   />
                 )}
               </div>
