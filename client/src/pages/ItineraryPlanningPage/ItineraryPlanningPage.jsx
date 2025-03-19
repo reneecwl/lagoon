@@ -79,7 +79,12 @@ export default function ItineraryPlanningPage({}) {
             fetchItinerary={fetchItinerary}
           />
           <div className="planning__content">
-            <Planner dailyAttractions={dailyAttractions} itineraryId={itineraryId} fetchItinerary={fetchItinerary} />
+            <Planner
+              dailyAttractions={dailyAttractions}
+              itineraryId={itineraryId}
+              fetchItinerary={fetchItinerary}
+              baseUrl={baseUrl}
+            />
             <AttractionList
               itinerary={itinerary}
               itineraryId={itineraryId}

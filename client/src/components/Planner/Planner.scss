@@ -194,15 +194,13 @@
     }
   }
 
-  &__notes {
-    font-family: $font-secondary;
-    font-size: $font-size-s;
-    color: rgba($text-colour, 0.8);
+  &__notes-container {
+    display: flex;
+    justify-content: space-between;
     margin: $spacing-s 0 0;
     padding: 0.5rem 0.5rem 0.5rem 1.5rem;
     background-color: rgba($secondary-colour, 0.03);
     border-radius: $border-radius-s;
-    font-style: italic;
     border-left: 3px solid rgba($secondary-colour, 0.1);
     position: relative;
 
@@ -217,6 +215,29 @@
       background-size: contain;
       background-repeat: no-repeat;
       opacity: 0.2;
+    }
+  }
+  &__notes {
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    color: rgba($text-colour, 0.8);
+    font-style: italic;
+  }
+  &__edit {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: rgba($accent-colour, 0.8);
+    align-self: right;
+    cursor: pointer;
+    transition: $transition-medium;
+    opacity: 0;
+    transform: translateX(10px);
+    margin-right: 0.5rem;
+
+    &:hover {
+      opacity: 1;
+      fill: rgba($accent-colour, 0.8);
+      width: 1.3rem;
     }
   }
 

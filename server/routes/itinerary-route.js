@@ -10,6 +10,7 @@ router
   .get(itineraryController.findOne)
   .post(itineraryController.addAttraction)
   .put(itineraryController.edit)
-  .delete(itineraryController.removeAttraction);
+  .delete(itineraryController.removeAttraction)
+  .patch(itineraryController.editNotes);
 
 export default router;

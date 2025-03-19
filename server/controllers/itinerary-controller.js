@@ -121,4 +121,29 @@ const removeAttraction = async (req, res) => {
     });
   }
 };
-export { add, itineraryList, findOne, addAttraction, edit, removeAttraction };
+
+const editNotes = async (req, res) => {
+  try {
+    const updateNotesDetails = await knex("itinerary_attraction")
+      .where({ itinerary_id: req.params.id, attraction_id: req.body.attraction_id })
+      .update({ user_notes: req.body.user_notes });
+
+    if (updateNotesDetails === 0) {
+      return res.status(404).json({
+        message: `Attraction (ID:${req.body.attraction_id}) in itinerary with ID ${req.params.id} is not found`,
+      });
+    }
+
+    const updatedNotes = await knex("itinerary_attraction")
+      .select("itinerary_id", "attraction_id", "user_notes", "day")
+      .where({ itinerary_id: req.params.id, attraction_id: req.body.attraction_id })
+      .first();
+    res.status(200).json(updatedNotes);
+  } catch (error) {
+    res.status(500).json({
+      message: `Unable to edit trip notes: ${error}`,
+    });
+  }
+};
+
+export { add, itineraryList, findOne, addAttraction, edit, removeAttraction, editNotes };
