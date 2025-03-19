@@ -10,6 +10,7 @@ export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchI
   const [attractionData, setAttractionData] = useState(null);
   const [editingAttractionId, setEditingAttractionId] = useState(null);
   const [notes, setNotes] = useState("");
+  const baseUrlImg = import.meta.env.VITE_API_URL_IMG;
 
   const handleDeleteClick = (attraction) => {
     setDeleteModal(true);
@@ -78,9 +79,16 @@ export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchI
               </h3>
               {attractionByDay.attractions.map((attraction) => (
                 <div key={attraction.id} className="planner__attraction">
-                  <p className="planner__attraction-name">{attraction.attraction_name}</p>
+                  <div className="planner__attraction-content">
+                    <div className="planner__attraction-thumbnail">
+                      <img src={`${baseUrlImg}/images/${attraction.image}`} alt={attraction.attraction_name} />
+                    </div>
+                    <div className="planner__attraction-details">
+                      <p className="planner__attraction-name">{attraction.attraction_name}</p>
+                      <p className="planner__duration">Suggested visit: {attraction.suggested_duration}</p>
+                    </div>
+                  </div>
 
-                  <p className="planner__duration">Suggested visit: {attraction.suggested_duration}</p>
                   <div className="planner__notes-container">
                     {editingAttractionId === attraction.id ? (
                       <input

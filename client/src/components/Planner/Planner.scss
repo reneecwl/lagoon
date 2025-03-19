@@ -97,12 +97,15 @@
   &__attraction {
     background: $white;
     border-radius: $border-radius-m;
+    border: 1px solid rgba($text-colour, 0.1);
     padding: $spacing-m;
     margin-bottom: $spacing-m;
-    border: 1px solid rgba($text-colour, 0.1);
     transition: $transition-medium;
     position: relative;
     box-shadow: $shadow-sm;
+    display: flex;
+    flex-direction: column;
+    // gap: $spacing-s;
 
     // Square point using accent color
     &::before {
@@ -148,13 +151,40 @@
     }
   }
 
+  &__attraction-content {
+    display: flex;
+    gap: $spacing-m;
+    margin-bottom: $spacing-s;
+  }
+  &__attraction-thumbnail {
+    width: 80px;
+    height: 70px;
+    border-radius: $border-radius-s;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: $transition-medium;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__attraction-details {
+    flex: 1;
+  }
   &__attraction-name {
     font-family: $font-primary;
     font-size: $font-size-l;
     font-weight: 700;
     color: $secondary-colour;
     margin: 0 0 $spacing-xs;
-    padding-right: 2.5rem; // Make room for delete button
+    padding-right: 2.5rem;
     position: relative;
 
     &::before {
@@ -200,7 +230,7 @@
   &__notes-container {
     display: flex;
     justify-content: space-between;
-    margin: $spacing-s 0 0;
+    // margin: $spacing-s 0 0;
     padding: 0.5rem 0.5rem 0.5rem 1.5rem;
     background-color: rgba($secondary-colour, 0.03);
     border-radius: $border-radius-s;
