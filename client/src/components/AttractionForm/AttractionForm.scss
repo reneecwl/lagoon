@@ -5,10 +5,12 @@
 .attraction-form {
   padding: $spacing-l $spacing-s $spacing-m $spacing-s;
   background-color: $white;
-  border-radius: $border-radius-s;
+  border-radius: $border-radius-m;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 1.5rem;
+  border: 2px solid rgba($coral, 0.8);
 
   &__title {
     font-family: $font-secondary;
@@ -20,7 +22,7 @@
 
     &--attraction-name {
       // font-weight: 700;
-      color: #e07a5f;
+      color: $coral;
       font-weight: bold;
       // font-family: $font-secondary;
     }
