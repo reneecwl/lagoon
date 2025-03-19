@@ -62,72 +62,16 @@
   }
 }
 
-.statistics {
-  &__left {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-xs;
-  }
-  &__title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    margin-bottom: $spacing-xs;
-    color: $text-colour;
-    // font-family: $font-secondary;
-  }
-  &__trip {
-    &--upcoming,
-    &--completed {
-      display: inline-block;
-      padding: $spacing-xs $spacing-s;
-      border-radius: 20px;
-      font-family: $font-secondary;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-right: $spacing-s;
-    }
-
-    &--upcoming {
-      background-color: rgba($accent-colour, 0.2);
-      color: $accent-colour;
-    }
-
-    &--completed {
-      background-color: rgba(#adadad, 0.2); /* Replacing rgba($grey, 0.2) */
-      color: #4a4a4a; /* Replacing $grey-dark */
-    }
-  }
-
-  &__countdown {
-    background-color: rgba($accent-colour, 0.1);
-    border: none;
-    padding: $spacing-s $spacing-m;
-    border-radius: $border-radius-m;
-    font-weight: 600;
-    color: $accent-colour;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    font-family: $font-secondary;
-
-    &::before {
-      content: "🗓️"; // Calendar emoji
-      margin-right: $spacing-xs;
-      font-size: 1.2rem;
-    }
-  }
-}
-
 .trips {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: $spacing-m;
+    margin-top: $spacing-l;
   }
   &__title {
     font-size: 1.8rem;
@@ -143,7 +87,7 @@
     color: $white;
     border: none;
     padding: 0.6rem 1.1rem 0.6rem 1rem;
-    margin-right: 1.5rem;
+    margin-right: 1rem;
     border-radius: 1.1rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -164,6 +108,12 @@
     font-weight: 500;
     font-size: 0.9rem;
     text-transform: uppercase;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 }
 

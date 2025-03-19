@@ -8,6 +8,7 @@ export default function JourneyMap({ trips }) {
   const baseUrl = import.meta.env.VITE_API_URL_GEOCODE;
   const apiKey = import.meta.env.VITE_API_KEY_GOOGLE;
 
+  console.log(trips);
   const getGeocode = async (location) => {
     const encodedAddress = encodeURIComponent(location);
     const url = `${baseUrl}=${encodedAddress}&key=${apiKey}`;
