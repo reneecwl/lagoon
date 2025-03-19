@@ -82,7 +82,7 @@ export default function ItineraryOutline({
               {isEditing ? (
                 <input
                   type="text"
-                  className="outline_name-input"
+                  className="outline__name-input"
                   value={tripName}
                   onChange={handleChange}
                   onBlur={handleBlur}

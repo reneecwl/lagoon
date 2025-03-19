@@ -6,11 +6,16 @@ import { useState, useEffect } from "react";
 export default function Weather({ itinerary }) {
   const [weatherData, setWeatherData] = useState(null);
   const [filteredWeatherData, setFilteredWeatherData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const baseUrlWeather = import.meta.env.VITE_WEATHER_API_URL;
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   useEffect(() => {
     const fetchWeather = async () => {
+      setLoading(true);
+      setError(null);
+
       try {
         const response = await axios.get(`${baseUrlWeather}${apiKey}&q=${itinerary.location}&days=14`);
         setWeatherData(response.data.forecast);
@@ -20,22 +25,32 @@ export default function Weather({ itinerary }) {
 
         const filteredData = response.data.forecast.forecastday.filter((day) => {
           const dayDateObj = new Date(day.date + "T00:00:00");
-
           return dayDateObj >= startDateObj && dayDateObj <= endDateObj;
         });
 
         setFilteredWeatherData(filteredData);
       } catch (error) {
         console.error("There is an error loading the weather", error);
+        setError("Failed to load weather data.");
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchWeather();
   }, [itinerary.location, itinerary.start_date, itinerary.end_date]);
 
-  if (!weatherData) {
-    return <div>Loading...</div>;
+  if (loading) {
+    return <div>Loading weather data...</div>;
   }
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!weatherData) {
+    return <div>No weather data available.</div>;
+  }
   const extractedData = filteredWeatherData.map((day) => ({
     date: format(new Date(day.date + "T00:00:00"), "dd MMM"),
     mintemp_c: Math.round(day.day.mintemp_c),

@@ -138,6 +138,10 @@
         opacity: 1;
         transform: translateX(0);
       }
+      .planner__edit {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     &:last-child {
@@ -172,7 +176,7 @@
     font-family: $font-secondary;
     font-size: $font-size-s;
     color: rgba($text-colour, 0.8);
-    margin: 0 0 $spacing-xs;
+    margin: $spacing-xs;
     display: flex;
     align-items: center;
     display: inline-flex;
@@ -223,21 +227,39 @@
     color: rgba($text-colour, 0.8);
     font-style: italic;
   }
+  &__notes-input {
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    width: 100%;
+    padding: 0.3rem;
+    border: 1px none rgba($accent-colour, 0.4);
+    border-radius: $border-radius-s;
+
+    &:focus {
+      outline: none;
+      border-color: $accent-colour;
+      box-shadow: 0 0 0 2px rgba($accent-colour, 0.2);
+    }
+  }
   &__edit {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.6rem;
+    height: 1.6rem;
     fill: rgba($accent-colour, 0.8);
-    align-self: right;
     cursor: pointer;
     transition: $transition-medium;
     opacity: 0;
     transform: translateX(10px);
-    margin-right: 0.5rem;
+
+    background-color: rgba($accent-colour, 0.1);
+    padding: 0.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
-      opacity: 1;
-      fill: rgba($accent-colour, 0.8);
-      width: 1.3rem;
+      background-color: $accent-colour;
+      fill: $white;
     }
   }
 

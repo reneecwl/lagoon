@@ -1,7 +1,7 @@
 import "./deleteModal.scss";
 import axios from "axios";
 
-export default function DeleteModal({ deleteModal, attractionData, setDeleteModal, itineraryId, fetchItinerary }) {
+export default function DeleteModal({ attractionData, setDeleteModal, itineraryId, fetchItinerary }) {
   const baseUrl = import.meta.env.VITE_API_URL;
   // console.log(attractionData);
 
@@ -19,23 +19,34 @@ export default function DeleteModal({ deleteModal, attractionData, setDeleteModa
     }
   };
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setDeleteModal(false);
+    }
+  };
+
   return (
-    <div className="delete">
-      <h3 className="delete__title">
-        Are you sure you want to remove {attractionData.attraction_name} from your itinerary on Day {attractionData.day}
-        ?{" "}
-      </h3>
-      <div className="delete__button-container">
-        <button type="button" className="delete__buttons delete__button--cancel" onClick={() => setDeleteModal(false)}>
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="delete__buttons delete__button--delete"
-          onClick={() => handleDelete(attractionData)}
-        >
-          Yes please
-        </button>
+    <div className="delete" onClick={handleBackdropClick}>
+      <div className="delete__content">
+        <h3 className="delete__title">
+          Remove {attractionData.attraction_name} from Day {attractionData.day}?{" "}
+        </h3>
+        <div className="delete__button-container">
+          <button
+            type="button"
+            className="delete__buttons delete__button--cancel"
+            onClick={() => setDeleteModal(false)}
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="delete__buttons delete__button--delete"
+            onClick={() => handleDelete(attractionData)}
+          >
+            Yes, remove it
+          </button>
+        </div>
       </div>
     </div>
   );
