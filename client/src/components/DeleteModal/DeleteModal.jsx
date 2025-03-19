@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function DeleteModal({ attractionData, setDeleteModal, itineraryId, fetchItinerary }) {
   const baseUrl = import.meta.env.VITE_API_URL;
-  // console.log(attractionData);
+  console.log(attractionData);
 
   const handleDelete = async (attractionData) => {
     try {

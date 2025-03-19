@@ -12,6 +12,7 @@ export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchI
   const handleDeleteClick = (attraction) => {
     setDeleteModal(true);
     setAttractionData(attraction);
+    console.log("Delete Clicked");
   };
 
   const handleEditClick = (id, currentNotes) => {
@@ -19,6 +20,7 @@ export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchI
     setNotes(currentNotes);
   };
 
+  //for user_notes
   const handleChange = (event) => {
     setNotes(event.target.value);
   };
@@ -93,6 +95,15 @@ export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchI
             )}
           </div>
         ))}
+        {deleteModal && (
+          <DeleteModal
+            itineraryId={itineraryId}
+            attractionData={attractionData}
+            deleteModal={deleteModal}
+            setDeleteModal={setDeleteModal}
+            fetchItinerary={fetchItinerary}
+          />
+        )}
       </div>
     </div>
   );
