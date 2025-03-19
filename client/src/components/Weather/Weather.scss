@@ -2,6 +2,18 @@
 @use "./../../styles/partials/variables" as *;
 @use "./../../styles/partials/mixins" as *;
 
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
 .weather {
   padding: $spacing-l;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -18,10 +30,8 @@
   &__container {
     display: flex;
     gap: $spacing-s;
-    // gap: 5%;
     overflow-x: auto;
     padding-bottom: $spacing-s;
-    // justify-content: space-between;
 
     &::-webkit-scrollbar {
       height: 4px;
@@ -36,6 +46,44 @@
       background: $grey;
       border-radius: 10px;
     }
+  }
+
+  &__error {
+    background-color: rgba($error-colour, 0.1);
+    border-radius: $border-radius-m;
+    padding: $spacing-m;
+    text-align: center;
+    font-family: $font-secondary;
+    color: $error-colour;
+
+    p {
+      margin-bottom: $spacing-s;
+    }
+  }
+
+  &__retry-button {
+    background-color: $error-colour;
+    color: white;
+    border: none;
+    padding: $spacing-xs $spacing-m;
+    border-radius: $border-radius-s;
+    font-family: $font-secondary;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+      background-color: darken($error-colour, 10%);
+    }
+  }
+
+  &__empty {
+    background-color: rgba($accent-colour, 0.05);
+    border-radius: $border-radius-m;
+    padding: $spacing-m;
+    text-align: center;
+    font-family: $font-secondary;
+    font-style: italic;
+    color: rgba($text-colour, 0.7);
   }
 }
 
@@ -57,7 +105,6 @@
     font-family: $font-secondary;
     font-size: $font-size-s;
     font-weight: 500;
-    // margin-bottom: $spacing-xs;
     color: $secondary-colour;
   }
 
@@ -83,5 +130,51 @@
     padding: 2px 8px;
     border-radius: 12px;
     display: inline-block;
+  }
+
+  // Skeleton loading styles
+  &--skeleton {
+    pointer-events: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  &__date--skeleton {
+    height: 1rem;
+    width: 60%;
+    margin: 0 auto;
+    background-color: #e0e0e0;
+    border-radius: $border-radius-s;
+    animation: pulse 1.5s infinite;
+  }
+
+  &__image--skeleton {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: $spacing-s auto;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  &__temp--skeleton {
+    height: 1.25rem;
+    width: 80%;
+    margin: 0 auto $spacing-xs auto;
+    background-color: #e0e0e0;
+    border-radius: $border-radius-s;
+    animation: pulse 1.5s infinite;
+  }
+
+  &__rain--skeleton {
+    height: 1.5rem;
+    width: 70%;
+    margin: 0 auto;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    animation: pulse 1.5s infinite;
   }
 }

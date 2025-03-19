@@ -7,14 +7,12 @@ export default function Weather({ itinerary }) {
   const [weatherData, setWeatherData] = useState(null);
   const [filteredWeatherData, setFilteredWeatherData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const baseUrlWeather = import.meta.env.VITE_WEATHER_API_URL;
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   useEffect(() => {
     const fetchWeather = async () => {
       setLoading(true);
-      setError(null);
 
       try {
         const response = await axios.get(`${baseUrlWeather}${apiKey}&q=${itinerary.location}&days=14`);
@@ -29,10 +27,12 @@ export default function Weather({ itinerary }) {
         });
 
         setFilteredWeatherData(filteredData);
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 1500);
       } catch (error) {
         console.error("There is an error loading the weather", error);
-        setError("Failed to load weather data.");
-      } finally {
         setLoading(false);
       }
     };
@@ -40,17 +40,39 @@ export default function Weather({ itinerary }) {
     fetchWeather();
   }, [itinerary.location, itinerary.start_date, itinerary.end_date]);
 
+  const generateSkeletonCards = () => {
+    return Array(5).fill(null);
+  };
+
   if (loading) {
-    return <div>Loading weather data...</div>;
+    return (
+      <div className="weather">
+        <h3 className="weather__title">Weather</h3>
+        <div className="weather__container">
+          {generateSkeletonCards().map((_, index) => (
+            <div key={index} className="card card--skeleton">
+              <div className="card__date--skeleton"></div>
+              <div className="card__image--skeleton"></div>
+              <div className="card__temp--skeleton"></div>
+              <div className="card__rain--skeleton"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
 
-  if (error) {
-    return <div>{error}</div>;
-  }
+  // if (!weatherData || filteredWeatherData.length === 0) {
+  //   return (
+  //     <div className="weather">
+  //       <h3 className="weather__title">Weather</h3>
+  //       <div className="weather__empty">
+  //         <p>No weather data available for your trip dates.</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
-  if (!weatherData) {
-    return <div>No weather data available.</div>;
-  }
   const extractedData = filteredWeatherData.map((day) => ({
     date: format(new Date(day.date + "T00:00:00"), "dd MMM"),
     mintemp_c: Math.round(day.day.mintemp_c),
