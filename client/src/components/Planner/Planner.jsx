@@ -93,15 +93,6 @@ export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchI
             )}
           </div>
         ))}
-        {deleteModal && (
-          <DeleteModal
-            itineraryId={itineraryId}
-            attractionData={attractionData}
-            deleteModal={deleteModal}
-            setDeleteModal={setDeleteModal}
-            fetchItinerary={fetchItinerary}
-          />
-        )}
       </div>
     </div>
   );

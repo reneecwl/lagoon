@@ -1,5 +1,4 @@
 import "./UserItinerariesPage.scss";
-import FormatDate from "../../utility/FormatDate";
 import { format } from "date-fns";
 import DaysCount from "../../utility/DaysCount";
 import axios from "axios";
@@ -7,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import londonImage from "../../assets/images/destinations/london.jpg";
 import CreateItinerary from "../../components/CreateItinerary/CreateItinerary";
+import JourneyMap from "../../components/JourneyMap/JourneyMap";
 import parisImage from "../../assets/images/destinations/paris.jpg";
 import aarhusImage from "../../assets/images/destinations/aarhus.jpg";
 import romeImage from "../../assets/images/destinations/rome.jpg";
@@ -14,6 +14,7 @@ import sevilleImage from "../../assets/images/destinations/seville.jpg";
 import tokyoImage from "../../assets/images/destinations/tokyo.jpg";
 import sydneyImage from "../../assets/images/destinations/sydney.jpg";
 import hkImage from "../../assets/images/destinations/hongkong.jpg";
+import UserStatistics from "../../components/UserStatistics/UserStatistics";
 
 export default function UserItinerariesPage({ isOpen, setIsOpen }) {
   const [userItineraries, setUserItineraries] = useState(null);
@@ -61,12 +62,9 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
     }
   };
 
-  const upcomingNum = trips.filter((trip) => tripStatus(trip.start_date, trip.end_date) === "Upcoming").length;
-  const completedNum = trips.filter((trip) => tripStatus(trip.start_date, trip.end_date) === "Completed").length;
-
-  const upcomingTrip = trips.find((trip) => tripStatus(trip.start_date, trip.end_date) === "Upcoming");
+  // const upcomingTrip = trips.find((trip) => tripStatus(trip.start_date, trip.end_date) === "Upcoming");
   // console.log(upcomingTrip);
-  const countDown = DaysCount(new Date(), new Date(upcomingTrip.start_date));
+  // const countDown = DaysCount(new Date(), new Date(upcomingTrip.start_date));
 
   const locationImages = {
     London: londonImage,
@@ -91,21 +89,9 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
       <main className="user__main">
         <div className="user__header">
           <div className="user__title"> My Journeys</div>
-          <div className="user__statistics">
-            <div className="statistics__left">
-              <h3 className="statistics__title">Trip Statistics</h3>
-              <div className="statistics__trips-count">
-                <div className="statistics__trip--upcoming">{upcomingNum} Upcoming Trips</div>
-                <div className="statistics__trip--completed">{completedNum} Completed Trip</div>
-              </div>
-            </div>
-            <div className="statistics__right">
-              <div className="statistics__countdown">
-                Next Trip: {upcomingTrip.location} in {countDown} days
-              </div>
-            </div>
-          </div>
         </div>
+        <UserStatistics trips={trips} tripStatus={tripStatus} />
+        <JourneyMap />
         <div className="trips">
           <div className="trips__header">
             <h3 className="trips__title">All Trips</h3>

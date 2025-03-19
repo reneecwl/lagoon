@@ -1,0 +1,10 @@
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
+.map {
+  &__title {
+    color: $text-colour;
+    font-size: 10rem;
+  }
+}

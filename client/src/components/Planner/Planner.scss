@@ -52,11 +52,10 @@
     padding-left: 2rem;
     margin-bottom: $spacing-xl;
 
-    // Timeline vertical line with accent color
     &::before {
       content: "";
       position: absolute;
-      top: 0;
+      top: 3.8rem;
       bottom: 0;
       left: 0;
       width: 3px;
