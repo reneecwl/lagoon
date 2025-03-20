@@ -10,14 +10,15 @@
 
   &__header {
     position: relative;
-    padding: $spacing-xl $spacing-l;
+    padding: $spacing-l;
     color: $white;
     text-align: start;
     margin-bottom: $spacing-xs;
-    background-image: url("../../assets/images/destinations/granada.jpg");
+    background-image: var(--header-image, url("../../assets/images/destinations/granada.jpg"));
     background-size: cover;
     background-position: center;
     background-color: $secondary-colour;
+    max-height: 6rem;
 
     &::before {
       content: "";
@@ -26,7 +27,7 @@
       right: 0;
       bottom: 0;
       left: 0;
-      background: linear-gradient(to bottom, rgba($secondary-colour, 0.8), rgba($accent-colour, 0.7));
+      background: linear-gradient(135deg, rgba($secondary-colour, 0.85), rgba($accent-colour, 0.75));
       z-index: 1;
     }
 
@@ -39,7 +40,6 @@
     }
 
     &-title {
-      font-family: $font-primary;
       font-size: $font-size-xxl;
       font-weight: 700;
       margin-bottom: $spacing-xs;
@@ -48,6 +48,7 @@
 
   &__content {
     padding: $spacing-l;
+    background-color: rgba($accent-colour, 0.03);
   }
 
   &__byday {
@@ -56,13 +57,14 @@
     margin-bottom: $spacing-xl;
 
     &::before {
+      // Timeline styles
       content: "";
       position: absolute;
       top: 3.8rem;
       bottom: 0;
       left: 0;
-      width: 3px;
-      background-color: rgba($accent-colour, 0.6);
+      width: 4px; // Slightly thicker
+      background-color: rgba($accent-colour, 0.7); // More vibrant
       border-radius: $border-radius-m;
       z-index: 1;
     }
@@ -136,6 +138,8 @@
     box-shadow: $shadow-sm;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); // Stronger shadow for elevation
+    background-color: $white; // Ensure white background for contrast
     // gap: $spacing-s;
 
     // Square point using accent color
@@ -163,9 +167,10 @@
     }
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: $shadow-md;
+      transform: translateY(-3px);
+      // box-shadow: $shadow-md;
       border-color: rgba($accent-colour, 0.3);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 
       .planner__delete {
         opacity: 1;

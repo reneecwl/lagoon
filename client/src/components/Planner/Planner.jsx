@@ -7,17 +7,20 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 export default function ItineraryPlanner({
+  itinerary,
   dailyAttractions,
   itineraryId,
   fetchItinerary,
   baseUrl,
   filteredWeatherData,
+  backgroundImage,
 }) {
   const [deleteModal, setDeleteModal] = useState(false);
   const [attractionData, setAttractionData] = useState(null);
   const [editingAttractionId, setEditingAttractionId] = useState(null);
   const [notes, setNotes] = useState("");
   const baseUrlImg = import.meta.env.VITE_API_URL_IMG;
+  // const backgroundImage = useDestinationImage(itinerary?.location);
 
   // console.log(filteredWeatherData);
 
@@ -81,7 +84,7 @@ export default function ItineraryPlanner({
   return (
     <div id="itinerary-download">
       <div className="planner">
-        <div className="planner__header">
+        <div className="planner__header" style={{ "--header-image": `url(${backgroundImage})` }}>
           <div className="planner__header-content">
             <h2 className="planner__header-title">Itinerary</h2>
             <div className="planner__download-container">

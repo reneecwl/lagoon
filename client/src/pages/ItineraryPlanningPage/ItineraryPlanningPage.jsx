@@ -7,6 +7,7 @@ import DaysCount from "../../utility/DaysCount";
 import ItineraryOutline from "../../components/ItineraryOutline/ItineraryOutline";
 import AttractionList from "../../components/AttractionList/AttractionList";
 import Planner from "../../components/Planner/Planner";
+import { useDestinationImage } from "../../utility/DestinationImages";
 
 export default function ItineraryPlanningPage({}) {
   const [itinerary, setItinerary] = useState(null);
@@ -24,6 +25,7 @@ export default function ItineraryPlanningPage({}) {
   const baseUrl = import.meta.env.VITE_API_URL;
   const baseUrlWeather = import.meta.env.VITE_WEATHER_API_URL;
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+  const backgroundImage = useDestinationImage(itinerary?.location);
 
   const fetchItinerary = async () => {
     try {
@@ -101,24 +103,6 @@ export default function ItineraryPlanningPage({}) {
     return <div>Loading...</div>;
   }
 
-  // console.log(dailyAttractions);
-
-  // const handlePdfDownload = () => {
-  //   const input = document.getElementById("itinerary-download");
-
-  //   html2canvas(input, { scale: 2, useCORS: true }).then((canvas) => {
-  //     const imgData = canvas.toDataURL("image/png");
-
-  //     const pdf = new jsPDF({
-  //       orientation: "portrait",
-  //       unit: "px",
-  //       format: [canvas.width, canvas.height],
-  //     });
-
-  //     pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
-  //     pdf.save("itinerary.pdf");
-  //   });
-  // };
   return (
     <>
       <div className="planning">
@@ -130,15 +114,18 @@ export default function ItineraryPlanningPage({}) {
             daysCount={dates.daysCount}
             fetchItinerary={fetchItinerary}
             filteredWeatherData={filteredWeatherData}
+            backgroundImage={backgroundImage}
           />
           <div className="planning__content">
             <Planner
+              itinerary={itinerary}
               dailyAttractions={dailyAttractions}
               itineraryId={itineraryId}
               fetchItinerary={fetchItinerary}
               baseUrl={baseUrl}
               loading={loading}
               filteredWeatherData={filteredWeatherData}
+              backgroundImage={backgroundImage}
             />
             <AttractionList
               itinerary={itinerary}

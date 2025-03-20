@@ -4,15 +4,6 @@ import { useState, useEffect } from "react";
 import Weather from "../Weather/Weather";
 import ItineraryMap from "../ItineraryMap/ItineraryMap";
 import PublicHoliday from "../PublicHoliday/PublicHoliday";
-import londonImage from "../../assets/images/destinations/london.jpg";
-import parisImage from "../../assets/images/destinations/paris.jpg";
-import barcelonaImage from "../../assets/images/destinations/barcelona.jpg";
-import sevilleImage from "../../assets/images/destinations/seville.jpg";
-import romeImage from "../../assets/images/destinations/rome.jpg";
-import tokyoImage from "../../assets/images/destinations/tokyo.jpg";
-import sydneyImage from "../../assets/images/destinations/sydney.jpg";
-// import jsPDF from "jspdf";
-// import html2canvas from "html2canvas";
 
 export default function ItineraryOutline({
   itinerary,
@@ -22,31 +13,14 @@ export default function ItineraryOutline({
   fetchItinerary,
   filteredWeatherData,
   loading,
+  backgroundImage,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [tripName, setTripName] = useState(
     itinerary.itinerary_name || `${daysCount} Days trip in ${itinerary.location}`
   );
-  const [backgroundImage, setBackgroundImage] = useState("");
+
   const [activeTab, setActiveTab] = useState("weather");
-
-  const locationImages = {
-    London: londonImage,
-    Paris: parisImage,
-    Barcelona: barcelonaImage,
-    Seville: sevilleImage,
-    Rome: romeImage,
-    Tokyo: tokyoImage,
-    Sydney: sydneyImage,
-  };
-
-  useEffect(() => {
-    if (itinerary.location && locationImages[itinerary.location]) {
-      setBackgroundImage(locationImages[itinerary.location]);
-    } else {
-      setBackgroundImage(locationImages["Seville"]);
-    }
-  }, [itinerary.location]);
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -78,7 +52,7 @@ export default function ItineraryOutline({
       console.error("Error updating trip name:", error);
     }
   };
-  // const handlePdfDownload = () => {
+
   //   const input = document.getElementById("itinerary-download");
 
   //   html2canvas(input, { scale: 2, useCORS: true }).then((canvas) => {
@@ -123,9 +97,7 @@ export default function ItineraryOutline({
               {formattedStartDate} to {formattedEndDate}
             </div>
           </div>
-          {/* <button className="outline__download" onClick={handlePdfDownload}>
-            Download as PDF
-          </button> */}
+
           <div className="outline__location">
             <span>{itinerary.location}</span>
           </div>
