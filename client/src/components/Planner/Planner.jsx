@@ -1,16 +1,25 @@
 import DeleteModal from "../DeleteModal/DeleteModal";
 import "./Planner.scss";
+import { format } from "date-fns";
 import axios from "axios";
 import { useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
-export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchItinerary, baseUrl }) {
+export default function ItineraryPlanner({
+  dailyAttractions,
+  itineraryId,
+  fetchItinerary,
+  baseUrl,
+  filteredWeatherData,
+}) {
   const [deleteModal, setDeleteModal] = useState(false);
   const [attractionData, setAttractionData] = useState(null);
   const [editingAttractionId, setEditingAttractionId] = useState(null);
   const [notes, setNotes] = useState("");
   const baseUrlImg = import.meta.env.VITE_API_URL_IMG;
+
+  // console.log(filteredWeatherData);
 
   const handleDeleteClick = (attraction) => {
     setDeleteModal(true);
@@ -59,6 +68,16 @@ export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchI
     });
   };
 
+  const extractedWeatherData = filteredWeatherData.map((day) => ({
+    date: format(new Date(day.date + "T00:00:00"), "dd MMM"),
+    icon: day.day.condition.icon,
+  }));
+
+  if (!dailyAttractions || !Array.isArray(dailyAttractions)) {
+    return <div>Loading itinerary...</div>;
+  }
+  // console.log(extractedWeatherData);
+
   return (
     <div id="itinerary-download">
       <div className="planner">
@@ -78,6 +97,15 @@ export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchI
                 >
                   Day {attractionByDay.day}
                 </h3>
+                {extractedWeatherData[index] && (
+                  <div className="planner__weather-icon-container">
+                    <img
+                      className="planner__weather-icon"
+                      src={`https:${extractedWeatherData[index].icon}`}
+                      alt="Weather Icon"
+                    />
+                  </div>
+                )}
               </div>
               {attractionByDay.attractions.map((attraction) => (
                 <div key={attraction.id} className="planner__attraction">

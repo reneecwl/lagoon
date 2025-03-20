@@ -101,6 +101,7 @@ export default function ItineraryPlanningPage({}) {
     return <div>Loading...</div>;
   }
 
+  // console.log(dailyAttractions);
   return (
     <>
       <div className="planning">
@@ -120,6 +121,7 @@ export default function ItineraryPlanningPage({}) {
               fetchItinerary={fetchItinerary}
               baseUrl={baseUrl}
               loading={loading}
+              filteredWeatherData={filteredWeatherData}
             />
             <AttractionList
               itinerary={itinerary}
