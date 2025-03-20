@@ -25,6 +25,7 @@
       color: $coral;
       font-weight: bold;
       // font-family: $font-secondary;
+      font-size: 1.05rem;
     }
   }
 
@@ -53,6 +54,10 @@
       outline: none;
       border: none;
       box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
+    }
+
+    .option {
+      font-family: $font-secondary;
     }
   }
 
