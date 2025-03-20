@@ -33,6 +33,9 @@
     &-content {
       position: relative;
       z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     &-title {
@@ -375,5 +378,31 @@
       text-align: center;
       padding: $spacing-xl 0;
     }
+  }
+
+  &__download-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: $transition-medium;
+
+    &:hover {
+      background-color: rgba($white, 0.15);
+      .planner__download {
+        transform: translateY(-2px);
+        fill: rgba($white, 1);
+      }
+    }
+  }
+
+  &__download {
+    width: 1.8rem;
+    height: 1.8rem;
+    cursor: pointer;
+    fill: rgba($white, 0.7);
+    transition: $transition-medium;
   }
 }

@@ -84,6 +84,11 @@ export default function ItineraryPlanner({
         <div className="planner__header">
           <div className="planner__header-content">
             <h2 className="planner__header-title">Itinerary</h2>
+            <div className="planner__download-container">
+              <svg className="planner__download" onClick={handlePdfDownload} viewBox="0 -960 960 960">
+                <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+              </svg>{" "}
+            </div>
           </div>
         </div>
         <div className="planner__content">
@@ -166,7 +171,6 @@ export default function ItineraryPlanner({
           )}
         </div>
       </div>
-      <button onClick={handlePdfDownload}>Download as PDF</button>
     </div>
   );
 }

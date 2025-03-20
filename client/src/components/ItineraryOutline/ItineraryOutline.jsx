@@ -11,6 +11,8 @@ import sevilleImage from "../../assets/images/destinations/seville.jpg";
 import romeImage from "../../assets/images/destinations/rome.jpg";
 import tokyoImage from "../../assets/images/destinations/tokyo.jpg";
 import sydneyImage from "../../assets/images/destinations/sydney.jpg";
+// import jsPDF from "jspdf";
+// import html2canvas from "html2canvas";
 
 export default function ItineraryOutline({
   itinerary,
@@ -76,7 +78,22 @@ export default function ItineraryOutline({
       console.error("Error updating trip name:", error);
     }
   };
+  // const handlePdfDownload = () => {
+  //   const input = document.getElementById("itinerary-download");
 
+  //   html2canvas(input, { scale: 2, useCORS: true }).then((canvas) => {
+  //     const imgData = canvas.toDataURL("image/png");
+
+  //     const pdf = new jsPDF({
+  //       orientation: "portrait",
+  //       unit: "px",
+  //       format: [canvas.width, canvas.height],
+  //     });
+
+  //     pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+  //     pdf.save("itinerary.pdf");
+  //   });
+  // };
   return (
     <>
       <div className="outline">
@@ -106,6 +123,9 @@ export default function ItineraryOutline({
               {formattedStartDate} to {formattedEndDate}
             </div>
           </div>
+          {/* <button className="outline__download" onClick={handlePdfDownload}>
+            Download as PDF
+          </button> */}
           <div className="outline__location">
             <span>{itinerary.location}</span>
           </div>
