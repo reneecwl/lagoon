@@ -16,6 +16,29 @@
     background-color: $secondary-colour;
   }
 
+  &__left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  &__logo-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  &__logo {
+    width: 3rem;
+    height: 3rem;
+    overflow: visible;
+    border-radius: 50%;
+  }
   &__right {
     display: flex;
     align-items: center;
@@ -27,8 +50,9 @@
     font-weight: 700;
     color: white;
     text-transform: uppercase;
-    cursor: pointer;
     transition: opacity 0.3s ease;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    margin: 0;
 
     &:hover {
       opacity: 0.8;
@@ -40,7 +64,6 @@
     font-weight: 700;
     color: white;
     text-transform: uppercase;
-    cursor: pointer;
     transition: opacity 0.3s ease;
 
     &:hover {

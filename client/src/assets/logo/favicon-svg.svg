@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Globe Stand - Separated from globe -->
+  <rect x="195" y="280" width="10" height="30" fill="#112B3C"/>
+  
+  <!-- Globe Stand Base - Now with separated levels -->
+  <rect x="160" y="320" width="80" height="10" rx="2" fill="#112B3C"/>
+  <!-- Second level with gap -->
+  <rect x="175" y="305" width="50" height="10" rx="2" fill="#112B3C"/>
+  
+  <!-- Globe Outline -->
+  <ellipse cx="200" cy="190" rx="90" ry="90" fill="none" stroke="#112B3C" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Decorative Globe Points OUTSIDE the circle -->
+  <circle cx="130" cy="120" r="5" fill="#112B3C"/>
+  <circle cx="270" cy="260" r="5" fill="#112B3C"/>
+  
+  <!-- Cross Background Pattern - LIGHTER -->
+  <path d="M120 190 L280 190" fill="none" stroke="#112B3C" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <path d="M200 100 L200 280" fill="none" stroke="#112B3C" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  
+  <!-- Additional Cross Lines - LIGHTER -->
+  <path d="M130 120 L270 260" fill="none" stroke="#112B3C" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+  <path d="M130 260 L270 120" fill="none" stroke="#112B3C" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+  
+  <!-- Small Decorative Cross Points INSIDE - LIGHTER -->
+  <circle cx="200" cy="190" r="3" fill="#112B3C" opacity="0.5"/>
+  <circle cx="160" cy="150" r="2" fill="#112B3C" opacity="0.4"/>
+  <circle cx="240" cy="150" r="2" fill="#112B3C" opacity="0.4"/>
+  <circle cx="160" cy="230" r="2" fill="#112B3C" opacity="0.4"/>
+  <circle cx="240" cy="230" r="2" fill="#112B3C" opacity="0.4"/>
+  
+  <!-- Stylized L -->
+  <path d="M175 140 L175 210 Q175 225, 190 225 L225 225" fill="none" stroke="#087D8C" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Optional Serif details on the L -->
+  <path d="M165 140 L185 140" fill="none" stroke="#087D8C" stroke-width="5" stroke-linecap="round"/>
+  <path d="M225 215 L225 235" fill="none" stroke="#087D8C" stroke-width="5" stroke-linecap="round"/>
+</svg>

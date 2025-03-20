@@ -18,7 +18,6 @@
     padding: $spacing-m;
     background-color: $secondary-colour;
     color: $white;
-    font-family: $font-primary;
     font-size: $font-size-l;
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -34,17 +33,17 @@
 
     // Custom scrollbar - shorter
     &::-webkit-scrollbar {
-      width: 4px;
+      width: 8px;
     }
 
     &::-webkit-scrollbar-track {
       background: #f1f1f1;
-      border-radius: 10px;
+      border-radius: 8px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgba($accent-colour, 0.5);
-      border-radius: 10px;
+      background: rgba($accent-colour, 0.7);
+      border-radius: 8px;
     }
 
     &::-webkit-scrollbar-thumb:hover {
@@ -104,7 +103,6 @@
   }
 
   &__name {
-    font-family: $font-primary;
     font-weight: 700;
     font-size: $font-size-l;
     margin-bottom: $spacing-xs;
@@ -115,22 +113,11 @@
     font-family: $font-secondary;
     font-size: $font-size-s;
     margin-bottom: $spacing-s;
-    color: $text-colour;
+    color: rgba($text-colour, 0.95);
     line-height: 1.5;
-    max-height: 4.5em; // 3 lines × 1.5 line-height
+    max-height: 4.5em;
     overflow: hidden;
     position: relative;
-
-    // Fading effect at bottom to indicate truncated text
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 40%;
-      height: 1.5em;
-      background: linear-gradient(to right, transparent, $white 80%);
-    }
   }
 
   &__tags {

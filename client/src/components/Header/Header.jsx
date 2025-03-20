@@ -1,7 +1,7 @@
 import "./Header.scss";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
-export default function Header({ setIsOpen }) {
+export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -9,16 +9,68 @@ export default function Header({ setIsOpen }) {
 
   return (
     <header className={isItineraryPage ? "header header--itinerary" : "header"}>
-      <h1
-        className={isItineraryPage ? "header__title header__title--itinerary" : "header__title"}
-        onClick={() => {
-          setIsOpen(false);
-          navigate("/");
-        }}
-        style={{ cursor: "pointer" }}
-      >
-        Lagoon
-      </h1>
+      <div className="header__left">
+        {/* <div
+          className="header__logo-container"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <svg className="header__logo" viewBox="0 0 400 400">
+
+            <circle cx="200" cy="190" r="100" fill="rgba(240, 240, 245, 0.9)" />
+
+         
+            <ellipse
+              cx="200"
+              cy="190"
+              rx="90"
+              ry="90"
+              fill="none"
+              stroke="#112B3C"
+              stroke-linecap="round"
+              stroke-width="6"
+            />
+            <circle cx="130" cy="120" r="5" fill="#112B3C" />
+            <circle cx="270" cy="260" r="5" fill="#112B3C" />
+            <path d="m120 190h160" fill="none" opacity=".4" stroke="#112B3C" stroke-linecap="round" stroke-width="2" />
+            <path d="m200 100v180" fill="none" opacity=".4" stroke="#112B3C" stroke-linecap="round" stroke-width="2" />
+            <path
+              d="m130 120 140 140"
+              fill="none"
+              opacity=".3"
+              stroke="#112B3C"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            />
+            <path
+              d="m130 260 140-140"
+              fill="none"
+              opacity=".3"
+              stroke="#112B3C"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            />
+            <circle cx="200" cy="190" r="3" fill="#112B3C" opacity=".5" />
+            <circle cx="160" cy="150" r="2" fill="#112B3C" opacity=".4" />
+            <circle cx="240" cy="150" r="2" fill="#112B3C" opacity=".4" />
+            <circle cx="160" cy="230" r="2" fill="#112B3C" opacity=".4" />
+            <circle cx="240" cy="230" r="2" fill="#112B3C" opacity=".4" />
+            <path
+              d="m175 140v70q0 15 15 15h35"
+              fill="none"
+              stroke="#087D8C"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="12"
+            />
+            <path d="m165 140h20" fill="none" stroke="#087D8C" stroke-linecap="round" stroke-width="5" />
+            <path d="m225 215v20" fill="none" stroke="#087D8C" stroke-linecap="round" stroke-width="5" />
+          </svg>
+        </div>{" "} */}
+        <h1 className={isItineraryPage ? "header__title header__title--itinerary" : "header__title"}>Lagoon</h1>
+      </div>
+
       <div className="header__right">
         <nav className="navbar">
           <ul className="navbar__list">
@@ -45,7 +97,6 @@ export default function Header({ setIsOpen }) {
               {" "}
               A{" "}
             </Link>
-            {/* <span className="user-avatar__initial"></span> */}
           </div>
         </div>
       </div>

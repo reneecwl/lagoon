@@ -46,7 +46,6 @@
   }
 
   &__title {
-    font-family: $font-primary;
     font-size: 3rem;
     letter-spacing: 2px;
     margin-bottom: $spacing-m;
@@ -54,7 +53,9 @@
     text-transform: uppercase;
     text-shadow: $shadow-md;
     z-index: 3;
-    animation: float-up-down 3s ease-in-out infinite;
+    position: relative;
+    animation: fade-in-up 1.5s ease-out forwards;
+    opacity: 0;
   }
 
   &__button {
@@ -64,11 +65,12 @@
     transition: background-color $transition-medium;
     position: relative;
     z-index: 4;
-    animation: float-up-down 3s ease-in-out infinite;
-    animation-delay: 0.5s;
+    animation: fade-in-up 1.5s ease-out forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
 
     &:hover {
-      background-color: darken($primary-colour, 20%);
+      background-color: color.adjust($primary-colour, $lightness: -20%);
     }
   }
 }
@@ -82,5 +84,16 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

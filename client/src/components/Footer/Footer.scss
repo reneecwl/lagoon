@@ -1,5 +1,91 @@
+@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/variables" as *;
+
 .footer {
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary-colour;
+  color: $white;
+  padding: 2rem 3rem 1rem;
+
+  &__main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
   &__title {
-    color: darkblue;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $white;
+    transition: opacity $transition-medium;
+    text-transform: uppercase;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 2.2rem;
+  }
+
+  &__subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: $white;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 0.25rem;
+    letter-spacing: 0.019rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -3px;
+      left: 0;
+      background-color: rgba($white, 0.8);
+      transition: width $transition-medium;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__terms {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    border-top: 1px solid rgba($white, 0.2);
+    padding-top: 1rem;
+    margin-bottom: $spacing-s;
+  }
+}
+
+.terms {
+  &__details {
+    font-size: 0.875rem;
+    // margin: 0;
+    color: rgba($white, 0.7);
+    cursor: pointer;
+    transition: color $transition-fast;
+    letter-spacing: 0.2px;
+
+    &:hover {
+      color: $white;
+    }
+  }
+  &__tico {
+    font-style: italic;
+    margin-left: auto;
+    font-size: 0.75rem;
+    opacity: 0.8;
   }
 }
