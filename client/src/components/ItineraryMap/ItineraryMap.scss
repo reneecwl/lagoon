@@ -1,0 +1,13 @@
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
+.itinerary-map {
+  &__container {
+    width: 100%;
+    height: 300px;
+    // border-radius: $border-radius-m;
+    overflow: hidden;
+    box-shadow: $shadow-sm;
+    border-radius: 0.5rem;
+  }
+}

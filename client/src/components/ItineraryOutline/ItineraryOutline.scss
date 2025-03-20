@@ -14,11 +14,11 @@
     position: relative;
     background-color: $secondary-colour;
     color: $white;
-    padding: $spacing-xl $spacing-l $spacing-l;
+    padding: $spacing-m $spacing-l $spacing-m;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    min-height: 12.5rem;
+    min-height: 10rem;
 
     &--image {
       &::before {
@@ -82,9 +82,9 @@
     &-input {
       font-family: $font-secondary;
       font-size: $font-size-s;
-      width: 25%;
+      width: 35%;
       padding: 0.3rem;
-      border: 1px none rgba($accent-colour, 0.4);
+      border: 3px none rgba($accent-colour, 0.8);
       border-radius: $border-radius-s;
       margin-bottom: 0.5rem;
 
@@ -99,7 +99,7 @@
   &__dates {
     font-family: $font-secondary;
     font-weight: 400;
-    font-size: $font-size-m;
+    font-size: $font-size-m; // Reduced from $font-size-m
     color: rgba(255, 255, 255, 0.95);
     letter-spacing: 0.5px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -117,5 +117,54 @@
     letter-spacing: 1px;
     z-index: 2;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  &__tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__tab {
+    background: none;
+    border: none;
+    padding: $spacing-s $spacing-l;
+    // font-family: $font-secondary;
+    font-size: $font-size-l;
+    font-weight: 700;
+    color: $secondary-colour;
+    cursor: pointer;
+    transition: $transition-fast;
+    opacity: 0.7;
+    border-bottom: 2px solid transparent;
+    width: 50%;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--active {
+      opacity: 1;
+      border-bottom: 2px solid $accent-colour;
+    }
+  }
+
+  &__tab-content {
+    padding: $spacing-s;
+  }
+
+  &__map-container {
+    height: 300px;
+    background-color: rgba($secondary-colour, 0.05);
+    border-radius: $border-radius-m;
+  }
+
+  &__placeholder {
+    text-align: center;
+    padding: $spacing-l;
+    color: rgba($text-colour, 0.6);
+    font-style: italic;
   }
 }

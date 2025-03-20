@@ -97,13 +97,15 @@ export default function ItineraryPlanner({
                 >
                   Day {attractionByDay.day}
                 </h3>
+
                 {extractedWeatherData[index] && (
-                  <div className="planner__weather-icon-container">
+                  <div className="planner__weather-container">
                     <img
                       className="planner__weather-icon"
                       src={`https:${extractedWeatherData[index].icon}`}
                       alt="Weather Icon"
                     />
+                    <span className="planner__weather-date">{extractedWeatherData[index].date}</span>
                   </div>
                 )}
               </div>

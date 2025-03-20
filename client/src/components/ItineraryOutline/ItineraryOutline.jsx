@@ -2,6 +2,7 @@ import "./ItineraryOutline.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Weather from "../Weather/Weather";
+import ItineraryMap from "../ItineraryMap/ItineraryMap";
 import PublicHoliday from "../PublicHoliday/PublicHoliday";
 import londonImage from "../../assets/images/destinations/london.jpg";
 import parisImage from "../../assets/images/destinations/paris.jpg";
@@ -25,6 +26,7 @@ export default function ItineraryOutline({
     itinerary.itinerary_name || `${daysCount} Days trip in ${itinerary.location}`
   );
   const [backgroundImage, setBackgroundImage] = useState("");
+  const [activeTab, setActiveTab] = useState("weather");
 
   const locationImages = {
     London: londonImage,
@@ -109,7 +111,28 @@ export default function ItineraryOutline({
           </div>
         </div>
         <Weather loading={loading} filteredWeatherData={filteredWeatherData} />
-        <PublicHoliday itinerary={itinerary} />
+        <div className="outline__tabs">
+          <button
+            className={`outline__tab ${activeTab === "holidays" ? "outline__tab--active" : ""}`}
+            onClick={() => setActiveTab("holidays")}
+          >
+            Public Holidays
+          </button>
+          <button
+            className={`outline__tab ${activeTab === "map" ? "outline__tab--active" : ""}`}
+            onClick={() => setActiveTab("map")}
+          >
+            Map View
+          </button>
+        </div>
+
+        <div className="outline__tab-content">
+          {activeTab === "holidays" ? (
+            <PublicHoliday itinerary={itinerary} />
+          ) : (
+            <ItineraryMap attractions={itinerary.attractions || []} location={itinerary.location} />
+          )}
+        </div>
       </div>
     </>
   );

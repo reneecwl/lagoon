@@ -15,15 +15,15 @@
 }
 
 .weather {
-  padding: $spacing-l;
+  padding: $spacing-m $spacing-l;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 
   &__title {
-    font-family: $font-primary;
+    // font-family: $font-secondary;
     font-size: $font-size-l;
     font-weight: 700;
     color: $secondary-colour;
-    margin: 0 0 $spacing-m;
+    margin: 0 0 $spacing-s;
     letter-spacing: 0.0187rem;
   }
 
@@ -31,7 +31,7 @@
     display: flex;
     gap: $spacing-s;
     overflow-x: auto;
-    padding-bottom: $spacing-s;
+    // padding-bottom: $spacing-s;
 
     &::-webkit-scrollbar {
       height: 4px;

@@ -13,7 +13,7 @@
     padding: $spacing-xl $spacing-l;
     color: $white;
     text-align: start;
-    margin-bottom: $spacing-l;
+    margin-bottom: $spacing-xs;
     background-image: url("../../assets/images/destinations/granada.jpg");
     background-size: cover;
     background-position: center;
@@ -71,49 +71,55 @@
 
   &__day {
     display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    position: relative;
+    align-items: center;
+    justify-content: space-between; // This ensures the weather is pushed to the right
+    margin-bottom: $spacing-m;
+    width: 100%;
   }
 
-  &__weather-icon-container {
-    // width: 2.3rem;
-    position: absolute;
-    // top: 0rem;
-    bottom: 1.4rem;
-    left: 3.5rem;
-    // margin-bottom: 5rem;
-  }
-  &__weather-icon {
-    width: 2.3rem;
-    // position: absolute;
-    // top: 0rem;
-    // bottom: 5rem;
-    // margin-bottom: 5rem;
-  }
   &__day-index {
     font-family: $font-secondary;
     font-size: $font-size-l;
     font-weight: 700;
     color: $secondary-colour;
-    margin: 0 0 $spacing-m;
-    display: inline-block;
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: none;
     position: relative;
-    padding-bottom: $spacing-xs;
 
-    border-bottom: 2px solid $accent-colour;
-
-    &--empty {
-      color: rgba($text-colour, 0.6);
-      border-bottom-color: rgba($accent-colour, 0.4);
-
-      // &::after {
-      //   content: "";
-      //   font-size: $font-size-s;
-      //   font-weight: 400;
-      //   font-style: italic;
-      // }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -9px;
+      left: 0;
+      width: 52px;
+      height: 1.6px;
+      background-color: $accent-colour;
+      border-radius: 2px;
     }
+  }
+
+  &__weather-container {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba($accent-colour, 0.08);
+    padding: 0.3rem 0.8rem;
+    border-radius: $border-radius-s;
+  }
+
+  // Update icon styles
+  &__weather-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  // Add this new class
+  &__weather-date {
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    color: rgba($text-colour, 0.8);
+    margin-left: 0.3rem;
+    font-weight: 500;
   }
 
   &__attraction {

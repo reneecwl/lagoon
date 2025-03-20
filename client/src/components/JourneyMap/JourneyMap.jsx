@@ -1,45 +1,20 @@
 import "./JourneyMap.scss";
 import { useState, useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import axios from "axios";
-import markerIcon from "../../assets/icon/location-24px.svg";
+import GetGeocode from "../../utility/GetGeocode";
 
 export default function JourneyMap({ trips }) {
   const mapRef = useRef(null);
   const baseUrl = import.meta.env.VITE_API_URL_GEOCODE;
   const apiKey = import.meta.env.VITE_API_KEY_GOOGLE;
-  const iconUrl = markerIcon;
   const [markers, setMarkers] = useState([]);
-
-  // const tripLocations = trips.map((trip) => {
-  //   return trip.location;
-  // });
-  // console.log(tripLocations);
-
-  const getGeocode = async (location) => {
-    const encodedAddress = encodeURIComponent(location);
-    const url = `${baseUrl}=${encodedAddress}&key=${apiKey}`;
-
-    try {
-      const response = await axios.get(url);
-      const data = response.data;
-
-      if (data.status === "OK") {
-        return data.results[0].geometry.location;
-      } else {
-        console.error("Geocoding error:", data.status);
-      }
-    } catch (error) {
-      console.error("Error fetching geocode:", error);
-    }
-  };
 
   useEffect(() => {
     const fetchGeocodes = async () => {
       const markerData = [];
 
       for (const trip of trips) {
-        const location = await getGeocode(trip.location);
+        const location = await GetGeocode(trip.location);
         if (location) {
           markerData.push({
             name: trip.location,
