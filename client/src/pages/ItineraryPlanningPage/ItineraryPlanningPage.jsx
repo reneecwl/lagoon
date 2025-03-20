@@ -11,6 +11,9 @@ import Planner from "../../components/Planner/Planner";
 export default function ItineraryPlanningPage({}) {
   const [itinerary, setItinerary] = useState(null);
   const [dailyAttractions, setDailyAttractions] = useState([]);
+  const [weatherData, setWeatherData] = useState(null);
+  const [filteredWeatherData, setFilteredWeatherData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { itineraryId } = useParams();
   const [dates, setDates] = useState({
     formattedStartDate: "",
@@ -19,12 +22,14 @@ export default function ItineraryPlanningPage({}) {
   });
 
   const baseUrl = import.meta.env.VITE_API_URL;
+  const baseUrlWeather = import.meta.env.VITE_WEATHER_API_URL;
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   const fetchItinerary = async () => {
     try {
       const response = await axios.get(`${baseUrl}/itineraries/${itineraryId}`);
       setItinerary(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.error("There is an error loading the itinerary", error);
     }
@@ -35,33 +40,61 @@ export default function ItineraryPlanningPage({}) {
   }, [itineraryId]);
 
   useEffect(() => {
-    if (itinerary) {
-      const formattedStartDate = FormatDate(itinerary.start_date);
-      const formattedEndDate = FormatDate(itinerary.end_date);
-      const daysCount = DaysCount(formattedStartDate, formattedEndDate);
+    if (!itinerary) return;
 
-      setDates({
-        formattedStartDate,
-        formattedEndDate,
-        daysCount,
-      });
+    const fetchWeather = async () => {
+      setLoading(true);
 
-      const initialDailyAttractions = Array.from({ length: daysCount }, (_, i) => ({
-        day: i + 1,
-        attractions: [],
-      }));
+      try {
+        const response = await axios.get(`${baseUrlWeather}${apiKey}&q=${itinerary.location}&days=14`);
+        setWeatherData(response.data.forecast);
 
-      if (itinerary.attractions && itinerary.attractions.length > 0) {
-        itinerary.attractions.forEach((attraction) => {
-          const dayArrayIndex = attraction.day - 1;
+        const startDateObj = new Date(itinerary.start_date);
+        const endDateObj = new Date(itinerary.end_date);
 
-          if (dayArrayIndex < daysCount) {
-            initialDailyAttractions[dayArrayIndex].attractions.push(attraction);
-          }
+        const filteredData = response.data.forecast.forecastday.filter((day) => {
+          const dayDateObj = new Date(day.date + "T00:00:00");
+          return dayDateObj >= startDateObj && dayDateObj <= endDateObj;
         });
+
+        setFilteredWeatherData(filteredData);
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 1500);
+      } catch (error) {
+        console.error("There is an error loading the weather", error);
+        setLoading(false);
       }
-      setDailyAttractions(initialDailyAttractions);
+    };
+
+    fetchWeather();
+
+    const formattedStartDate = FormatDate(itinerary.start_date);
+    const formattedEndDate = FormatDate(itinerary.end_date);
+    const daysCount = DaysCount(formattedStartDate, formattedEndDate);
+
+    setDates({
+      formattedStartDate,
+      formattedEndDate,
+      daysCount,
+    });
+
+    const initialDailyAttractions = Array.from({ length: daysCount }, (_, i) => ({
+      day: i + 1,
+      attractions: [],
+    }));
+
+    if (itinerary.attractions && itinerary.attractions.length > 0) {
+      itinerary.attractions.forEach((attraction) => {
+        const dayArrayIndex = attraction.day - 1;
+
+        if (dayArrayIndex < daysCount) {
+          initialDailyAttractions[dayArrayIndex].attractions.push(attraction);
+        }
+      });
     }
+    setDailyAttractions(initialDailyAttractions);
   }, [itinerary]);
 
   if (!itinerary) {
@@ -78,6 +111,7 @@ export default function ItineraryPlanningPage({}) {
             formattedEndDate={dates.formattedEndDate}
             daysCount={dates.daysCount}
             fetchItinerary={fetchItinerary}
+            filteredWeatherData={filteredWeatherData}
           />
           <div className="planning__content">
             <Planner
@@ -85,6 +119,7 @@ export default function ItineraryPlanningPage({}) {
               itineraryId={itineraryId}
               fetchItinerary={fetchItinerary}
               baseUrl={baseUrl}
+              loading={loading}
             />
             <AttractionList
               itinerary={itinerary}

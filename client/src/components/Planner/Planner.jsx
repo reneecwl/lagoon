@@ -70,13 +70,15 @@ export default function ItineraryPlanner({ dailyAttractions, itineraryId, fetchI
         <div className="planner__content">
           {dailyAttractions.map((attractionByDay, index) => (
             <div key={index} className="planner__byday">
-              <h3
-                className={`planner__day-index ${
-                  attractionByDay.attractions.length === 0 ? "planner__day-index--empty" : ""
-                }`}
-              >
-                Day {attractionByDay.day}
-              </h3>
+              <div className="planner__day">
+                <h3
+                  className={`planner__day-index ${
+                    attractionByDay.attractions.length === 0 ? "planner__day-index--empty" : ""
+                  }`}
+                >
+                  Day {attractionByDay.day}
+                </h3>
+              </div>
               {attractionByDay.attractions.map((attraction) => (
                 <div key={attraction.id} className="planner__attraction">
                   <div className="planner__attraction-content">

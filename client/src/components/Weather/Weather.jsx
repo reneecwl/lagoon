@@ -1,45 +1,7 @@
 import "./Weather.scss";
 import { format } from "date-fns";
-import axios from "axios";
-import { useState, useEffect } from "react";
 
-export default function Weather({ itinerary }) {
-  const [weatherData, setWeatherData] = useState(null);
-  const [filteredWeatherData, setFilteredWeatherData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const baseUrlWeather = import.meta.env.VITE_WEATHER_API_URL;
-  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-
-  useEffect(() => {
-    const fetchWeather = async () => {
-      setLoading(true);
-
-      try {
-        const response = await axios.get(`${baseUrlWeather}${apiKey}&q=${itinerary.location}&days=14`);
-        setWeatherData(response.data.forecast);
-
-        const startDateObj = new Date(itinerary.start_date);
-        const endDateObj = new Date(itinerary.end_date);
-
-        const filteredData = response.data.forecast.forecastday.filter((day) => {
-          const dayDateObj = new Date(day.date + "T00:00:00");
-          return dayDateObj >= startDateObj && dayDateObj <= endDateObj;
-        });
-
-        setFilteredWeatherData(filteredData);
-
-        setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-      } catch (error) {
-        console.error("There is an error loading the weather", error);
-        setLoading(false);
-      }
-    };
-
-    fetchWeather();
-  }, [itinerary.location, itinerary.start_date, itinerary.end_date]);
-
+export default function Weather({ filteredWeatherData, loading }) {
   const generateSkeletonCards = () => {
     return Array(5).fill(null);
   };
@@ -62,16 +24,14 @@ export default function Weather({ itinerary }) {
     );
   }
 
-  // if (!weatherData || filteredWeatherData.length === 0) {
-  //   return (
-  //     <div className="weather">
-  //       <h3 className="weather__title">Weather</h3>
-  //       <div className="weather__empty">
-  //         <p>No weather data available for your trip dates.</p>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  if (!filteredWeatherData || filteredWeatherData.length === 0) {
+    return (
+      <div className="weather">
+        <h3 className="weather__title">Weather</h3>
+        <p>No weather data available yet.</p>
+      </div>
+    );
+  }
 
   const extractedData = filteredWeatherData.map((day) => ({
     date: format(new Date(day.date + "T00:00:00"), "dd MMM"),

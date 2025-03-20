@@ -17,6 +17,8 @@ export default function ItineraryOutline({
   formattedEndDate,
   daysCount,
   fetchItinerary,
+  filteredWeatherData,
+  loading,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [tripName, setTripName] = useState(
@@ -106,7 +108,7 @@ export default function ItineraryOutline({
             <span>{itinerary.location}</span>
           </div>
         </div>
-        <Weather itinerary={itinerary} />
+        <Weather loading={loading} filteredWeatherData={filteredWeatherData} />
         <PublicHoliday itinerary={itinerary} />
       </div>
     </>
