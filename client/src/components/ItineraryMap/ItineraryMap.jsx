@@ -67,9 +67,9 @@ export default function ItineraryMap({ attractions, location }) {
 
         const infoWindow = new google.maps.InfoWindow({
           content: `
-            <div>
-              <h4>Day ${attraction.day}: ${attraction.name}</h4>
-            </div>
+             <div className="map__info-box">
+              <h4 className="map__info">Day ${attraction.day}: ${attraction.name}</h4>
+             </div>
           `,
         });
 
@@ -78,29 +78,26 @@ export default function ItineraryMap({ attractions, location }) {
         });
       });
 
-      // Draw route lines between attractions of the same day
       drawDailyRoutes(newMap, markerData);
     });
   };
 
-  // Function to draw routes between attractions of the same day
   const drawDailyRoutes = (map, markerData) => {
-    // Group markers by day
-    const markersByDay = {};
-
-    markerData.forEach((marker) => {
-      if (!markersByDay[marker.day]) {
-        markersByDay[marker.day] = [];
+    const markersByDay = markerData.reduce((acc, marker) => {
+      // console.log("Current marker:", marker);
+      // console.log("Accumulator so far:", acc);
+      if (!acc[marker.day]) {
+        acc[marker.day] = [];
       }
-      markersByDay[marker.day].push(marker);
-    });
+      acc[marker.day].push(marker);
+      // console.log(acc);
+      return acc;
+    }, {});
 
-    // For each day, draw a route connecting the attractions in order
     Object.keys(markersByDay).forEach((day) => {
       const dayMarkers = markersByDay[day];
-      if (dayMarkers.length < 2) return; // Need at least 2 points for a route
+      if (dayMarkers.length < 2) return;
 
-      // Define a unique color for each day
       const colors = [
         "#FF5733",
         "#33FF57",
@@ -113,9 +110,7 @@ export default function ItineraryMap({ attractions, location }) {
         "#33FFA8",
         "#FF8C33",
       ];
-      const colorIndex = (parseInt(day) - 1) % colors.length;
 
-      // Create a polyline connecting attractions for this day
       const path = dayMarkers.map((marker) => ({
         lat: marker.lat,
         lng: marker.lng,
@@ -124,7 +119,7 @@ export default function ItineraryMap({ attractions, location }) {
       const polyline = new google.maps.Polyline({
         path: path,
         geodesic: true,
-        strokeColor: colors[colorIndex],
+        strokeColor: colors[day - 1],
         strokeOpacity: 0.8,
         strokeWeight: 3,
       });

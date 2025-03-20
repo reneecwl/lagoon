@@ -7,6 +7,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  font-family: $font-primary;
 }
 
 ul {
@@ -18,23 +19,29 @@ a {
 }
 
 body {
-  font-family: "Cormorant", serif;
+  font-family: $font-primary;
   font-weight: 400;
-  color: #333; // Default text color
+  color: $text-colour;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Cormorant", serif; // Use Cormorant for now
-  font-weight: 700;
-  margin: 0;
+.map {
+  &__info {
+    font-family: $font-secondary;
+  }
 }
 
-button {
-  font-family: "Cormorant", serif;
-  font-weight: 700;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   font-family: "Cormorant", serif; // Use Cormorant for now
+//   font-weight: 700;
+//   margin: 0;
+// }
+
+// button {
+//   font-family: "Cormorant", serif;
+//   font-weight: 700;
+// }
