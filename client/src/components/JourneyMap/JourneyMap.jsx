@@ -2,6 +2,7 @@ import "./JourneyMap.scss";
 import { useState, useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import GetGeocode from "../../utility/GetGeocode";
+import CustomMapStyle from "../../utility/CustomMapStyle";
 
 export default function JourneyMap({ trips }) {
   const mapRef = useRef(null);
@@ -30,7 +31,7 @@ export default function JourneyMap({ trips }) {
 
   useEffect(() => {
     if (markers.length === 0) return;
-    console.log(markers);
+
     const loader = new Loader({
       apiKey: apiKey,
       version: "weekly",
@@ -40,6 +41,10 @@ export default function JourneyMap({ trips }) {
       const map = new google.maps.Map(mapRef.current, {
         center: { lat: 30, lng: 0 },
         zoom: 2,
+        styles: CustomMapStyle,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
       });
 
       markers.forEach((location) => {

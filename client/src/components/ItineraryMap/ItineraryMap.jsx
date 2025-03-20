@@ -2,6 +2,7 @@ import "./ItineraryMap.scss";
 import { useState, useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import GetGeocode from "../../utility/GetGeocode";
+import CustomMapStyle from "../../utility/CustomMapStyle";
 
 export default function ItineraryMap({ attractions, location }) {
   const mapRef = useRef(null);
@@ -52,6 +53,10 @@ export default function ItineraryMap({ attractions, location }) {
       const newMap = new google.maps.Map(mapRef.current, {
         center: center,
         zoom: 13,
+        styles: CustomMapStyle,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
       });
 
       setMap(newMap);
@@ -99,16 +104,16 @@ export default function ItineraryMap({ attractions, location }) {
       if (dayMarkers.length < 2) return;
 
       const colors = [
-        "#FF5733",
-        "#33FF57",
-        "#3357FF",
-        "#F033FF",
-        "#33FFF0",
-        "#FFF033",
-        "#FF33A8",
-        "#A833FF",
-        "#33FFA8",
-        "#FF8C33",
+        "rgba(66, 133, 244, 0.6)", // Soft blue
+        "rgba(219, 68, 55, 0.6)", // Soft red
+        "rgba(244, 180, 0, 0.6)", // Soft yellow
+        "rgba(15, 157, 88, 0.6)", // Soft green
+        "rgba(171, 71, 188, 0.6)", // Soft purple
+        "rgba(255, 112, 67, 0.6)", // Soft orange
+        "rgba(0, 172, 193, 0.6)", // Soft cyan
+        "rgba(124, 179, 66, 0.6)", // Soft light green
+        "rgba(63, 81, 181, 0.6)", // Soft indigo
+        "rgba(141, 110, 99, 0.6)", // Soft brown
       ];
 
       const path = dayMarkers.map((marker) => ({
@@ -120,8 +125,8 @@ export default function ItineraryMap({ attractions, location }) {
         path: path,
         geodesic: true,
         strokeColor: colors[day - 1],
-        strokeOpacity: 0.8,
-        strokeWeight: 3,
+        strokeOpacity: 0.9,
+        strokeWeight: 4,
       });
 
       polyline.setMap(map);

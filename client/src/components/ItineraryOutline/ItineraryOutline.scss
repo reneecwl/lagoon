@@ -143,28 +143,29 @@
 
     &:hover {
       opacity: 1;
+      border-bottom: 2.5px solid $accent-colour;
     }
 
     &--active {
       opacity: 1;
-      border-bottom: 2px solid $accent-colour;
+      border-bottom: 2.5px solid $accent-colour;
     }
   }
 
-  &__tab-content {
-    padding: $spacing-s;
-  }
+  // &__tab-content {
+  //   // padding: 0.4rem 0.5rem;
+  // }
 
   &__map-container {
     height: 300px;
     background-color: rgba($secondary-colour, 0.05);
-    border-radius: $border-radius-m;
+    // border-radius: $border-radius-m;
   }
 
-  &__placeholder {
-    text-align: center;
-    padding: $spacing-l;
-    color: rgba($text-colour, 0.6);
-    font-style: italic;
-  }
+  // &__placeholder {
+  //   text-align: center;
+  //   padding: $spacing-l;
+  //   color: rgba($text-colour, 0.6);
+  //   font-style: italic;
+  // }
 }
