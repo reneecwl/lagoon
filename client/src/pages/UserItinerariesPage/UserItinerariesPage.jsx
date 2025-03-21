@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import londonImage from "../../assets/images/destinations/london.jpg";
-import CreateItinerary from "../../components/CreateItinerary/CreateItinerary";
+import CreateItineraryForm from "../../components/CreateItineraryForm/CreateItineraryForm.jsx";
 import JourneyMap from "../../components/JourneyMap/JourneyMap";
 import parisImage from "../../assets/images/destinations/paris.jpg";
 import aarhusImage from "../../assets/images/destinations/aarhus.jpg";
@@ -17,8 +17,9 @@ import sydneyImage from "../../assets/images/destinations/sydney.jpg";
 import hkImage from "../../assets/images/destinations/hongkong.jpg";
 import UserStatistics from "../../components/UserStatistics/UserStatistics.jsx";
 
-export default function UserItinerariesPage({ isOpen, setIsOpen }) {
+export default function UserItinerariesPage() {
   const [userItineraries, setUserItineraries] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
   const { userId } = useParams();
   const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -93,19 +94,17 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
                   <h1 className="user__title">My Journeys</h1>
                   <p className="user__welcome">Welcome back, {userName}!</p>
                 </div>
-                {/* <div className="user__action-area">
-                  <button
-                    className="user__add-button"
-                    onClick={() => {
-                      setIsOpen(true);
-                    }}
-                  >
-                    <svg viewBox="0 -960 960 960">
-                      <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
-                    </svg>
-                    <span>Plan a New Trip</span>
-                  </button>
-                </div> */}
+                <button
+                  className="user__add-button"
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
+                >
+                  <svg className="user__add-icon" viewBox="0 -960 960 960">
+                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                  </svg>
+                  <span className="user__add-content">Plan a New Trip</span>
+                </button>
               </div>
             </div>
             <UserStatistics trips={trips} tripStatus={tripStatus} />{" "}
@@ -132,7 +131,7 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
           <div className="trips__container">
             {isOpen && (
               <div className="create-itinerary__overlay">
-                <CreateItinerary setIsOpen={setIsOpen} />
+                <CreateItineraryForm setIsOpen={setIsOpen} />
               </div>
             )}
             {trips.map((trip, index) => (

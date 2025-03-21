@@ -1,5 +1,6 @@
 @use "./../../styles/partials/typography";
 @use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
 @use "sass:color";
 
 .attraction-form {
@@ -129,17 +130,12 @@
   &__attraction-cancel {
     flex: 1;
     padding: $spacing-s;
-    background-color: #f1f1f1;
-    color: $text-colour;
     border: none;
     border-radius: $border-radius-s;
     font-family: $font-secondary;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s;
-
-    &:hover {
-      background-color: #e0e0e0;
-    }
+    @include cancel-button;
   }
 }

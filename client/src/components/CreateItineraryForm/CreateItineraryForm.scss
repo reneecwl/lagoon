@@ -1,4 +1,4 @@
-@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/typography";
 @use "./../../styles/partials/variables" as *;
 @use "./../../styles/partials/mixins" as *;
 
@@ -44,41 +44,46 @@
     }
 
     &:focus {
-      // border-color: $primary-colour;
-      // border: 1.5px solid $primary-colour;
-      // outline: none;
-      // border-color: $accent-colour;
       outline: none;
       border: none;
       box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
     }
   }
 
-  .react-datepicker-wrapper {
-    width: 100%;
-  }
-
-  // .react-datepicker__input-container {
-  //   width: 100%;
-  // }
-
-  .react-datepicker__input-container input {
-    width: 100%;
-    padding: $spacing-xs;
-    border: 1px solid $grey;
-    border-radius: $border-radius-m;
+  .react-datepicker {
     font-family: $font-secondary;
-    font-size: $font-size-m;
-    transition: border-color $transition-medium;
 
-    &:focus {
-      // border-color: $primary-colour;
-      // outline: none;
-      outline: none;
-      border: none;
-      box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
+    &-wrapper {
+      width: 100%;
+      font-family: $font-secondary;
+    }
+
+    &__day-name,
+    &__day,
+    &__current-month,
+    &__month {
+      font-family: $font-secondary;
+    }
+
+    &__input-container {
+      input {
+        width: 100%;
+        padding: $spacing-xs;
+        border: 1px solid $grey;
+        border-radius: $border-radius-m;
+        font-family: $font-secondary;
+        font-size: $font-size-m;
+        transition: border-color $transition-medium;
+
+        &:focus {
+          outline: none;
+          border: none;
+          box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
+        }
+      }
     }
   }
+
   &__buttons {
     display: flex;
     gap: 1rem;

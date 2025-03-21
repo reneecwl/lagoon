@@ -56,12 +56,7 @@
     transition: $transition-fast;
 
     &--cancel {
-      background-color: #f1f1f1;
-      color: $text-colour;
-
-      &:hover {
-        background-color: #e0e0e0;
-      }
+      @include cancel-button;
     }
 
     &--delete {

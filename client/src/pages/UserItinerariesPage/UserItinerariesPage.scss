@@ -59,7 +59,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
   }
 
   &__title-container {
@@ -81,41 +81,36 @@
     color: rgba(255, 255, 255, 0.9);
   }
 
-  // &__action-area {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: flex-end;
-  //   gap: $spacing-s;
-  // }
+  &__add-button {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    background-color: rgba($primary-colour, 0.9);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: $border-radius-m;
+    cursor: pointer;
+    transition: all 0.2s ease;
 
-  // &__add-button {
-  //   display: flex;
-  //   align-items: center;
-  //   gap: 0.5rem;
-  //   background-color: $accent-colour;
-  //   color: $white;
-  //   border: none;
-  //   padding: 0.8rem 1.2rem;
-  //   border-radius: $border-radius-m;
-  //   cursor: pointer;
-  //   transition: all 0.2s ease;
-  //   font-family: $font-secondary;
-  //   font-weight: 600;
-  //   font-size: 0.95rem;
-  //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 0.95rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-  //   &:hover {
-  //     background-color: color.scale($accent-colour, $lightness: -10%);
-  //     transform: translateY(-2px);
-  //     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  //   }
-
-  //   svg {
-  //     width: 1.2rem;
-  //     height: 1.2rem;
-  //     fill: currentColor;
-  //   }
-  // }
+    &:hover {
+      background-color: color.scale($accent-colour, $lightness: -10%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+  &__add-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: currentColor;
+  }
+  &__add-content {
+    font-family: $font-secondary;
+    font-weight: 500;
+  }
 
   &__map-container {
     padding: 0;
@@ -144,7 +139,7 @@
   }
 
   &__add-container {
-    display: flex; // You can set to "none" to hide if you're using the header button instead
+    display: flex; //hide?
     align-items: center;
     gap: 0.1rem;
     background-color: $accent-colour;

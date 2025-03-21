@@ -1,4 +1,4 @@
-import "./CreateItinerary.scss";
+import "./CreateItineraryForm.scss";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
@@ -6,12 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, itineraryId }) {
+export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinerary, itineraryId }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const [formData, setFormData] = useState({
-    // username: "",
     location: "",
     startDate: null,
     endDate: null,
@@ -19,17 +18,6 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
 
   const baseUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
-
-  // const addUser = async () => {
-  //   try {
-  //     const response = await axios.post(`${baseUrl}/users`, { user_name: "Amanda" });
-  //     console.log("User created", response.data);
-  //     return response.data.id;
-  //   } catch (error) {
-  //     console.error("Error adding user", error);
-  //     return null;
-  //   }
-  // };
 
   const isFormValid = () => {
     if (!formData.location || !startDate || !endDate) {
@@ -50,12 +38,6 @@ export default function CreateItinerary({ setIsOpen, fetchItinerary, itinerary, 
 
     const formattedStartDate = format(startDate, "yyyy/MM/dd");
     const formattedEndDate = format(endDate, "yyyy/MM/dd");
-
-    // const userId = await addUser();
-    // if (!userId) {
-    //   alert("Failed to create user. Please try again.");
-    //   return;
-    // }
 
     const newItinerary = {
       user_id: 1,
