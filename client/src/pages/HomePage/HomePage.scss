@@ -4,15 +4,19 @@
 @use "sass:color";
 
 .homepage {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  width: 100%;
+  overflow-x: hidden;
   color: $white;
-  position: relative;
-  overflow: hidden;
+
+  &__hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
 
   &__background {
     background: url("../../assets/images/Seville.JPEG") no-repeat center center/cover;
@@ -22,7 +26,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    animation: zoomIn 20s ease-in-out infinite;
+    animation: zoomIn 25s ease-in-out infinite;
 
     &::before {
       content: "";
@@ -43,26 +47,32 @@
     flex-direction: column;
     align-items: center;
     gap: $spacing-m;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 $spacing-l;
   }
 
   &__title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     letter-spacing: 2px;
-    margin-bottom: $spacing-m;
+    margin-bottom: $spacing-l;
     color: $white;
     text-transform: uppercase;
     text-shadow: $shadow-md;
     z-index: 3;
-    position: relative;
     animation: fade-in-up 1.5s ease-out forwards;
     opacity: 0;
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
   }
 
   &__button {
     @include button-primary;
     font-size: $font-size-l;
-    padding: $spacing-xs $spacing-m;
-    transition: background-color $transition-medium;
+    padding: $spacing-xs $spacing-xl;
+    transition: all $transition-medium;
     position: relative;
     z-index: 4;
     animation: fade-in-up 1.5s ease-out forwards;
@@ -71,7 +81,43 @@
 
     &:hover {
       background-color: color.adjust($primary-colour, $lightness: -20%);
+      transform: translateY(-3px);
     }
+  }
+
+  &__scroll-container {
+    position: absolute;
+    bottom: 1.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xs;
+    color: $white;
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    animation: fade-in 1.5s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    z-index: 3;
+    cursor: pointer;
+  }
+
+  &__scroll-icon {
+    width: 20px;
+    height: 20px;
+    stroke: $white;
+    margin-top: $spacing-xs;
+    animation: bounce 2s infinite;
+  }
+
+  &__about {
+    min-height: 90vh;
+    width: 100%;
+    background-color: $background-colour;
   }
 }
 
@@ -95,5 +141,30 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
   }
 }

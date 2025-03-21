@@ -31,7 +31,6 @@ export default function ItineraryPlanningPage({}) {
     try {
       const response = await axios.get(`${baseUrl}/itineraries/${itineraryId}`);
       setItinerary(response.data);
-      // console.log(response.data);
     } catch (error) {
       console.error("There is an error loading the itinerary", error);
     }

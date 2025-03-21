@@ -41,23 +41,43 @@ const userItineraries = async (req, res) => {
 
   try {
     const userExists = await knex("users").where({ id: userId }).first();
-
     if (!userExists) {
-      return res.status(404).json({
-        message: `User with ID ${userId} not found`,
-      });
+      return res.status(404).json({ message: `User with ID ${userId} not found` });
     }
-    const username = userExists.user_name;
 
     const getItineraries = await knex("itineraries")
       .select("id", "user_id", "location", "start_date", "end_date", "itinerary_name")
       .where({ user_id: userId });
 
-    const sortedItineraries = getItineraries.sort((a, b) => {
-      return b.start_date - a.start_date;
+    if (getItineraries.length === 0) {
+      return res.status(200).json({ username: userExists.user_name, itineraries: [] });
+    }
+
+    const attractionCounts = await knex("itinerary_attraction")
+      .whereIn(
+        "itinerary_id",
+        getItineraries.map((i) => i.id)
+      )
+      .select("itinerary_id")
+      .count("* as attraction_count")
+      .groupBy("itinerary_id");
+
+    const countsMap = {};
+    attractionCounts.forEach((item) => {
+      countsMap[item.itinerary_id] = parseInt(item.attraction_count, 10);
     });
+
+    const itinerariesWithAttractionCount = getItineraries.map((itinerary) => ({
+      ...itinerary,
+      attraction_count: countsMap[itinerary.id] || 0,
+    }));
+
+    const sortedItineraries = itinerariesWithAttractionCount.sort((a, b) => {
+      return new Date(b.start_date) - new Date(a.start_date);
+    });
+
     res.status(200).json({
-      username: username,
+      username: userExists.user_name,
       itineraries: sortedItineraries,
     });
   } catch (error) {

@@ -1,25 +1,43 @@
 import "./HomePage.scss";
-import CreateItinerary from "../../components/CreateItinerary/CreateItinerary";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+import AboutUs from "../../components/AboutUs/AboutUs.jsx";
 
-export default function HomePage({ isOpen, setIsOpen }) {
+export default function HomePage() {
+  const aboutRef = useRef(null);
+
+  const handleScroll = () => {
+    aboutRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
     <div className="homepage">
-      <div className="homepage__background"></div>
-      {!isOpen && (
+      <div className="homepage__hero">
+        <div className="homepage__background"></div>
         <div className="homepage__content">
-          <h3 className="homepage__title">Time for your next adventure?</h3>
+          <h1 className="homepage__title">Time for your next adventure ?</h1>
           <Link to="/users/1/itineraries" className="homepage__button">
-            {" "}
-            My Journey{" "}
-          </Link>{" "}
-          <button
-
-          // onClick={() => setIsOpen(true)}
-          ></button>
+            My Journey
+          </Link>
         </div>
-      )}
-      {/* {isOpen && <CreateItinerary setIsOpen={setIsOpen} />} */}
+        <div className="homepage__scroll-container" onClick={handleScroll}>
+          <span>Scroll to discover</span>
+          <svg viewBox="0 0 24 24" className="homepage__scroll-icon">
+            <path
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M12 5v14m-7-7l7 7 7-7"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div id="about" className="homepage__about" ref={aboutRef}>
+        <AboutUs />
+      </div>
     </div>
   );
 }

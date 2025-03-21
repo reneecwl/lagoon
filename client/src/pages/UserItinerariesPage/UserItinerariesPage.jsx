@@ -28,6 +28,7 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
       try {
         const response = await axios.get(`${baseUrl}/users/${userId}/itineraries`);
         setUserItineraries(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error("There is an error loading the user's itineraries", error);
       }
@@ -40,8 +41,6 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
   }
 
   const trips = userItineraries.itineraries;
-
-  // console.log("Trips data:", trips);
 
   const formattedDate = (dateString) => {
     return format(new Date(dateString), "MMM dd");
@@ -135,7 +134,7 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
                     </span>
                     <span className="trip__days-count"> {` (${DaysCount(trip.start_date, trip.end_date)} days)`}</span>
                   </div>
-                  <p className="trip__attractions">5 Attractions planned</p>
+                  <p className="trip__attractions">{trip.attraction_count} Attractions planned</p>
                   <p className="trip__type">City Trip</p>
                 </div>
                 <div className="trip__button-container">
