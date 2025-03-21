@@ -135,6 +135,8 @@
   // Skeleton loading styles
   &--skeleton {
     pointer-events: none;
+    background-color: #f0f0f0; // Slightly darker background for better contrast
+    border: 1px solid #e0e0e0;
 
     &:hover {
       transform: none;
@@ -148,7 +150,7 @@
     margin: 0 auto;
     background-color: #e0e0e0;
     border-radius: $border-radius-s;
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.3s infinite;
   }
 
   &__image--skeleton {
@@ -157,7 +159,7 @@
     margin: $spacing-s auto;
     background-color: #e0e0e0;
     border-radius: 50%;
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.3s infinite;
   }
 
   &__temp--skeleton {
@@ -166,7 +168,7 @@
     margin: 0 auto $spacing-xs auto;
     background-color: #e0e0e0;
     border-radius: $border-radius-s;
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.3s infinite;
   }
 
   &__rain--skeleton {
@@ -175,6 +177,6 @@
     margin: 0 auto;
     background-color: #e0e0e0;
     border-radius: 12px;
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.3s infinite;
   }
 }

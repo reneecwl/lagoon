@@ -62,7 +62,7 @@ export default function ItineraryPlanningPage({}) {
 
         setTimeout(() => {
           setLoading(false);
-        }, 1500);
+        }, 1000);
       } catch (error) {
         console.error("There is an error loading the weather", error);
         setLoading(false);
@@ -112,17 +112,16 @@ export default function ItineraryPlanningPage({}) {
             formattedEndDate={dates.formattedEndDate}
             daysCount={dates.daysCount}
             fetchItinerary={fetchItinerary}
+            loading={loading}
             filteredWeatherData={filteredWeatherData}
             backgroundImage={backgroundImage}
           />
           <div className="planning__content">
             <Planner
-              itinerary={itinerary}
               dailyAttractions={dailyAttractions}
               itineraryId={itineraryId}
               fetchItinerary={fetchItinerary}
               baseUrl={baseUrl}
-              loading={loading}
               filteredWeatherData={filteredWeatherData}
               backgroundImage={backgroundImage}
             />

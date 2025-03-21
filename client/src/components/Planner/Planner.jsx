@@ -6,8 +6,7 @@ import { useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
-export default function ItineraryPlanner({
-  itinerary,
+export default function Planner({
   dailyAttractions,
   itineraryId,
   fetchItinerary,
@@ -20,9 +19,6 @@ export default function ItineraryPlanner({
   const [editingAttractionId, setEditingAttractionId] = useState(null);
   const [notes, setNotes] = useState("");
   const baseUrlImg = import.meta.env.VITE_API_URL_IMG;
-  // const backgroundImage = useDestinationImage(itinerary?.location);
-
-  // console.log(filteredWeatherData);
 
   const handleDeleteClick = (attraction) => {
     setDeleteModal(true);
@@ -35,7 +31,6 @@ export default function ItineraryPlanner({
     setNotes(currentNotes);
   };
 
-  //for user_notes
   const handleChange = (event) => {
     setNotes(event.target.value);
   };

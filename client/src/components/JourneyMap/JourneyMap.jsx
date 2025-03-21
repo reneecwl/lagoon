@@ -110,7 +110,7 @@ export default function JourneyMap({ trips, tripStatus }) {
         <div className="map__header">
           <div>
             <h3 className="map__title">Your Travel Map</h3>
-            <p className="map__subtitle">Every destination you've visited</p>
+            {/* <p className="map__subtitle">Every destination you've visited</p> */}
           </div>
           <div className="map__legend">
             <span className="map__legend-item map__legend-item--upcoming">Upcoming</span>

@@ -7,6 +7,7 @@ export default function Weather({ filteredWeatherData, loading }) {
   };
 
   if (loading) {
+    console.log("Weather component is in loading state");
     return (
       <div className="weather">
         <h3 className="weather__title">Weather</h3>

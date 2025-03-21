@@ -12,7 +12,6 @@ export default function PublicHoliday({ itinerary }) {
       try {
         const response = await axios.get(`${baseUrlPH}/GB`);
         setHolidays(response.data);
-        // console.log(response.data);
       } catch (error) {
         console.error("There is an error loading public holiday", error);
       }

@@ -1,6 +1,7 @@
 @use "./../../styles/partials/typography";
 @use "./../../styles/partials/variables" as *;
 @use "./../../styles/partials/mixins" as *;
+@use "sass:color";
 
 .user {
   background-color: $white;
@@ -13,7 +14,6 @@
     padding: $spacing-l;
   }
 
-  // New container for all three sections
   &__header-container {
     margin-bottom: $spacing-l;
     border-radius: $border-radius-m;
@@ -27,20 +27,18 @@
     flex-direction: column;
   }
 
-  // Updated title banner
   &__title-banner {
     position: relative;
     background-image: url("../../assets/images/destinations/norway2.jpg");
     background-size: cover;
     background-position: center;
     color: $white;
-    padding: $spacing-xl 0 $spacing-l;
-    text-align: center;
+    padding: $spacing-xl $spacing-l $spacing-l;
     min-height: 15rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     z-index: 3;
 
     &::before {
@@ -50,31 +48,75 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(to bottom, rgba(17, 43, 60, 0.2), rgba(17, 43, 60, 0.7));
+      background: linear-gradient(to right, rgba(17, 43, 60, 0.8), rgba(17, 43, 60, 0.4));
       z-index: 1;
     }
   }
 
-  &__title {
+  &__header-content {
     position: relative;
     z-index: 2;
-    font-size: 2.6rem;
-    font-weight: bold;
-    margin-bottom: $spacing-s;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__title-container {
+    max-width: 60%;
+  }
+
+  &__title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: $spacing-xs;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
-  &__subtitle {
-    position: relative;
-    z-index: 2;
-    font-size: 1.2rem;
+  &__welcome {
+    font-size: 1.4rem;
     font-weight: 500;
-    opacity: 0.9;
-    max-width: 80%;
+    margin-top: $spacing-s;
     font-family: $font-secondary;
+    color: rgba(255, 255, 255, 0.9);
   }
 
-  // Map container styles
+  // &__action-area {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: flex-end;
+  //   gap: $spacing-s;
+  // }
+
+  // &__add-button {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 0.5rem;
+  //   background-color: $accent-colour;
+  //   color: $white;
+  //   border: none;
+  //   padding: 0.8rem 1.2rem;
+  //   border-radius: $border-radius-m;
+  //   cursor: pointer;
+  //   transition: all 0.2s ease;
+  //   font-family: $font-secondary;
+  //   font-weight: 600;
+  //   font-size: 0.95rem;
+  //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  //   &:hover {
+  //     background-color: scale-color($accent-colour, $lightness: -10%);
+  //     transform: translateY(-2px);
+  //     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  //   }
+
+  //   svg {
+  //     width: 1.2rem;
+  //     height: 1.2rem;
+  //     fill: currentColor;
+  //   }
+  // }
+
   &__map-container {
     padding: 0;
     margin-top: 0;
@@ -83,7 +125,6 @@
   }
 }
 
-// Trip styles - unchanged from your original
 .trips {
   display: flex;
   flex-direction: column;
@@ -95,13 +136,15 @@
     align-items: baseline;
     margin-top: $spacing-l;
   }
+
   &__title {
     font-size: 1.8rem;
     font-weight: bold;
     color: $text-colour;
   }
+
   &__add-container {
-    display: flex;
+    display: flex; // You can set to "none" to hide if you're using the header button instead
     align-items: center;
     gap: 0.1rem;
     background-color: $accent-colour;
@@ -114,7 +157,7 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: darken($accent-colour, 10%);
+      background-color: scale-color($accent-colour, $lightness: -10%);
     }
   }
 
@@ -138,7 +181,6 @@
   }
 }
 
-// Trip card styles - unchanged from your original
 .trip {
   display: flex;
   background-color: $white;
@@ -280,7 +322,7 @@
     gap: 0.2rem;
 
     &:hover {
-      background-color: darken($accent-colour, 10%);
+      background-color: scale-color($accent-colour, $lightness: -10%);
     }
   }
 
@@ -293,7 +335,7 @@
     @extend .trip__edit;
     background-color: #767676;
     &:hover {
-      background-color: darken(#767676, 10%);
+      background-color: scale-color(#767676, $lightness: -10%);
     }
   }
 }

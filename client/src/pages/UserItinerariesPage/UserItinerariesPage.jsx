@@ -20,7 +20,6 @@ import UserStatistics from "../../components/UserStatistics/UserStatistics.jsx";
 export default function UserItinerariesPage({ isOpen, setIsOpen }) {
   const [userItineraries, setUserItineraries] = useState(null);
   const { userId } = useParams();
-
   const baseUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -41,6 +40,7 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
   }
 
   const trips = userItineraries.itineraries;
+  const userName = userItineraries.username || "Traveler";
 
   const formattedDate = (dateString) => {
     return format(new Date(dateString), "MMM dd");
@@ -58,7 +58,6 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
     if (now < startDate) {
       return "Upcoming";
     } else if (now > endDate) {
-      // setCompleted(true);
       return "Completed";
     } else {
       return "Happening";
@@ -89,8 +88,25 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
         <div className="user__header-container">
           <div className="user__header">
             <div className="user__title-banner">
-              <h1 className="user__title">My Journeys</h1>
-              <p className="user__subtitle">Track and manage all your travel adventures in one place</p>
+              <div className="user__header-content">
+                <div className="user__title-container">
+                  <h1 className="user__title">My Journeys</h1>
+                  <p className="user__welcome">Welcome back, {userName}!</p>
+                </div>
+                {/* <div className="user__action-area">
+                  <button
+                    className="user__add-button"
+                    onClick={() => {
+                      setIsOpen(true);
+                    }}
+                  >
+                    <svg viewBox="0 -960 960 960">
+                      <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                    </svg>
+                    <span>Plan a New Trip</span>
+                  </button>
+                </div> */}
+              </div>
             </div>
             <UserStatistics trips={trips} tripStatus={tripStatus} />{" "}
           </div>
