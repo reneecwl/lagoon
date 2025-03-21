@@ -1,16 +1,19 @@
 import "./Header.scss";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import logo from "../../assets/logo/lagoon-white-logo.png";
 
 export default function Header() {
-  const navigate = useNavigate();
   const location = useLocation();
 
   const isItineraryPage = location.pathname.includes("/itineraries");
 
   return (
-    <header className={isItineraryPage ? "header header--itinerary" : "header"}>
-      <Link className="nav-link" to="/">
-        <h1 className={isItineraryPage ? "header__title header__title--itinerary" : "header__title"}>Lagoon</h1>
+    <header id="hearder" className={isItineraryPage ? "header header--itinerary" : "header"}>
+      <Link to="/">
+        <div className="header__logo-container">
+          <img src={logo} alt="logo" className="header__logo" />
+          <h1 className={isItineraryPage ? "header__title header__title--itinerary" : "header__title"}>Lagoon</h1>
+        </div>{" "}
       </Link>
 
       <div className="header__right">
@@ -18,18 +21,18 @@ export default function Header() {
           <ul className="navbar__list">
             {isItineraryPage && (
               <li className={isItineraryPage ? "navbar__subtitle navbar__itinerary" : "navbar__subtitle"}>
-                <Link className="nav-link" to="/users/1/itineraries">
+                <Link className="navbar__nav-link" to="/users/1/itineraries">
                   My Journey
                 </Link>
               </li>
             )}
             <li className={isItineraryPage ? "navbar__subtitle navbar__subtitle--itinerary" : "navbar__subtitle"}>
-              <Link className="nav-link" to="/about">
+              <Link className="navbar__nav-link" to="/about">
                 Discover
               </Link>
             </li>
             <li className={isItineraryPage ? "navbar__subtitle navbar__subtitle--itinerary" : "navbar__subtitle"}>
-              <Link to="/#about" className="nav-link">
+              <Link to="/#about" className="navbar__nav-link">
                 About
               </Link>
             </li>

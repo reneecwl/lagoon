@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import formImage from "../../assets/images/seville2.jpg";
 
 export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinerary, itineraryId }) {
   const [startDate, setStartDate] = useState(null);
@@ -64,6 +65,9 @@ export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinera
 
   return (
     <div className="form__container">
+      <div className="form__image-container">
+        <img src={formImage} alt="" className="form__image" />
+      </div>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form__tab">
           <label htmlFor="location" className="form__label">

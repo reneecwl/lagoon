@@ -71,8 +71,9 @@
   &__button {
     @include button-primary;
     font-size: $font-size-l;
-    padding: $spacing-xs $spacing-xl;
+    padding: 0.9rem 1.9rem;
     transition: all $transition-medium;
+
     position: relative;
     z-index: 4;
     animation: fade-in-up 1.5s ease-out forwards;

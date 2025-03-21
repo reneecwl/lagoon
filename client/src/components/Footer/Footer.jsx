@@ -1,19 +1,29 @@
 import "./Footer.scss";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo/lagoon-white-logo.png";
 export default function Footer() {
   return (
     <>
       {" "}
       <footer className="footer">
         <div className="footer__main">
-          <Link to="/">
-            <h1 className="footer__title">Lagoon</h1>{" "}
-          </Link>
+          {" "}
+          <div className="footer__logo-container" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+            <img src={logo} alt="logo" className="footer__logo" />
+            <h1 className="footer__title">Lagoon</h1>
+          </div>
           <div className="footer__content">
             <h5 className="footer__subtitle">About Us</h5>
             <h5 className="footer__subtitle">Explore</h5>
-            <h5 className="footer__subtitle">Collaborate</h5>
-          </div>{" "}
+            <a
+              href="mailto:lagoon.planner@gmail.com"
+              target="_blank"
+              className="footer__subtitle"
+              rel="noopener noreferrer"
+            >
+              Contact Us
+            </a>
+          </div>
         </div>
 
         <div className="footer__terms">

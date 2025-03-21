@@ -18,7 +18,7 @@ export default function HomePage() {
   }, [location]);
 
   return (
-    <div className="homepage">
+    <div id="homepage" className="homepage">
       <div className="homepage__hero">
         <div className="homepage__background"></div>
         <div className="homepage__content">

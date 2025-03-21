@@ -14,7 +14,10 @@ ul {
   list-style: none;
 }
 
-a {
+.navbar__nav-link,
+.navbar__nav-link:visited,
+.navbar__nav-link:active {
+  color: white;
   text-decoration: none;
 }
 
