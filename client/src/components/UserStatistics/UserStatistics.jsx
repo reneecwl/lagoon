@@ -2,8 +2,6 @@ import "./UserStatistics.scss";
 import DaysCount from "../../utility/DaysCount";
 
 export default function UserStatistics({ trips, tripStatus }) {
-  // const upcomingTrip = trips.find((trip) => tripStatus(trip.start_date, trip.end_date) === "Upcoming");
-
   const getClosestUpcomingTrip = () => {
     const now = new Date();
 
@@ -16,11 +14,9 @@ export default function UserStatistics({ trips, tripStatus }) {
     return upcomingTrips.length > 0 ? upcomingTrips[0] : null;
   };
 
-  // console.log(getClosestUpcomingTrip());
-
   const closestUpcomingTrip = getClosestUpcomingTrip();
-
   const countDown = closestUpcomingTrip ? DaysCount(new Date(), new Date(closestUpcomingTrip.start_date)) : null;
+
   const upcomingNum = trips.filter((trip) => tripStatus(trip.start_date, trip.end_date) === "Upcoming").length;
   const completedNum = trips.filter((trip) => tripStatus(trip.start_date, trip.end_date) === "Completed").length;
 

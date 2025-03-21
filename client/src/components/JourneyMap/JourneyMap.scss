@@ -3,20 +3,84 @@
 @use "./../../styles/partials/mixins" as *;
 
 .map {
-  padding: 1rem;
-  text-align: start;
+  padding: 0;
+
+  &__header {
+    padding: $spacing-m $spacing-l;
+    border-bottom: 1px solid rgba($accent-colour, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $text-colour;
+    font-family: $font-secondary;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 0.9rem;
+    color: #767676;
+    font-family: $font-secondary;
+    margin: $spacing-xs 0 0;
+  }
+
+  &__legend {
+    display: flex;
+    gap: $spacing-s;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+      font-size: 0.8rem;
+      color: #767676;
+      font-family: $font-secondary;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid white;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      &--completed::before {
+        background-color: #e63946; // Red for completed trips
+      }
+
+      &--upcoming::before {
+        background-color: #ffb347; // Yellow/coral for upcoming trips
+      }
+    }
   }
 
   &__journey {
     width: 100%;
-    height: 300px; // adjust this for your preference
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 350px;
+    border: none;
+    box-shadow: none;
     margin: 0 auto;
+    border-radius: 0 0 $border-radius-m $border-radius-m;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none; // So it doesn't interfere with map interactions
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+      border-radius: 0 0 $border-radius-m $border-radius-m;
+      z-index: 1; // Make sure it's above the map
+    }
   }
 }

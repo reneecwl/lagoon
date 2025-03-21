@@ -43,7 +43,7 @@ export default function Weather({ filteredWeatherData, loading }) {
 
   return (
     <div className="weather">
-      <h3 className="weather__title">Weather</h3>
+      {/* <h3 className="weather__title">Weather</h3> */}
       <div className="weather__container">
         {extractedData.map((day, index) => (
           <div key={index} className="card">

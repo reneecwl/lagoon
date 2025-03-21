@@ -86,11 +86,18 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
   return (
     <div className="user">
       <main className="user__main">
-        <div className="user__header">
-          <div className="user__title"> My Journeys</div>
-          <UserStatistics trips={trips} tripStatus={tripStatus} />
+        <div className="user__header-container">
+          <div className="user__header">
+            <div className="user__title-banner">
+              <h1 className="user__title">My Journeys</h1>
+              <p className="user__subtitle">Track and manage all your travel adventures in one place</p>
+            </div>
+            <UserStatistics trips={trips} tripStatus={tripStatus} />{" "}
+          </div>
+          <div className="user__map-container">
+            <JourneyMap trips={trips} tripStatus={tripStatus} />{" "}
+          </div>
         </div>
-        <JourneyMap trips={trips} />
         <div className="trips">
           <div className="trips__header">
             <h3 className="trips__title">All Trips</h3>

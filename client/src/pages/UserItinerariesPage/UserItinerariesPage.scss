@@ -5,7 +5,6 @@
 .user {
   background-color: $white;
   overflow: hidden;
-  // margin-bottom: $spacing-l;
   padding-top: 6rem;
 
   &__main {
@@ -14,25 +13,32 @@
     padding: $spacing-l;
   }
 
-  &__header {
+  // New container for all three sections
+  &__header-container {
     margin-bottom: $spacing-l;
     border-radius: $border-radius-m;
     overflow: hidden;
-    box-shadow: $shadow-sm;
+    box-shadow: $shadow-md;
+    background-color: $white;
   }
 
-  &__title {
+  &__header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Updated title banner
+  &__title-banner {
     position: relative;
     background-image: url("../../assets/images/destinations/norway2.jpg");
     background-size: cover;
     background-position: center;
     color: $white;
-    padding: $spacing-xl $spacing-l $spacing-l;
-    font-size: 2.2rem;
-    font-weight: bold;
+    padding: $spacing-xl 0 $spacing-l;
     text-align: center;
     min-height: 15rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 3;
@@ -44,26 +50,40 @@
       left: 0;
       right: 0;
       bottom: 0;
-      // background: linear-gradient(rgba($primary-colour, 0.7), rgba($accent-colour, 0.7));
-      background: linear-gradient(to bottom, rgba(17, 43, 60, 0), rgba(17, 43, 60, 0.5));
+      background: linear-gradient(to bottom, rgba(17, 43, 60, 0.2), rgba(17, 43, 60, 0.7));
       z-index: 1;
     }
-    // span {
-    //   position: relative;
-    //   z-index: 2;
-    // }
   }
 
-  &__statistics {
-    background-color: $white;
-    padding: $spacing-m;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #e1e1e1; /* Replacing $grey-light */
+  &__title {
+    position: relative;
+    z-index: 2;
+    font-size: 2.6rem;
+    font-weight: bold;
+    margin-bottom: $spacing-s;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  &__subtitle {
+    position: relative;
+    z-index: 2;
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 0.9;
+    max-width: 80%;
+    font-family: $font-secondary;
+  }
+
+  // Map container styles
+  &__map-container {
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0 0 $border-radius-m $border-radius-m;
+    overflow: hidden;
   }
 }
 
+// Trip styles - unchanged from your original
 .trips {
   display: flex;
   flex-direction: column;
@@ -78,7 +98,6 @@
   &__title {
     font-size: 1.8rem;
     font-weight: bold;
-    // margin-bottom: $spacing-s;
     color: $text-colour;
   }
   &__add-container {
@@ -119,6 +138,7 @@
   }
 }
 
+// Trip card styles - unchanged from your original
 .trip {
   display: flex;
   background-color: $white;
@@ -211,7 +231,7 @@
 
   &__days-count {
     font-family: $font-secondary;
-    color: #767676; /* Replacing $text-colour-light */
+    color: #767676;
     font-size: 0.8rem;
   }
 
