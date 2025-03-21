@@ -1,14 +1,21 @@
 import "./HomePage.scss";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import AboutUs from "../../components/AboutUs/AboutUs.jsx";
 
 export default function HomePage() {
   const aboutRef = useRef(null);
+  const location = useLocation();
 
   const handleScroll = () => {
     aboutRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
+
+  useEffect(() => {
+    if (location.hash === "#about") {
+      aboutRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [location]);
 
   return (
     <div className="homepage">

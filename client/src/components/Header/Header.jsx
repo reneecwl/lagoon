@@ -29,7 +29,7 @@ export default function Header() {
               </Link>
             </li>
             <li className={isItineraryPage ? "navbar__subtitle navbar__subtitle--itinerary" : "navbar__subtitle"}>
-              <Link className="nav-link" to="#about">
+              <Link to="/#about" className="nav-link">
                 About
               </Link>
             </li>
