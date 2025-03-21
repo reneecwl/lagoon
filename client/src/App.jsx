@@ -8,16 +8,17 @@ import HomePage from "./pages/HomePage/HomePage";
 import ItinerariesPage from "./pages/ItinerariesPage/ItinerariesPage";
 import ItineraryPlanningPage from "./pages/ItineraryPlanningPage/ItineraryPlanningPage";
 import UserItinerariesPage from "./pages/UserItinerariesPage/UserItinerariesPage";
+import AboutUsPage from "./components/AboutUs/AboutUs";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <BrowserRouter>
-      <Header setIsOpen={setIsOpen} />
+      <Header />
       <main className="main">
         <Routes>
-          <Route path="/" element={<HomePage isOpen={isOpen} setIsOpen={setIsOpen} />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/itineraries" element={<ItinerariesPage />} />
           <Route path="/itineraries/:itineraryId" element={<ItineraryPlanningPage />} />
           <Route

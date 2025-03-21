@@ -16,18 +16,20 @@ export default function Header() {
       <div className="header__right">
         <nav className="navbar">
           <ul className="navbar__list">
-            <li className={isItineraryPage ? "navbar__subtitle navbar__itinerary" : "navbar__subtitle"}>
-              <Link className="nav-link" to="/users/1/itineraries">
-                My Journey
-              </Link>
-            </li>
+            {isItineraryPage && (
+              <li className={isItineraryPage ? "navbar__subtitle navbar__itinerary" : "navbar__subtitle"}>
+                <Link className="nav-link" to="/users/1/itineraries">
+                  My Journey
+                </Link>
+              </li>
+            )}
             <li className={isItineraryPage ? "navbar__subtitle navbar__subtitle--itinerary" : "navbar__subtitle"}>
               <Link className="nav-link" to="/about">
                 Discover
               </Link>
             </li>
             <li className={isItineraryPage ? "navbar__subtitle navbar__subtitle--itinerary" : "navbar__subtitle"}>
-              <Link className="nav-link" to="/contact">
+              <Link className="nav-link" to="#about">
                 About
               </Link>
             </li>
