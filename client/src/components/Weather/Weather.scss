@@ -18,14 +18,13 @@
   padding: $spacing-l $spacing-l;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 
-  &__title {
-    // font-family: $font-secondary;
-    font-size: $font-size-l;
-    font-weight: 700;
-    color: $secondary-colour;
-    margin: 0 0 $spacing-s;
-    letter-spacing: 0.0187rem;
-  }
+  // &__title {
+  //   font-size: $font-size-l;
+  //   font-weight: 700;
+  //   color: $secondary-colour;
+  //   margin: 0 0 $spacing-s;
+  //   letter-spacing: 0.0187rem;
+  // }
 
   &__container {
     display: flex;
@@ -46,44 +45,6 @@
       background: $grey;
       border-radius: 10px;
     }
-  }
-
-  &__error {
-    background-color: rgba($error-colour, 0.1);
-    border-radius: $border-radius-m;
-    padding: $spacing-m;
-    text-align: center;
-    font-family: $font-secondary;
-    color: $error-colour;
-
-    p {
-      margin-bottom: $spacing-s;
-    }
-  }
-
-  &__retry-button {
-    background-color: $error-colour;
-    color: white;
-    border: none;
-    padding: $spacing-xs $spacing-m;
-    border-radius: $border-radius-s;
-    font-family: $font-secondary;
-    cursor: pointer;
-    transition: $transition-fast;
-
-    &:hover {
-      background-color: darken($error-colour, 10%);
-    }
-  }
-
-  &__empty {
-    background-color: rgba($accent-colour, 0.05);
-    border-radius: $border-radius-m;
-    padding: $spacing-m;
-    text-align: center;
-    font-family: $font-secondary;
-    font-style: italic;
-    color: rgba($text-colour, 0.7);
   }
 }
 
@@ -132,10 +93,9 @@
     display: inline-block;
   }
 
-  // Skeleton loading styles
   &--skeleton {
     pointer-events: none;
-    background-color: #f0f0f0; // Slightly darker background for better contrast
+    background-color: #f0f0f0;
     border: 1px solid #e0e0e0;
 
     &:hover {

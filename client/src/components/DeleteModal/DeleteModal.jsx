@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function DeleteModal({ attractionData, setDeleteModal, itineraryId, fetchItinerary }) {
   const baseUrl = import.meta.env.VITE_API_URL;
-  console.log(attractionData);
+  // console.log(attractionData);
 
   const handleDelete = async (attractionData) => {
     try {
@@ -34,14 +34,14 @@ export default function DeleteModal({ attractionData, setDeleteModal, itineraryI
         <div className="delete__button-container">
           <button
             type="button"
-            className="delete__buttons delete__button--cancel"
+            className="delete__buttons delete__buttons--cancel"
             onClick={() => setDeleteModal(false)}
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="delete__buttons delete__button--delete"
+            className="delete__buttons delete__buttons--delete"
             onClick={() => handleDelete(attractionData)}
           >
             Yes, remove it

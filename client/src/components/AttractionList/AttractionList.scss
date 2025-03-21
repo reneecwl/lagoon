@@ -31,19 +31,19 @@
     padding: $spacing-m;
     max-height: 93rem;
 
-    // Custom scrollbar - shorter
+    //Custom scrollbar - shorter
     &::-webkit-scrollbar {
-      width: 8px;
+      width: 4px;
     }
 
     &::-webkit-scrollbar-track {
       background: #f1f1f1;
-      border-radius: 8px;
+      border-radius: 10px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgba($accent-colour, 0.7);
-      border-radius: 8px;
+      background: rgba($accent-colour, 0.5);
+      border-radius: 10px;
     }
 
     &::-webkit-scrollbar-thumb:hover {
