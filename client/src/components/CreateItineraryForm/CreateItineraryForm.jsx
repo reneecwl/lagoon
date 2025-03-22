@@ -71,7 +71,7 @@ export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinera
       <form className="form" onSubmit={handleSubmit}>
         <div className="form__tab">
           <label htmlFor="location" className="form__label">
-            Where to?
+            Where do you want to go?
           </label>
           <input
             type="text"

@@ -301,24 +301,18 @@
     justify-content: center;
   }
   &__edit {
+    @include primary-button;
+    font-family: $font-primary;
+    background-color: $accent-colour;
     align-self: center;
     margin-right: $spacing-m;
-    background-color: $accent-colour;
-    color: $white;
-    border: none;
     padding: $spacing-xs $spacing-m;
     border-radius: $border-radius-m;
-    cursor: pointer;
     text-transform: uppercase;
     font-size: 0.9rem;
-    font-weight: 500;
     display: flex;
     align-items: center;
     gap: 0.2rem;
-
-    &:hover {
-      background-color: color.scale($accent-colour, $lightness: -10%);
-    }
   }
 
   &__edit-icon {
@@ -328,9 +322,10 @@
 
   &__view {
     @extend .trip__edit;
+    padding: $spacing-xs $spacing-l;
     background-color: #767676;
     &:hover {
-      background-color: color.scale(#767676, $lightness: -10%);
+      background-color: color.scale(#767676, $lightness: -20%);
     }
   }
 }

@@ -1,6 +1,7 @@
 @use "./../../styles/partials/typography";
 @use "./../../styles/partials/variables" as *;
 @use "./../../styles/partials/mixins" as *;
+@use "sass:color";
 
 .discover {
   padding: $spacing-xl 0;
@@ -124,21 +125,7 @@
   }
 
   &__button {
-    background-color: rgba($accent-colour, 0.8);
-    color: $white;
-    font-family: $font-secondary;
-    font-size: $font-size-m;
-    font-weight: 500;
-    padding: $spacing-xs $spacing-s;
-    border: none;
-    border-radius: $border-radius-m;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: center;
+    @include primary-button;
     width: 60%;
-
-    &:hover {
-      background-color: darken($accent-colour, 10%);
-    }
   }
 }

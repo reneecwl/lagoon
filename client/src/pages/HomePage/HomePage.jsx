@@ -32,7 +32,7 @@ export default function HomePage({ handleNavigation }) {
           </Link>
         </div>
         <div className="homepage__scroll-container" onClick={() => handleNavigation("discover")}>
-          <span>Scroll to discover</span>
+          <span className="homepage__scroll">Discover More</span>
           <svg viewBox="0 0 24 24" className="homepage__scroll-icon">
             <path
               fill="none"

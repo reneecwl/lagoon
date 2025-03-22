@@ -1,5 +1,6 @@
 @use "./../../styles/partials/typography";
 @use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
 @use "sass:color";
 
 .attraction {
@@ -139,28 +140,16 @@
     font-size: $font-size-s;
     font-weight: 500;
     text-transform: capitalize;
-    // transition: all 0.2s ease;
-
-    // &:hover {
-    //   background-color: rgba($accent-colour, 0.1);
-    //   transform: translateY(-2px);
-    // }
   }
 
   &__add {
+    @include primary-button;
     margin-top: auto;
     padding: $spacing-s;
     background-color: $accent-colour;
-    color: white;
-    border: none;
+    font-size: $font-size-s;
+    width: 100%;
     border-radius: $border-radius-s;
-    font-family: $font-secondary;
-    font-weight: 500;
-    cursor: pointer;
     transition: all 0.3s;
-
-    &:hover {
-      background-color: color.adjust($accent-colour, $lightness: -10%);
-    }
   }
 }

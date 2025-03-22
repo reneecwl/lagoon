@@ -38,7 +38,10 @@ export default function JourneyMap({ trips, tripStatus }) {
       version: "weekly",
     });
 
-    loader.load().then(() => {
+    loader.load().then(async () => {
+      // Import AdvancedMarkerElement from the marker module
+      const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
       const map = new google.maps.Map(mapRef.current, {
         center: { lat: 30, lng: 0 },
         zoom: 2,
@@ -51,34 +54,36 @@ export default function JourneyMap({ trips, tripStatus }) {
       const bounds = new google.maps.LatLngBounds();
 
       markers.forEach((location) => {
+        // Create a pin SVG element for styling
         const pinSVGFilled =
           "M 12,2 C 8.1340068,2 5,5.1340068 5,9 c 0,5.25 7,13 7,13 0,0 7,-7.75 7,-13 0,-3.8659932 -3.134007,-7 -7,-7 z";
 
         const pinColor = location.status === "Completed" ? "#E63946" : "#FFB347";
 
-        const markerImage = {
+        // Create an SVG element for the marker
+        const svgMarker = {
           path: pinSVGFilled,
-          anchor: new google.maps.Point(12, 22),
-          fillOpacity: 1,
           fillColor: pinColor,
+          fillOpacity: 1,
           strokeWeight: 2,
           strokeColor: "white",
           scale: 1.5,
-          labelOrigin: new google.maps.Point(12, 9),
+          anchor: new google.maps.Point(12, 22),
         };
 
+        // Create the marker
         const marker = new google.maps.Marker({
           position: { lat: location.lat, lng: location.lng },
           map: map,
           title: location.name,
-          icon: markerImage,
+          icon: svgMarker,
           animation: google.maps.Animation.DROP,
         });
 
-        // Extend bounds to include this marker
-        // bounds.extend(marker.getPosition());
+        // Add the location to bounds
+        bounds.extend(marker.getPosition());
 
-        // Enhanced info window
+        // Create info window
         const infoWindow = new google.maps.InfoWindow({
           content: `
             <div style="padding: 8px; text-align: center; min-width: 120px;">
@@ -90,20 +95,25 @@ export default function JourneyMap({ trips, tripStatus }) {
           `,
         });
 
+        // Add click event listener
         marker.addListener("click", () => {
           infoWindow.open(map, marker);
         });
       });
 
+      // Adjust the bounds to include all markers
+      map.fitBounds(bounds);
+
       // Set minimum zoom to prevent excessive zoom on single markers
       const listener = google.maps.event.addListener(map, "idle", () => {
-        // if (map.getZoom() > 10) {
-        //   map.setZoom(10);
-        // }
+        if (map.getZoom() > 10) {
+          map.setZoom(10);
+        }
         google.maps.event.removeListener(listener);
       });
     });
   }, [markers]);
+
   return (
     <div className="user__map-container">
       <div className="map">
