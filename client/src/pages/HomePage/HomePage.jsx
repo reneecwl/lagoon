@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import AboutUs from "../../components/AboutUs/AboutUs.jsx";
 import Discover from "../../components/Discover/Discover.jsx";
 
-export default function HomePage() {
+export default function HomePage({ handleNavigation }) {
   const aboutRef = useRef(null);
   const discoverRef = useRef(null);
   const location = useLocation();
@@ -16,14 +16,11 @@ export default function HomePage() {
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "center" });
       }
-      // Clear the state after scrolling to prevent repeated scrolls
+
       window.history.replaceState({}, document.title);
     }
   }, [location]);
 
-  const handleScroll = () => {
-    discoverRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
   return (
     <div id="homepage" className="homepage">
       <div className="homepage__hero">
@@ -34,7 +31,7 @@ export default function HomePage() {
             My Journey
           </Link>
         </div>
-        <div className="homepage__scroll-container" onClick={handleScroll}>
+        <div className="homepage__scroll-container" onClick={() => handleNavigation("discover")}>
           <span>Scroll to discover</span>
           <svg viewBox="0 0 24 24" className="homepage__scroll-icon">
             <path
