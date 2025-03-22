@@ -1,0 +1,146 @@
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
+.discover {
+  padding: $spacing-xl 0;
+  background-color: $white; /* Changed to white to differentiate from AboutUs */
+  position: relative;
+  margin-top: 5rem; /* Added margin to prevent overlap with scaling hero image */
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-l;
+  }
+
+  /* Add decorative element inspired by Belmond */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: $accent-colour;
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: $font-size-xxl;
+    color: $text-colour;
+    margin-bottom: $spacing-s;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-family: $font-secondary;
+    font-size: $font-size-l;
+    color: $text-colour;
+    opacity: 0.8; /* Use opacity instead of a lighter color */
+    margin-bottom: $spacing-xl;
+    text-align: center;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-l;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+  }
+
+  &__card {
+    background-color: $white;
+    border-radius: $border-radius-m;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  &__image-container {
+    height: 280px; /* Increased height for more prominent images */
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__content {
+    padding: $spacing-l;
+  }
+
+  &__destination {
+    font-family: $font-primary;
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-s;
+    color: $text-colour;
+  }
+
+  &__city {
+    font-weight: 700;
+  }
+
+  &__country {
+    font-weight: 400;
+    margin-left: $spacing-xs;
+    color: $grey;
+  }
+
+  &__description {
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    color: $text-colour;
+    line-height: 1.6;
+    margin-bottom: $spacing-l;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+    margin-top: $spacing-l;
+    padding-right: $spacing-m; /* Added to shift buttons to match design */
+  }
+
+  &__button {
+    background-color: $accent-colour;
+    color: $white;
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    font-weight: 500;
+    padding: $spacing-s $spacing-m;
+    border: none;
+    border-radius: $border-radius-s;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 140px;
+
+    &:hover {
+      background-color: darken($accent-colour, 10%);
+    }
+  }
+}
+
+/* Simple fix for calendar display */
+.react-datepicker-popper {
+  z-index: 10;
+}

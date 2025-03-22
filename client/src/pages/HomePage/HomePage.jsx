@@ -2,6 +2,7 @@ import "./HomePage.scss";
 import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AboutUs from "../../components/AboutUs/AboutUs.jsx";
+import Discover from "../../components/Discover/Discover.jsx";
 
 export default function HomePage() {
   const aboutRef = useRef(null);
@@ -41,7 +42,7 @@ export default function HomePage() {
           </svg>
         </div>
       </div>
-
+      <Discover />
       <div id="about" className="homepage__about" ref={aboutRef}>
         <AboutUs />
       </div>
