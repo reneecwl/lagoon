@@ -1,10 +1,9 @@
 import "./Discover.scss";
-
 import aarhusImage from "../../assets/images/aarhus.jpg";
 import maltaImage from "../../assets/images/malta.jpg";
 import sintraImage from "../../assets/images/sintra.jpg";
 
-export default function Discover() {
+const DiscoverSection = () => {
   const destinations = [
     {
       id: 1,
@@ -12,7 +11,7 @@ export default function Discover() {
       country: "Denmark",
       image: aarhusImage,
       description:
-        "Experience the perfect blend of historic charm and modern Scandinavian design in Denmark's second-largest city. Explore world-class museums, stroll through cobblestone streets, and enjoy the vibrant café culture.",
+        "Experience the perfect blend of historic charm and modern Scandinavian design in Denmark's second-largest city.",
     },
     {
       id: 2,
@@ -20,7 +19,7 @@ export default function Discover() {
       country: "Malta",
       image: maltaImage,
       description:
-        "Discover this Mediterranean gem with crystal-clear waters, prehistoric temples, and stunning baroque architecture. Malta offers a rich history spanning 7,000 years alongside breathtaking coastal landscapes.",
+        "Discover crystal-clear waters, prehistoric temples, and stunning baroque architecture in this Mediterranean gem.",
     },
     {
       id: 3,
@@ -28,7 +27,7 @@ export default function Discover() {
       country: "Portugal",
       image: sintraImage,
       description:
-        "Wander through this fairytale town nestled in the pine-covered hills of Portugal. Sintra's colorful palaces, mystical gardens, and UNESCO World Heritage sites create an enchanting atmosphere unlike anywhere else.",
+        "Wander through this fairytale town with colorful palaces, mystical gardens, and UNESCO World Heritage sites.",
     },
   ];
 
@@ -62,4 +61,6 @@ export default function Discover() {
       </div>
     </section>
   );
-}
+};
+
+export default DiscoverSection;

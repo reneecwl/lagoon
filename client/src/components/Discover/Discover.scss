@@ -4,17 +4,16 @@
 
 .discover {
   padding: $spacing-xl 0;
-  background-color: $white; /* Changed to white to differentiate from AboutUs */
+  background-color: $white;
   position: relative;
-  margin-top: 5rem; /* Added margin to prevent overlap with scaling hero image */
+  margin-top: 5rem;
 
   &__container {
-    max-width: 1200px;
+    max-width: 75rem;
     margin: 0 auto;
     padding: 0 $spacing-l;
   }
 
-  /* Add decorative element inspired by Belmond */
   &::before {
     content: "";
     position: absolute;
@@ -38,7 +37,7 @@
     font-family: $font-secondary;
     font-size: $font-size-l;
     color: $text-colour;
-    opacity: 0.8; /* Use opacity instead of a lighter color */
+    opacity: 0.8;
     margin-bottom: $spacing-xl;
     text-align: center;
   }
@@ -60,6 +59,7 @@
     overflow: hidden;
     box-shadow: $shadow-md;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
 
     &:hover {
       transform: translateY(-5px);
@@ -68,7 +68,7 @@
   }
 
   &__image-container {
-    height: 280px; /* Increased height for more prominent images */
+    height: 350px; /* Increased height for more prominent images */
     overflow: hidden;
     position: relative;
   }
@@ -86,6 +86,9 @@
 
   &__content {
     padding: $spacing-l;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   &__destination {
@@ -102,7 +105,9 @@
   &__country {
     font-weight: 400;
     margin-left: $spacing-xs;
-    color: $grey;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: $accent-colour;
   }
 
   &__description {
@@ -111,36 +116,28 @@
     color: $text-colour;
     line-height: 1.6;
     margin-bottom: $spacing-l;
-  }
-
-  &__buttons {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: flex-end;
-    margin-top: $spacing-l;
-    padding-right: $spacing-m; /* Added to shift buttons to match design */
+    max-height: 4.8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
   }
 
   &__button {
-    background-color: $accent-colour;
+    background-color: rgba($accent-colour, 0.8);
     color: $white;
     font-family: $font-secondary;
     font-size: $font-size-m;
     font-weight: 500;
-    padding: $spacing-s $spacing-m;
+    padding: $spacing-xs $spacing-s;
     border: none;
-    border-radius: $border-radius-s;
+    border-radius: $border-radius-m;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    min-width: 140px;
+    align-self: center;
+    width: 60%;
 
     &:hover {
       background-color: darken($accent-colour, 10%);
     }
   }
-}
-
-/* Simple fix for calendar display */
-.react-datepicker-popper {
-  z-index: 10;
 }

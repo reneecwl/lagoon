@@ -1,15 +1,23 @@
 import "./AboutUs.scss";
 import petraImage from "../../assets/images/Petra.jpg";
+// Import additional images - you'll need to add these to your assets
+import copenhagenImage from "../../assets/images/copenhagen.jpg";
+import hongkongImage from "../../assets/images/hongkong.jpg";
 
 export default function AboutUs() {
   return (
     <section className="about-us">
       <div className="about-us__container">
+        {/* Decorative heading inspired by Belmond */}
+        <div className="about-us__heading-container">
+          <h2 className="about-us__title">
+            Our <span className="about-us__title--highlight">Story</span>
+          </h2>
+          <div className="about-us__title-decoration"></div>
+        </div>
+
         <div className="about-us__content">
           <div className="about-us__text">
-            <h2 className="about-us__title">
-              <span className="about-us__about">about</span> Lagoon
-            </h2>
             <p className="about-us__description">
               Born from a <span className="about-us__description--bold">passion for travel</span> and a love for
               planning, Lagoon was built on a simple belief- the most rewarding part of any journey is an itinerary that
@@ -40,8 +48,29 @@ export default function AboutUs() {
               </a>
             </div>
           </div>
-          <div className="about-us__image-container">
-            <img src={petraImage} alt="Travel experience" className="about-us__image" />
+
+          {/* Updated image gallery layout inspired by Belmond */}
+          <div className="about-us__images">
+            <div className="about-us__image-container about-us__image-container--main">
+              <img src={petraImage} alt="Travel experience" className="about-us__image" />
+              <div className="about-us__image-overlay">
+                <span className="about-us__image-text">Discover</span>
+              </div>
+            </div>
+            <div className="about-us__image-row">
+              <div className="about-us__image-container about-us__image-container--small">
+                <img src={hongkongImage} alt="Travel moment" className="about-us__image" />
+                <div className="about-us__image-overlay">
+                  <span className="about-us__image-text">Explore</span>
+                </div>
+              </div>
+              <div className="about-us__image-container about-us__image-container--small">
+                <img src={copenhagenImage} alt="Travel destination" className="about-us__image" />
+                <div className="about-us__image-overlay">
+                  <span className="about-us__image-text">Experience</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
