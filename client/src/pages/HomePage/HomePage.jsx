@@ -6,18 +6,24 @@ import Discover from "../../components/Discover/Discover.jsx";
 
 export default function HomePage() {
   const aboutRef = useRef(null);
+  const discoverRef = useRef(null);
   const location = useLocation();
 
-  const handleScroll = () => {
-    aboutRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
-
   useEffect(() => {
-    if (location.hash === "#about") {
-      aboutRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (location.state?.scrollTo) {
+      const section = location.state.scrollTo;
+      const element = section === "about" ? aboutRef.current : discoverRef.current;
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      // Clear the state after scrolling to prevent repeated scrolls
+      window.history.replaceState({}, document.title);
     }
   }, [location]);
 
+  const handleScroll = () => {
+    discoverRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
   return (
     <div id="homepage" className="homepage">
       <div className="homepage__hero">
@@ -42,7 +48,9 @@ export default function HomePage() {
           </svg>
         </div>
       </div>
-      <Discover />
+      <div id="discover" ref={discoverRef}>
+        <Discover />
+      </div>
       <div id="about" className="homepage__about" ref={aboutRef}>
         <AboutUs />
       </div>

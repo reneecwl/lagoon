@@ -32,7 +32,7 @@ const DiscoverSection = () => {
   ];
 
   return (
-    <section className="discover">
+    <section id="discover" className="discover">
       <div className="discover__container">
         <h2 className="discover__title">Discover Your Next Adventure</h2>
         <p className="discover__subtitle">Explore these trending destinations for your next journey</p>

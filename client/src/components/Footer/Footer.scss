@@ -13,6 +13,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 2rem;
+    align-items: center;
   }
 
   &__logo-container {
@@ -28,7 +29,7 @@
   }
 
   &__title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: $white;
     transition: opacity $transition-medium;
@@ -42,10 +43,11 @@
   &__content {
     display: flex;
     gap: 2.2rem;
+    align-items: flex-end;
   }
 
   &__subtitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: $white;
     cursor: pointer;
@@ -58,7 +60,7 @@
       position: absolute;
       width: 0;
       height: 1px;
-      bottom: -3px;
+      bottom: -1px;
       left: 0;
       background-color: rgba($white, 0.8);
       transition: width $transition-medium;

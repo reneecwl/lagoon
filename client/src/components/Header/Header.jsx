@@ -1,10 +1,9 @@
 import "./Header.scss";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo/lagoon-white-logo.png";
 
-export default function Header() {
+export default function Header({ handleNavigation }) {
   const location = useLocation();
-
   const isItineraryPage = location.pathname.includes("/itineraries");
 
   return (
@@ -20,21 +19,21 @@ export default function Header() {
         <nav className="navbar">
           <ul className="navbar__list">
             {isItineraryPage && (
-              <li className={isItineraryPage ? "navbar__subtitle navbar__itinerary" : "navbar__subtitle"}>
+              <li className="navbar__subtitle">
                 <Link className="navbar__nav-link" to="/users/1/itineraries">
                   My Journey
                 </Link>
               </li>
             )}
-            <li className={isItineraryPage ? "navbar__subtitle navbar__subtitle--itinerary" : "navbar__subtitle"}>
-              <Link className="navbar__nav-link" to="/about">
+            <li className="navbar__subtitle">
+              <span className="navbar__nav-link" onClick={() => handleNavigation("discover")}>
                 Discover
-              </Link>
+              </span>
             </li>
-            <li className={isItineraryPage ? "navbar__subtitle navbar__subtitle--itinerary" : "navbar__subtitle"}>
-              <Link to="/#about" className="navbar__nav-link">
+            <li className="navbar__subtitle">
+              <span className="navbar__nav-link" onClick={() => handleNavigation("about")}>
                 About
-              </Link>
+              </span>
             </li>
           </ul>
         </nav>
