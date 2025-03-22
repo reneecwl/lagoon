@@ -1,23 +1,52 @@
+import React, { useState } from "react";
 import "./AboutUs.scss";
 import petraImage from "../../assets/images/Petra.jpg";
-// Import additional images - you'll need to add these to your assets
-import copenhagenImage from "../../assets/images/copenhagen.jpg";
+import brugesImage from "../../assets/images/bruges.jpeg";
 import hongkongImage from "../../assets/images/hongkong.jpg";
 
 export default function AboutUs() {
+  // Image slideshow state and data
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const imageData = [
+    {
+      src: petraImage,
+      location: "Petra, Jordan",
+      caption: "Where history meets adventure",
+    },
+    {
+      src: hongkongImage,
+      location: "Hong Kong",
+      caption: "City of lights and harbor nights",
+    },
+    {
+      src: brugesImage,
+      location: "Bruges, Belgium",
+      caption: "Medieval charm along cobblestone canals",
+    },
+  ];
+
+  // Navigation functions
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex === imageData.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? imageData.length - 1 : prevIndex - 1));
+  };
+
   return (
     <section className="about-us">
       <div className="about-us__container">
-        {/* Decorative heading inspired by Belmond */}
-        <div className="about-us__heading-container">
-          <h2 className="about-us__title">
-            Our <span className="about-us__title--highlight">Story</span>
-          </h2>
-          <div className="about-us__title-decoration"></div>
-        </div>
-
         <div className="about-us__content">
           <div className="about-us__text">
+            <div className="about-us__heading-container about-us__heading-container--left">
+              <h2 className="about-us__title">
+                Our <span className="about-us__title--highlight">Story</span>
+              </h2>
+              <div className="about-us__title-decoration"></div>
+            </div>
+
             <p className="about-us__description">
               Born from a <span className="about-us__description--bold">passion for travel</span> and a love for
               planning, Lagoon was built on a simple belief- the most rewarding part of any journey is an itinerary that
@@ -49,27 +78,51 @@ export default function AboutUs() {
             </div>
           </div>
 
-          {/* Updated image gallery layout inspired by Belmond */}
-          <div className="about-us__images">
-            <div className="about-us__image-container about-us__image-container--main">
-              <img src={petraImage} alt="Travel experience" className="about-us__image" />
-              <div className="about-us__image-overlay">
-                <span className="about-us__image-text">Discover</span>
+          {/* Single image hero with navigation controls */}
+          <div className="about-us__hero">
+            <div className="about-us__hero-image-container">
+              <img
+                src={imageData[currentImageIndex].src}
+                alt={imageData[currentImageIndex].location}
+                className="about-us__hero-image"
+              />
+              <div className="about-us__hero-caption">
+                <span className="about-us__hero-location">{imageData[currentImageIndex].location}</span>
+                <span className="about-us__hero-tagline">{imageData[currentImageIndex].caption}</span>
               </div>
             </div>
-            <div className="about-us__image-row">
-              <div className="about-us__image-container about-us__image-container--small">
-                <img src={hongkongImage} alt="Travel moment" className="about-us__image" />
-                <div className="about-us__image-overlay">
-                  <span className="about-us__image-text">Explore</span>
-                </div>
+
+            {/* Navigation controls */}
+            <div className="about-us__hero-nav">
+              <button
+                className="about-us__hero-nav-btn about-us__hero-nav-btn--prev"
+                onClick={prevImage}
+                aria-label="Previous image"
+              >
+                <span className="about-us__hero-nav-arrow">&lsaquo;</span>
+              </button>
+
+              {/* Image indicators */}
+              <div className="about-us__hero-indicators">
+                {imageData.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`about-us__hero-indicator ${
+                      index === currentImageIndex ? "about-us__hero-indicator--active" : ""
+                    }`}
+                    onClick={() => setCurrentImageIndex(index)}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
               </div>
-              <div className="about-us__image-container about-us__image-container--small">
-                <img src={copenhagenImage} alt="Travel destination" className="about-us__image" />
-                <div className="about-us__image-overlay">
-                  <span className="about-us__image-text">Experience</span>
-                </div>
-              </div>
+
+              <button
+                className="about-us__hero-nav-btn about-us__hero-nav-btn--next"
+                onClick={nextImage}
+                aria-label="Next image"
+              >
+                <span className="about-us__hero-nav-arrow">&rsaquo;</span>
+              </button>
             </div>
           </div>
         </div>
