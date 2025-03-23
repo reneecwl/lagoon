@@ -11,11 +11,8 @@
   position: relative;
   z-index: 2;
   display: flex;
+  animation: modal-appear 0.5s ease forwards;
 }
-
-// .react-datepicker-popper {
-//   z-index: 10;
-// }
 
 .form__image-container {
   flex: 0 0 45%;
@@ -63,10 +60,21 @@
     width: 100%;
     height: 50px;
 
-    &--invalid {
-      border-color: $error-colour;
+    &::placeholder {
+      color: grey;
     }
 
+    &--invalid {
+      border-color: $error-colour;
+      &::placeholder {
+        color: $error-colour;
+        opacity: 1;
+      }
+      &.shake {
+        // New modifier class for shaking
+        animation: shake 0.3s ease;
+      }
+    }
     &:focus {
       outline: none;
       border-color: $accent-colour;
@@ -77,11 +85,6 @@
 
   .react-datepicker {
     font-family: $font-secondary;
-
-    &-wrapper {
-      width: 100%;
-      font-family: $font-secondary;
-    }
 
     &__day-name,
     &__day,
@@ -99,6 +102,18 @@
         font-family: $font-secondary;
         font-size: $font-size-m;
         height: 50px;
+
+        &.input--invalid {
+          border-color: $error-colour;
+          &::placeholder {
+            color: $error-colour;
+            opacity: 1;
+          }
+
+          &.shake {
+            animation: shake 0.3s ease;
+          }
+        }
 
         &:focus {
           outline: none;
@@ -152,5 +167,34 @@
     &:hover {
       background-color: darken($grey, 10%);
     }
+  }
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

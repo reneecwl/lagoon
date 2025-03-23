@@ -11,6 +11,7 @@ export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinera
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
+  const [shouldShake, setShouldShake] = useState(false);
   const [formData, setFormData] = useState({
     location: "",
     startDate: null,
@@ -31,9 +32,10 @@ export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinera
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsClicked(true);
+    setShouldShake(true);
 
     if (!isFormValid()) {
-      alert("Please fill in all fields");
+      setTimeout(() => setShouldShake(false), 300);
       return;
     }
 
@@ -52,6 +54,7 @@ export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinera
       const newItineraryId = response.data.id;
       console.log(response.data);
       setIsClicked(false);
+      setShouldShake(false);
       setFormData({
         location: "",
         startDate: null,
@@ -78,8 +81,9 @@ export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinera
             name="location"
             id="location"
             value={formData.location}
-            className={`form__input form__input--location ${
-              !formData.location && isClicked ? "form__input--invalid" : ""
+            placeholder="Enter your destination"
+            className={`form__input ${!formData.location && isClicked ? "form__input--invalid" : ""} ${
+              !formData.location && shouldShake ? "shake" : ""
             }`}
             onChange={(event) => {
               setFormData({ ...formData, location: event.target.value });
@@ -107,6 +111,9 @@ export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinera
             placeholderText="Select a date range"
             minDate={new Date()}
             monthsShown={2}
+            className={`${!startDate && !endDate && isClicked ? "input--invalid" : "form__input "} ${
+              !startDate && !endDate && shouldShake ? "shake" : ""
+            }`}
           />
         </div>
         <div className="form__buttons">
