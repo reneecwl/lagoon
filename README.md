@@ -13,74 +13,142 @@
 11. [Roadmap](#roadmap)
 12. [Future Implementations](#future-implementations)
 
-# Project Title
+# Lagoon 🌍✈️
 
-Lagoon: Your Travel Companion 🌍✈️
+**Your all-in-one travel planner and digital travel journal.**  
+_From planning your trip to remembering every moment._
 
 ## Overview
 
-Tired of juggling multiple tabs to plan your trips?
+Tired of juggling multiple tabs when planning trips?
 
-Lagoon simplifies the process by integrating weather forecasts, public holidays, and attraction suggestions into a single, intuitive platform. It doesn’t stop there — Lagoon also tracks your travel history with detailed statistics and an interactive map of all the places you’ve visited.
+Lagoon brings weather forecasts, public holidays, and attraction suggestions into a single platform. Track past travels with a dynamic map and trip statistics — plan, save, and relive your adventures all in one place.
+
+## Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/reneecwl/lagoon.git
+cd lagoon
+```
+
+### 2. Install Dependencies
+
+- Frontend
+
+```bash
+cd client
+npm install
+```
+
+- Backend
+
+```bash
+cd server
+npm install
+```
+
+### 3. Environment Variables
+
+- Copy .env.example files in both server/ and client/ folders and rename them to .env.
+- Fill in your database credentials and API keys.
+
+```bash
+cp server/.env.example server/.env
+cp client/.env.example client/.env
+```
+
+🔎 VITE_WEATHER_API_KEY — get from WeatherAPI 🔎 VITE_API_KEY_GOOGLE — get from Google Cloud Platform
+
+### 4. Set Up the Database In /server:
+
+```bash
+npx knex migrate:latest
+npx knex seed:run
+```
+
+### 5. Start the App Backend:
+
+```bash
+cd server
+npm run dev
+```
+
+Frontend:
+
+```bash
+cd client
+npm run dev
+```
+
+Visit: http://localhost:5173
 
 ### Problem Space
 
-Planning a trip often requires switching between multiple websites or apps to check weather forecasts, public holidays, and activity options, leading to a fragmented and time-consuming experience. Lagoon solves this by consolidating essential travel planning information into one user-friendly platform, streamlining the entire process.
+Planning a trip often means bouncing between different websites or apps to check weather forecasts, public holidays, and activity ideas — a process that can feel fragmented and time-consuming. Lagoon simplifies this by bringing all essential travel planning tools together in one user-friendly platform, so you can focus on dreaming up your next adventure.
 
-After traveling, people often struggle to keep track of where they’ve been. Lagoon doubles as a travel journal, recording past itineraries, offering trip statistics, and displaying a digital world map of your travels — making it easy to share your journeys with others.
+And the journey doesn’t end there. After traveling, it’s easy to lose track of where you’ve been. Lagoon doubles as a digital travel journal, saving your itineraries, offering trip stats, and showcasing your adventures on a world map — making it easy to relive and share your journeys.
 
 ### User Profile
 
-Key User Stories:
-
-🧳 As a traveler, I want to plan my trip in one place so I don’t have to switch between multiple tabs.
-
-🧳 As a traveler, I want to easily share my itinerary with friends and family without needing to send Google Sheets or Docs.
-
-🧳 As a traveler, I want to keep track of all my trip history, with the ability to download and share it with friends or print it out.
+- 🧳 Plan trips in one place without switching between multiple tabs
+- 🧳 Share itineraries with friends and family effortlessly
+- 🧳 Keep track of travel history with downloadable and shareable trip records
 
 ### Features
 
-Add New Trip: Start your journey by simply entering a location and dates.
+### Add New Trip:
 
-Trip Planning:
+- Start your journey by simply entering a location and dates.
 
-- Update trip name for a personal touch
-- Add or remove attractions on specific itinerary dates
-- Add personal notes for each attraction
-- Interactive map displaying daily itineraries with connecting routes
-- View real-time weather and public holiday information
-- Download your complete itinerary to share with friends
+### Trip Planning:
 
-Travel Journal & Map:
+- Add trips by entering destination and dates
+- Update trip names
+- Add/remove attractions for each day
+- Personal notes for each attraction
+- Daily route maps with connecting paths
+- Real-time weather and holiday data
+- Downloadable itineraries
 
-- Keep track of all places you’ve visited in one visual dashboard
-- Interactive world map that replaces the need for a traditional pinboard
-- Color-coded markers to distinguish between completed and upcoming trips
-- View trip statistics, including counts of upcoming and completed journeys
+### Travel Journal & Map:
+
+- Dashboard of past and upcoming trips
+- Interactive map with color-coded pins to distinguish between completed and upcoming trips
+- Trip statistics overview - including counts of upcoming and completed journeys
 
 ## Implementation
 
-### Tech Stack
+### Tech Stack:
 
-- Frontend: ⚛️ React (React Router, Axios, React-Datepicker)
+- **Frontend**:
 
-- Backend: 🖥️ Express.js (Node.js framework) 📦 Knex.js (SQL query builder)
+  - ⚛️ **React** (React Router, Axios, React-Datepicker)
+  - 🎨 **SCSS** (Styling)
+  - 🧩 **Date-fns** (Date manipulation)
+  - 🖼️ **html2canvas** (Rendering HTML to images)
+  - 📄 **jsPDF** (Generating PDFs)
 
-- Database: 🗄️ MySQL
+- **Backend**:
+
+  - 🖥️ **Express.js** (Node.js framework)
+  - 📦 **Knex.js** (SQL query builder)
+
+- **Database**:
+  - 🗄️ **MySQL**
 
 ### APIs
 
-- External:
+- **External**
 
-1. **Weather Api**: Provides integrated weather forecasts. (Limited to 14-day forecasts)
-2. **Nager.Date**: Fetches public holiday data by year and country
-3. **Google Geocoding Api**: Retrieves geocode for each location
-4. **Maps JavaScript Api**: Visualizes daily attractions and maps out visited cities.
+  - **Weather API**: 14-day weather forecast
+  - **Nager.Date**: Public holiday data
+  - **Google Geocoding Api**: Location coordinates
+  - **Google Maps JavaScript API:**: Maps & attraction routes
 
-- Internal:
-
-Custom endpoints for fetching attractions, saving itineraries, and managing user data (see Endpoints section).
+- **Internal**
+  - Custom endpoints for fetching attractions, saving itineraries, and managing user data (see Endpoints section).
 
 ### Sitemap
 
@@ -111,7 +179,7 @@ Custom endpoints for fetching attractions, saving itineraries, and managing user
 
 ### Data
 
-![sql-diagram](https://github.com/user-attachments/assets/0522c6b3-22d8-4c5d-b769-0c159a4d1424)
+![sql-diagram](https://github.com/user-attachments/assets/96b5cb03-1770-4202-b1d3-59f9a9f3a97d)
 
 ### Endpoints
 
@@ -311,7 +379,7 @@ Response:
 
 ```
 
-Response:
+- Response:
 
 ```
 {
@@ -338,7 +406,7 @@ Response:
 }
 ```
 
--Response:
+- Response:
 
 ```
 {
@@ -394,8 +462,7 @@ Response:
 
 - Retrieve attractions based on location
 - Parameters: Query parameter: location (required) Example: /api/attractions?location=Tokyo
-
-Response:
+- Response:
 
 ```
 [
@@ -426,7 +493,7 @@ Response:
 
 ## Roadmap
 
-Week 1
+Week 1:
 
 - Set up project (React frontend, Express backend, MySQL database, Knex config).
 - Build Homepage with form; implement POST /api/itineraries to create an initial itinerary
@@ -434,25 +501,16 @@ Week 1
 - Create Trip Planning Page to display weather, holidays, and attractions; add PATCH /api/itineraries/:id to update attractions.
 - Build Itinerary Page to show the saved plan; test GET /api/itineraries/:id.
 
-Week 2
+Week 2:
 
 - Test API endpoints and fix bugs.
 - Polish UI (e.g., activity cards, weather display); add Sydney attractions if time allows.
 - Final testing and documentation.
 - Demo Day
 
-## Installation
-
-To run locally:
-
-git clone <repo-url> cd <project-folder> npm install npm run dev
-
 ## Future Implementations
 
-Login Page: Allows users to log in or register to save itineraries.
-
-Collaboration: Logged-in users can invite friends to view/edit itineraries and share plans.
-
-Social Features: Like/comment function on attractions, showing popularity among friends to help with the planning process.
-
-Travel Details: Link flight and hotel booking APIs (e.g., Google Travel) for seamless integration.
+- Login Page: Allows users to log in or register to save itineraries.
+- Collaboration: Logged-in users can invite friends to view/edit itineraries and share plans.
+- Social Features: Like/comment function on attractions, showing popularity among friends to help with the planning process.
+- Travel Details: Link flight and hotel booking APIs (e.g., Google Travel) for seamless integration.
