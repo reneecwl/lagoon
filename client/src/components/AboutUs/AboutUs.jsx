@@ -5,7 +5,6 @@ import brugesImage from "../../assets/images/bruges.jpeg";
 import hongkongImage from "../../assets/images/hongkong.jpg";
 
 export default function AboutUs() {
-  // Image slideshow state and data
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const imageData = [
@@ -26,7 +25,6 @@ export default function AboutUs() {
     },
   ];
 
-  // Navigation functions
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex === imageData.length - 1 ? 0 : prevIndex + 1));
   };
@@ -78,7 +76,6 @@ export default function AboutUs() {
             </div>
           </div>
 
-          {/* Single image hero with navigation controls */}
           <div className="about-us__hero">
             <div className="about-us__hero-image-container">
               <img
@@ -92,7 +89,6 @@ export default function AboutUs() {
               </div>
             </div>
 
-            {/* Navigation controls */}
             <div className="about-us__hero-nav">
               <button
                 className="about-us__hero-nav-btn about-us__hero-nav-btn--prev"
@@ -102,7 +98,6 @@ export default function AboutUs() {
                 <span className="about-us__hero-nav-arrow">&lsaquo;</span>
               </button>
 
-              {/* Image indicators */}
               <div className="about-us__hero-indicators">
                 {imageData.map((_, index) => (
                   <button

@@ -25,8 +25,10 @@ export default function UserStatistics({ trips, tripStatus }) {
       <div className="statistics__left">
         <h3 className="statistics__title">Trip Statistics</h3>
         <div className="statistics__trips-count">
-          <div className="statistics__trip--upcoming">{upcomingNum} Upcoming Trips</div>
-          <div className="statistics__trip--completed">{completedNum} Completed Trip</div>
+          <div className="statistics__trip-status statistics__trip-status--upcoming">{upcomingNum} Upcoming Trips</div>
+          <div className="statistics__trip-status statistics__trip-status--completed">
+            {completedNum} Completed Trip
+          </div>
         </div>
       </div>
       <div className="statistics__right">

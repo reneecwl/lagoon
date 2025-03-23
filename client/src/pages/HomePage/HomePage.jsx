@@ -33,22 +33,15 @@ export default function HomePage({ handleNavigation }) {
         </div>
         <div className="homepage__scroll-container" onClick={() => handleNavigation("discover")}>
           <span className="homepage__scroll">Discover More</span>
-          <svg viewBox="0 0 24 24" className="homepage__scroll-icon">
-            <path
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 5v14m-7-7l7 7 7-7"
-            />
+          <svg className="homepage__scroll-icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+            <path d="M480-200 240-440l56-56 184 183 184-183 56 56-240 240Zm0-240L240-680l56-56 184 183 184-183 56 56-240 240Z" />
           </svg>
         </div>
       </div>
       <div id="discover" ref={discoverRef}>
         <Discover />
       </div>
-      <div id="about" className="homepage__about" ref={aboutRef}>
+      <div id="about" ref={aboutRef}>
         <AboutUs />
       </div>
     </div>

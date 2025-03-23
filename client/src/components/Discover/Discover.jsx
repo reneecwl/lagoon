@@ -3,7 +3,7 @@ import aarhusImage from "../../assets/images/aarhus.jpg";
 import maltaImage from "../../assets/images/malta.jpg";
 import sintraImage from "../../assets/images/sintra.jpg";
 
-const DiscoverSection = () => {
+export default function Discover() {
   const destinations = [
     {
       id: 1,
@@ -61,6 +61,4 @@ const DiscoverSection = () => {
       </div>
     </section>
   );
-};
-
-export default DiscoverSection;
+}

@@ -111,20 +111,8 @@ export default function UserItinerariesPage() {
           </div>
         </div>
         <div className="trips">
-          <div className="trips__header">
-            <h3 className="trips__title">All Trips</h3>
-            <button
-              className="trips__add-container"
-              onClick={() => {
-                setIsOpen(true);
-              }}
-            >
-              <svg className="trips__add-icon" viewBox="0 -960 960 960">
-                <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
-              </svg>
-              <span className="trips__add-trip">Add a Trip</span>
-            </button>
-          </div>
+          <h3 className="trips__title">All Trips</h3>
+
           <div className="trips__container">
             {isOpen && (
               <div className="create-itinerary__overlay">

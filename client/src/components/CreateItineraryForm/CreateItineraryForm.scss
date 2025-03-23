@@ -1,8 +1,10 @@
 @use "./../../styles/partials/typography";
 @use "./../../styles/partials/variables" as *;
 @use "./../../styles/partials/mixins" as *;
+@use "sass:color";
 
-.form__container {
+.form-modal {
+  display: flex;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: $border-radius-m;
   max-width: 62.5rem;
@@ -10,20 +12,19 @@
   box-shadow: $shadow-md;
   position: relative;
   z-index: 2;
-  display: flex;
-  animation: modal-appear 0.5s ease forwards;
-}
+  animation: modal-appear $transition-slow forwards;
 
-.form__image-container {
-  flex: 0 0 45%;
-}
+  &__image-container {
+    flex: 0 0 45%;
+  }
 
-.form__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: $border-radius-m 0 0 $border-radius-m;
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: $border-radius-m 0 0 $border-radius-m;
+  }
 }
 
 .form {
@@ -58,69 +59,24 @@
     font-size: $font-size-m;
     transition: border-color $transition-medium;
     width: 100%;
-    height: 50px;
+    height: 3.125rem;
 
     &::placeholder {
       color: grey;
     }
 
-    &--invalid {
-      border-color: $error-colour;
-      &::placeholder {
-        color: $error-colour;
-        opacity: 1;
-      }
-      &.shake {
-        // New modifier class for shaking
-        animation: shake 0.3s ease;
-      }
-    }
     &:focus {
       outline: none;
-      border-color: $accent-colour;
       border: none;
       box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
     }
-  }
 
-  .react-datepicker {
-    font-family: $font-secondary;
+    &--invalid {
+      border-color: $error-colour;
 
-    &__day-name,
-    &__day,
-    &__current-month,
-    &__month {
-      font-family: $font-secondary;
-    }
-
-    &__input-container {
-      input {
-        width: 100%;
-        padding: $spacing-m;
-        border: 1.5px solid $grey;
-        border-radius: $border-radius-m;
-        font-family: $font-secondary;
-        font-size: $font-size-m;
-        height: 50px;
-
-        &.input--invalid {
-          border-color: $error-colour;
-          &::placeholder {
-            color: $error-colour;
-            opacity: 1;
-          }
-
-          &.shake {
-            animation: shake 0.3s ease;
-          }
-        }
-
-        &:focus {
-          outline: none;
-          border: none;
-          border-color: $accent-colour;
-          box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
-        }
+      &::placeholder {
+        color: $error-colour;
+        opacity: 1;
       }
     }
   }
@@ -130,11 +86,9 @@
     gap: 1.5rem;
     justify-content: flex-end;
     margin-top: $spacing-l;
-    // padding-right: $spacing-m; /* Added to shift buttons to match design */
   }
 
-  &__cancel,
-  &__submit {
+  &__button {
     font-family: $font-secondary;
     font-size: $font-size-m;
     padding: 0.75rem 1.5rem;
@@ -146,28 +100,86 @@
     &:hover {
       opacity: 0.9;
     }
-  }
 
-  &__submit {
-    background-color: $accent-colour;
-    color: $white;
-    border: none;
-    font-weight: bold;
+    &--submit {
+      background-color: $accent-colour;
+      color: $white;
+      border: none;
+      font-weight: bold;
 
-    &:hover {
-      background-color: darken($accent-colour, 10%);
+      &:hover {
+        background-color: color.adjust($accent-colour, $lightness: -10%);
+      }
+    }
+
+    &--cancel {
+      background-color: $grey;
+      color: white;
+      border: none;
+
+      &:hover {
+        background-color: color.adjust($grey, $lightness: -10%);
+      }
     }
   }
+}
 
-  &__cancel {
-    background-color: $grey;
-    color: white;
-    border: none;
+.react-datepicker {
+  font-family: $font-secondary;
 
-    &:hover {
-      background-color: darken($grey, 10%);
+  &__day-name,
+  &__day,
+  &__current-month,
+  &__month {
+    font-family: $font-secondary;
+  }
+
+  &-wrapper {
+    display: block;
+    width: 100%;
+  }
+
+  &__input-container {
+    display: block;
+    width: 100%;
+  }
+
+  &__input-container input {
+    width: 100%;
+    padding: $spacing-m;
+    border: 1.5px solid $grey;
+    border-radius: $border-radius-m;
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    height: 50px;
+
+    &:focus {
+      outline: none;
+      border: none;
+      box-shadow: 0 0 0 2px rgba($accent-colour, 0.6);
+    }
+
+    &.form__input--invalid {
+      border-color: $error-colour !important;
+
+      &::placeholder {
+        color: $error-colour;
+        opacity: 1;
+      }
+    }
+
+    &.shake {
+      animation: shake $transition-medium;
     }
   }
+}
+
+.shake {
+  animation: shake $transition-medium;
+}
+
+.react-datepicker__input-container .shake {
+  animation: shake $transition-medium;
 }
 
 @keyframes modal-appear {

@@ -11,8 +11,8 @@ export default function Header({ handleNavigation }) {
       <Link to="/">
         <div className="header__logo-container">
           <img src={logo} alt="logo" className="header__logo" />
-          <h1 className={isItineraryPage ? "header__title header__title--itinerary" : "header__title"}>Lagoon</h1>
-        </div>{" "}
+          <h1 className="header__title">Lagoon</h1>
+        </div>
       </Link>
 
       <div className="header__right">
@@ -40,8 +40,7 @@ export default function Header({ handleNavigation }) {
         <div className="user-avatar">
           <div className="user-avatar__logo">
             <Link className="user-avatar__initial" to="/users/1/itineraries">
-              {" "}
-              A{" "}
+              R
             </Link>
           </div>
         </div>

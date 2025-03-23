@@ -5,43 +5,37 @@ $primary-colour: #40e0d0;
 $secondary-colour: #112b3c;
 $accent-colour: #087d8c;
 $background-colour: #f8f9fa;
-// $background-colour: #f0f8ff;
 $text-colour: #333333;
-$white: #ffffff;
 $black: #000000;
+$white: #ffffff;
 $grey: #cccccc;
+$dark-grey: #767676;
 $error-colour: #c94515;
 $coral: #e07a5f;
 
-// Font Families
 $font-primary: "Cormorant";
 $font-secondary: "Outfit";
 
-// Font Sizes
 $font-size-s: 0.875rem;
 $font-size-m: 1rem;
 $font-size-l: 1.25rem;
 $font-size-xl: 1.5rem;
 $font-size-xxl: 2rem;
 
-// Spacing
 $spacing-xs: 0.5rem;
 $spacing-s: 1rem;
 $spacing-m: 1.5rem;
 $spacing-l: 2rem;
 $spacing-xl: 3rem;
 
-// Border Radius
 $border-radius-s: 0.25rem;
 $border-radius-m: 0.5rem;
 $border-radius-l: 1rem;
 
-// Shadows
 $shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
 $shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
 $shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
 
-// Transitions
 $transition-fast: 0.2s ease;
 $transition-medium: 0.3s ease;
 $transition-slow: 0.5s ease;

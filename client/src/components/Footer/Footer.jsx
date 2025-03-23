@@ -1,5 +1,4 @@
 import "./Footer.scss";
-import { Link } from "react-router-dom";
 import logo from "../../assets/logo/lagoon-white-logo.png";
 
 export default function Footer({ handleNavigation }) {
@@ -39,12 +38,4 @@ export default function Footer({ handleNavigation }) {
       </footer>
     </>
   );
-}
-{
-  /* <div className="footer__social">
-        <img className="social__icon" src={Facebook} alt="facebook" />
-        <img className="social__icon" src={X} alt="twitter" />
-        <img className="social__icon" src={Instag} alt="instagram" />
-        <img className="social__icon" src={Pinterest} alt="pinterest" />
-      </div> */
 }

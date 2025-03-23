@@ -1,5 +1,6 @@
-@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/typography";
 @use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
 
 .footer {
   display: flex;
@@ -10,70 +11,38 @@
 
   &__main {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 2rem;
     align-items: center;
+    margin-bottom: 2rem;
   }
 
   &__logo-container {
-    display: flex;
-    gap: 0.7rem;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
+    @include logo-container;
   }
 
   &__logo {
-    width: 1.8rem;
+    @include logo;
   }
 
   &__title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: $white;
-    transition: opacity $transition-medium;
-    text-transform: uppercase;
-
-    &:hover {
-      opacity: 0.8;
-    }
+    @include logo-title;
   }
 
   &__content {
     display: flex;
-    gap: 2.2rem;
+    gap: 2rem;
     align-items: flex-end;
   }
 
   &__subtitle {
-    font-size: 1.2rem;
     font-weight: 400;
-    color: $white;
-    cursor: pointer;
-    position: relative;
     padding-bottom: 0.25rem;
     letter-spacing: 0.019rem;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -1px;
-      left: 0;
-      background-color: rgba($white, 0.8);
-      transition: width $transition-medium;
-    }
-
-    &:hover::after {
-      width: 100%;
-    }
+    @include nav-bar;
   }
 
   &__terms {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 1.5rem;
@@ -86,9 +55,7 @@
 .terms {
   &__details {
     font-size: 0.875rem;
-    // margin: 0;
     color: rgba($white, 0.7);
-    cursor: pointer;
     transition: color $transition-fast;
     letter-spacing: 0.2px;
 

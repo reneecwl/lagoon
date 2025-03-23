@@ -1,5 +1,6 @@
-@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/typography";
 @use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
 
 .header {
   position: absolute;
@@ -12,100 +13,39 @@
   align-items: center;
   z-index: 3;
 
-  &__logo-container {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    gap: 0.7rem;
-  }
-
-  &__logo {
-    width: 1.8rem;
-    overflow: visible;
-  }
-
-  &__title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: white;
-    text-transform: uppercase;
-    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    transition: opacity 0.3s ease;
-    margin: 0;
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
   &--itinerary {
     background-color: $secondary-colour;
   }
 
-  &__left {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.5rem;
+  &__logo-container {
+    @include logo-container;
+  }
+
+  &__logo {
+    @include logo;
+  }
+
+  &__title {
+    @include logo-title;
   }
 
   &__right {
     display: flex;
-    align-items: center;
     gap: 2rem;
-  }
-
-  &__title--home {
-    font-family: "Libre Baskerville", serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: white;
-    text-transform: uppercase;
-    transition: opacity 0.3s ease;
-
-    &:hover {
-      opacity: 0.8;
-    }
+    align-items: center;
   }
 }
 .navbar {
   &__list {
     display: flex;
     gap: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
   }
 
   &__subtitle {
-    font-size: 1.3rem;
-    color: white;
-    cursor: pointer;
-    position: relative;
-
-    &:hover {
-      opacity: 0.8;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -3px;
-      left: 0;
-      background-color: rgba(white, 0.8);
-      transition: width 0.3s ease;
-    }
-
-    &:hover::after {
-      width: 100%;
-      opacity: 0.8;
-    }
+    @include nav-bar;
   }
   .nav-link {
     color: inherit;
-    text-decoration: none;
     display: inline-block;
     padding-bottom: 2px;
   }
@@ -117,20 +57,20 @@
   justify-content: center;
 
   &__logo {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(3px);
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform $transition-fast;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 
@@ -138,6 +78,6 @@
     font-family: $font-secondary;
     text-transform: uppercase;
     color: white;
-    font-size: 1.25rem;
+    font-size: $font-size-l;
   }
 }

@@ -22,7 +22,6 @@
 
   &__title {
     font-size: 1.4rem;
-    font-weight: 600;
     color: $text-colour;
     font-family: $font-secondary;
     margin-bottom: $spacing-xs;
@@ -33,34 +32,23 @@
     gap: $spacing-s;
   }
 
-  &__trip {
-    &--upcoming,
-    &--completed,
-    &--days {
-      display: inline-block;
-      padding: $spacing-xs $spacing-s;
-      border-radius: 20px;
-      font-family: $font-secondary;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
+  &__trip-status {
+    display: inline-block;
+    padding: $spacing-xs $spacing-s;
+    border-radius: 1.25rem;
+    font-family: $font-secondary;
+    font-size: 0.9rem;
+    font-weight: 500;
 
     &--upcoming {
-      background-color: rgba($accent-colour, 0.1);
       color: $accent-colour;
+      background-color: rgba($accent-colour, 0.1);
       border: 1px solid rgba($accent-colour, 0.3);
     }
-
     &--completed {
       background-color: rgba(#505050, 0.1);
       color: #505050;
       border: 1px solid rgba(#505050, 0.3);
-    }
-
-    &--days {
-      background-color: rgba(#1976d2, 0.1);
-      color: #1976d2;
-      border: 1px solid rgba(#1976d2, 0.3);
     }
   }
 

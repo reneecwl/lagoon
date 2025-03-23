@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import formImage from "../../assets/images/seville2.jpg";
 
@@ -52,7 +52,6 @@ export default function CreateItineraryForm({ setIsOpen }) {
     try {
       const response = await axios.post(`${baseUrl}/itineraries`, newItinerary);
       const newItineraryId = response.data.id;
-      // console.log(response.data);
       setIsClicked(false);
       setShouldShake(false);
       setFormData({
@@ -67,9 +66,9 @@ export default function CreateItineraryForm({ setIsOpen }) {
   };
 
   return (
-    <div className="form__container">
-      <div className="form__image-container">
-        <img src={formImage} alt="" className="form__image" />
+    <div className="form-modal">
+      <div className="form-modal__image-container">
+        <img src={formImage} alt="" className="form-modal__image" />
       </div>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form__tab">
@@ -111,16 +110,16 @@ export default function CreateItineraryForm({ setIsOpen }) {
             placeholderText="Select a date range"
             minDate={new Date()}
             monthsShown={2}
-            className={`${!startDate && !endDate && isClicked ? "input--invalid" : "form__input "} ${
+            className={`form__input ${!startDate && !endDate && isClicked ? "form__input--invalid" : ""} ${
               !startDate && !endDate && shouldShake ? "shake" : ""
             }`}
           />
         </div>
         <div className="form__buttons">
-          <button className="form__cancel" onClick={() => setIsOpen(false)}>
+          <button className="form__button form__button--cancel" onClick={() => setIsOpen(false)}>
             Cancel
           </button>
-          <button type="submit" className="form__submit">
+          <button type="submit" className="form__button form__button--submit">
             Start My Journey
           </button>
         </div>

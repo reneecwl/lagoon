@@ -32,3 +32,55 @@
     background-color: #e0e0e0;
   }
 }
+
+@mixin logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.7rem;
+}
+
+@mixin logo {
+  width: 1.8rem;
+}
+
+@mixin logo-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease;
+  transition: opacity $transition-medium;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@mixin nav-bar {
+  font-size: 1.3rem;
+  color: white;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -3px;
+    left: 0;
+    background-color: rgba(white, 0.8);
+    transition: width $transition-medium;
+  }
+
+  &:hover::after {
+    width: 100%;
+    opacity: 0.8;
+  }
+}
