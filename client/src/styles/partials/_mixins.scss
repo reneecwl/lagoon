@@ -84,3 +84,20 @@
     opacity: 0.8;
   }
 }
+
+@mixin skeleton-element($height, $width) {
+  height: $height;
+  width: $width;
+  margin: 0 auto;
+  background-color: $skeleton-bg;
+  border-radius: $border-radius-s;
+  animation: pulse 1.3s infinite;
+}
+
+@mixin empty {
+  font-family: $font-secondary;
+  font-size: $font-size-m;
+  color: rgba($text-colour, 0.7);
+  font-style: italic;
+  padding: $spacing-xs 0;
+}

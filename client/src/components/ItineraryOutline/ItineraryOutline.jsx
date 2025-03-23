@@ -42,7 +42,6 @@ export default function ItineraryOutline({
       end_date: formattedEndDate,
     };
 
-    console.log(editTripDetails);
     try {
       await axios.put(`${baseUrl}/itineraries/${itinerary.id}`, editTripDetails);
       fetchItinerary();
@@ -63,6 +62,7 @@ export default function ItineraryOutline({
                   type="text"
                   className="outline__name-input"
                   value={tripName}
+                  placeholder={tripName}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   autoFocus

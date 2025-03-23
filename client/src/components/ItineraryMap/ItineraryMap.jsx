@@ -66,7 +66,7 @@ export default function ItineraryMap({ attractions, location }) {
           position: { lat: attraction.lat, lng: attraction.lng },
           map: newMap,
           title: attraction.name,
-          label: attraction.day.toString(), // Show the day number on the marker
+          label: attraction.day.toString(),
           animation: google.maps.Animation.DROP,
         });
 
@@ -89,13 +89,10 @@ export default function ItineraryMap({ attractions, location }) {
 
   const drawDailyRoutes = (map, markerData) => {
     const markersByDay = markerData.reduce((acc, marker) => {
-      // console.log("Current marker:", marker);
-      // console.log("Accumulator so far:", acc);
       if (!acc[marker.day]) {
         acc[marker.day] = [];
       }
       acc[marker.day].push(marker);
-      // console.log(acc);
       return acc;
     }, {});
 
@@ -104,16 +101,16 @@ export default function ItineraryMap({ attractions, location }) {
       if (dayMarkers.length < 2) return;
 
       const colors = [
-        "rgba(66, 133, 244, 0.6)", // Soft blue
-        "rgba(219, 68, 55, 0.6)", // Soft red
-        "rgba(244, 180, 0, 0.6)", // Soft yellow
-        "rgba(15, 157, 88, 0.6)", // Soft green
-        "rgba(171, 71, 188, 0.6)", // Soft purple
-        "rgba(255, 112, 67, 0.6)", // Soft orange
-        "rgba(0, 172, 193, 0.6)", // Soft cyan
-        "rgba(124, 179, 66, 0.6)", // Soft light green
-        "rgba(63, 81, 181, 0.6)", // Soft indigo
-        "rgba(141, 110, 99, 0.6)", // Soft brown
+        "rgba(66, 133, 244, 0.6)",
+        "rgba(219, 68, 55, 0.6)",
+        "rgba(244, 180, 0, 0.6)",
+        "rgba(15, 157, 88, 0.6)",
+        "rgba(171, 71, 188, 0.6)",
+        "rgba(255, 112, 67, 0.6)",
+        "rgba(0, 172, 193, 0.6)",
+        "rgba(124, 179, 66, 0.6)",
+        "rgba(63, 81, 181, 0.6)",
+        "rgba(141, 110, 99, 0.6)",
       ];
 
       const path = dayMarkers.map((marker) => ({

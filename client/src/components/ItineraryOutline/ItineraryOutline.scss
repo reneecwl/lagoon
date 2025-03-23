@@ -5,10 +5,9 @@
 .outline {
   background-color: $white;
   border-radius: $border-radius-m;
-  box-shadow: $shadow-sm;
   overflow: hidden;
   margin-bottom: $spacing-l;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.08);
 
   &__header {
     position: relative;
@@ -71,27 +70,24 @@
     }
   }
   &__name {
-    font-family: $font-primary;
-    font-weight: 700;
     font-size: $font-size-xxl;
     margin: 0 0 $spacing-xs;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.03125rem;
     color: $white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
 
     &-input {
       font-family: $font-secondary;
-      font-size: $font-size-s;
+      font-size: $font-size-m;
       width: 35%;
-      padding: 0.3rem;
-      border: 3px none rgba($accent-colour, 0.8);
-      border-radius: $border-radius-s;
+      padding: 0.6rem;
+      border: 0.2rem solid rgba($primary-colour, 0.7);
+      border-radius: $border-radius-m;
       margin-bottom: 0.5rem;
 
       &:focus {
         outline: none;
-        border-color: $accent-colour;
-        box-shadow: 0 0 0 2px rgba($accent-colour, 0.2);
+        border-color: rgba($primary-colour, 0.7);
       }
     }
   }
@@ -99,77 +95,57 @@
   &__dates {
     font-family: $font-secondary;
     font-weight: 400;
-    font-size: $font-size-m; // Reduced from $font-size-m
+    font-size: $font-size-m;
     color: rgba(255, 255, 255, 0.95);
-    letter-spacing: 0.5px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.03125rem;
+    text-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.2);
   }
-
-  // &__downaload {
-  //   z-index: 4;
-  // }
 
   &__location {
     position: relative;
     background-color: $primary-colour;
     padding: $spacing-xs $spacing-s;
     border-radius: $border-radius-s;
-    font-size: $font-size-s;
+    font-size: $font-size-m;
     font-family: $font-secondary;
-    font-weight: 500;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.0625rem;
     z-index: 2;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
   }
 
   &__tabs {
     display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.1);
     margin-bottom: 0;
-    display: flex;
     justify-content: space-between;
   }
 
   &__tab {
     background: none;
     border: none;
-    padding: $spacing-s $spacing-l;
-    // font-family: $font-secondary;
+    padding: 1.1rem $spacing-l;
+    font-family: $font-secondary;
     font-size: $font-size-l;
-    font-weight: 700;
+    font-weight: 500;
     color: $secondary-colour;
     cursor: pointer;
-    transition: $transition-fast;
     opacity: 0.7;
-    border-bottom: 2px solid transparent;
+    border-bottom: 0.125rem solid transparent;
     width: 50%;
+    transition: all $transition-medium;
 
     &:hover {
       opacity: 1;
-      border-bottom: 2.5px solid $accent-colour;
+      border-bottom: 0.15625rem solid $accent-colour;
+      font-weight: 700;
     }
 
     &--active {
       opacity: 1;
-      border-bottom: 2.5px solid $accent-colour;
+      border-bottom: 0.15625rem solid $accent-colour;
+      font-weight: 700;
     }
   }
-
-  // &__tab-content {
-  //   // padding: 0.4rem 0.5rem;
-  // }
-
-  &__map-container {
-    height: 300px;
-    background-color: rgba($secondary-colour, 0.05);
-    // border-radius: $border-radius-m;
-  }
-
-  // &__placeholder {
-  //   text-align: center;
-  //   padding: $spacing-l;
-  //   color: rgba($text-colour, 0.6);
-  //   font-style: italic;
-  // }
 }

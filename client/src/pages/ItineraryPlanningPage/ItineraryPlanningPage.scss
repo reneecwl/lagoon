@@ -1,4 +1,4 @@
-@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/typography";
 @use "./../../styles/partials/variables" as *;
 @use "./../../styles/partials/mixins" as *;
 
@@ -8,7 +8,7 @@
   background-color: $background-colour;
   padding-top: 6rem;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+  transition: all $transition-medium;
 
   &:hover {
     transform: translateY(-2px);
@@ -26,9 +26,5 @@
     grid-template-columns: 2fr 1fr;
     gap: $spacing-l;
     margin-top: $spacing-l;
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
   }
 }
