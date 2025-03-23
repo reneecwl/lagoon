@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import formImage from "../../assets/images/seville2.jpg";
 
-export default function CreateItineraryForm({ setIsOpen, fetchItinerary, itinerary, itineraryId }) {
+export default function CreateItineraryForm({ setIsOpen }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [isClicked, setIsClicked] = useState(false);

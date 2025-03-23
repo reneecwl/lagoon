@@ -1,6 +1,6 @@
 import "./ItineraryOutline.scss";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Weather from "../Weather/Weather";
 import ItineraryMap from "../ItineraryMap/ItineraryMap";
 import PublicHoliday from "../PublicHoliday/PublicHoliday";
@@ -20,7 +20,7 @@ export default function ItineraryOutline({
     itinerary.itinerary_name || `${daysCount} Days trip in ${itinerary.location}`
   );
 
-  const [activeTab, setActiveTab] = useState("weather");
+  const [activeTab, setActiveTab] = useState("holidays");
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -42,8 +42,6 @@ export default function ItineraryOutline({
       end_date: formattedEndDate,
     };
 
-    console.log(editTripDetails);
-
     try {
       await axios.put(`${baseUrl}/itineraries/${itinerary.id}`, editTripDetails);
       fetchItinerary();
@@ -53,21 +51,6 @@ export default function ItineraryOutline({
     }
   };
 
-  //   const input = document.getElementById("itinerary-download");
-
-  //   html2canvas(input, { scale: 2, useCORS: true }).then((canvas) => {
-  //     const imgData = canvas.toDataURL("image/png");
-
-  //     const pdf = new jsPDF({
-  //       orientation: "portrait",
-  //       unit: "px",
-  //       format: [canvas.width, canvas.height],
-  //     });
-
-  //     pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
-  //     pdf.save("itinerary.pdf");
-  //   });
-  // };
   return (
     <>
       <div className="outline">

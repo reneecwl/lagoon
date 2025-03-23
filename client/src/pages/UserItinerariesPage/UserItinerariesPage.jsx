@@ -9,9 +9,8 @@ import londonImage from "../../assets/images/destinations/london.jpg";
 import CreateItineraryForm from "../../components/CreateItineraryForm/CreateItineraryForm.jsx";
 import JourneyMap from "../../components/JourneyMap/JourneyMap";
 import parisImage from "../../assets/images/destinations/paris.jpg";
-import aarhusImage from "../../assets/images/destinations/aarhus.jpg";
 import romeImage from "../../assets/images/destinations/rome.jpg";
-import sevilleImage from "../../assets/images/destinations/seville.jpg";
+import barcelonaImage from "../../assets/images/destinations/barcelona.jpg";
 import tokyoImage from "../../assets/images/destinations/tokyo.jpg";
 import sydneyImage from "../../assets/images/destinations/sydney.jpg";
 import hkImage from "../../assets/images/destinations/hongkong.jpg";
@@ -28,7 +27,6 @@ export default function UserItinerariesPage() {
       try {
         const response = await axios.get(`${baseUrl}/users/${userId}/itineraries`);
         setUserItineraries(response.data);
-        // console.log(response.data);
       } catch (error) {
         console.error("There is an error loading the user's itineraries", error);
       }
@@ -68,8 +66,7 @@ export default function UserItinerariesPage() {
   const locationImages = {
     London: londonImage,
     Paris: parisImage,
-    Aarhus: aarhusImage,
-    Seville: sevilleImage,
+    Barcelona: barcelonaImage,
     Rome: romeImage,
     Tokyo: tokyoImage,
     Sydney: sydneyImage,
