@@ -42,6 +42,7 @@ export default function ItineraryOutline({
       end_date: formattedEndDate,
     };
 
+    console.log(editTripDetails);
     try {
       await axios.put(`${baseUrl}/itineraries/${itinerary.id}`, editTripDetails);
       fetchItinerary();

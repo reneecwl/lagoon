@@ -52,7 +52,7 @@ export default function CreateItineraryForm({ setIsOpen }) {
     try {
       const response = await axios.post(`${baseUrl}/itineraries`, newItinerary);
       const newItineraryId = response.data.id;
-      console.log(response.data);
+      // console.log(response.data);
       setIsClicked(false);
       setShouldShake(false);
       setFormData({
