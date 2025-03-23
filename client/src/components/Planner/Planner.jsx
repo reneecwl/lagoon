@@ -74,7 +74,6 @@ export default function Planner({
   if (!dailyAttractions || !Array.isArray(dailyAttractions)) {
     return <div>Loading itinerary...</div>;
   }
-  // console.log(extractedWeatherData);
 
   return (
     <div id="itinerary-download">

@@ -32,19 +32,18 @@
     padding: $spacing-m;
     max-height: 93rem;
 
-    //Custom scrollbar - shorter
     &::-webkit-scrollbar {
-      width: 4px;
+      width: 0.25rem;
     }
 
     &::-webkit-scrollbar-track {
       background: #f1f1f1;
-      border-radius: 10px;
+      border-radius: 0.625rem;
     }
 
     &::-webkit-scrollbar-thumb {
       background: rgba($accent-colour, 0.5);
-      border-radius: 10px;
+      border-radius: 0.625rem;
     }
 
     &::-webkit-scrollbar-thumb:hover {
@@ -54,27 +53,27 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
     gap: $spacing-m;
     justify-items: center;
   }
 
   &__card {
     width: 100%;
-    max-width: 340px;
+    max-width: 21.25rem;
     border-radius: $border-radius-m;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+    transition: all $transition-medium;
     background-color: $white;
     box-shadow: $shadow-sm;
-    border: 1px solid rgba($accent-colour, 0.2); // Subtle border in accent color
+    border: 1px solid rgba($accent-colour, 0.2);
 
     &:hover {
       transform: translateY(-5px);
       box-shadow: $shadow-md;
-      border-color: rgba($accent-colour, 0.4); // Darker border on hover
+      border-color: rgba($accent-colour, 0.4);
     }
   }
 
@@ -89,7 +88,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform $transition-slow;
 
     &:hover {
       transform: scale(1.05);
@@ -124,17 +123,16 @@
   &__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: $spacing-xs;
     margin-bottom: $spacing-s;
   }
 
   &__tag {
     display: inline-block;
     font-family: $font-secondary;
-    font-size: $font-size-s;
-    padding: 4px 10px;
+    padding: 0.25rem 0.625rem;
     border: 1px solid $accent-colour;
-    border-radius: 16px;
+    border-radius: $border-radius-l;
     background-color: rgba($accent-colour, 0.05);
     color: $accent-colour;
     font-size: $font-size-s;
