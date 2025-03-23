@@ -12,22 +12,22 @@ export default function ItineraryMap({ attractions, location }) {
 
   useEffect(() => {
     const fetchGeocodes = async () => {
-      if (!attractions || attractions.length === 0) return;
+      const cityLocation = await GetGeocode(location);
 
       const markerData = [];
 
-      const cityLocation = await GetGeocode(location);
-
-      for (const attraction of attractions) {
-        const coords = await GetGeocode(attraction.attraction_name);
-        if (coords) {
-          markerData.push({
-            id: attraction.id,
-            name: attraction.attraction_name,
-            day: attraction.day,
-            lat: coords.lat,
-            lng: coords.lng,
-          });
+      if (attractions && attractions.length > 0) {
+        for (const attraction of attractions) {
+          const coords = await GetGeocode(attraction.attraction_name);
+          if (coords) {
+            markerData.push({
+              id: attraction.id,
+              name: attraction.attraction_name,
+              day: attraction.day,
+              lat: coords.lat,
+              lng: coords.lng,
+            });
+          }
         }
       }
 
@@ -35,8 +35,6 @@ export default function ItineraryMap({ attractions, location }) {
 
       if (cityLocation) {
         initMap(cityLocation, markerData);
-      } else if (markerData.length > 0) {
-        initMap({ lat: markerData[0].lat, lng: markerData[0].lng }, markerData);
       }
     };
 
