@@ -1,4 +1,3 @@
-import "./App.scss";
 import "./styles/partials/_global.scss";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Header from "./components/Header/Header";
