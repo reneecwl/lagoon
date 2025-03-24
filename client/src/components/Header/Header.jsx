@@ -4,10 +4,11 @@ import logo from "../../assets/logo/lagoon-white-logo.png";
 
 export default function Header({ handleNavigation }) {
   const location = useLocation();
-  const isItineraryPage = location.pathname.includes("/itineraries");
+
+  const isHomePage = location.pathname === "/";
 
   return (
-    <header id="hearder" className={isItineraryPage ? "header header--itinerary" : "header"}>
+    <header id="hearder" className={!isHomePage ? "header header--itinerary" : "header"}>
       <Link to="/">
         <div className="header__logo-container">
           <img src={logo} alt="logo" className="header__logo" />
@@ -18,7 +19,7 @@ export default function Header({ handleNavigation }) {
       <div className="header__right">
         <nav className="navbar">
           <ul className="navbar__list">
-            {isItineraryPage && (
+            {!isHomePage && (
               <li className="navbar__subtitle">
                 <Link className="navbar__nav-link" to="/users/1/itineraries">
                   My Journey

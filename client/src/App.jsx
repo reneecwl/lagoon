@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
 import ItineraryPlanningPage from "./pages/ItineraryPlanningPage/ItineraryPlanningPage";
 import UserItinerariesPage from "./pages/UserItinerariesPage/UserItinerariesPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ function App() {
             path="/users/:userId/itineraries"
             element={<UserItinerariesPage isOpen={isOpen} setIsOpen={setIsOpen} />}
           />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
       <Footer handleNavigation={handleNavigation} />
