@@ -3,7 +3,7 @@ import aarhusImage from "../../assets/images/aarhus.jpg";
 import maltaImage from "../../assets/images/malta.jpg";
 import sintraImage from "../../assets/images/sintra.jpg";
 
-export default function Discover() {
+export default function Discover({ isOpen, setIsOpen }) {
   const destinations = [
     {
       id: 1,
@@ -53,7 +53,14 @@ export default function Discover() {
                   <span className="discover__country">{destination.country}</span>
                 </h3>
                 <p className="discover__description">{destination.description}</p>
-                <button className="discover__button">Plan Your Trip</button>
+                <button
+                  className="discover__button"
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
+                >
+                  Plan Your Trip
+                </button>
               </div>
             </div>
           ))}

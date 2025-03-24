@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./AboutUs.scss";
 import petraImage from "../../assets/images/Petra.jpg";
 import brugesImage from "../../assets/images/bruges.jpeg";
@@ -70,7 +70,13 @@ export default function AboutUs() {
               <a href="/philosophy" className="about-us__button about-us__button--primary">
                 Our Philosophy
               </a>
-              <a href="/contact" className="about-us__button about-us__button--secondary">
+
+              <a
+                href="mailto:lagoon.planner@gmail.com"
+                target="_blank"
+                className="about-us__button about-us__button--secondary"
+                rel="noopener noreferrer"
+              >
                 Get in Touch
               </a>
             </div>

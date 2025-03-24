@@ -16,9 +16,8 @@ import sydneyImage from "../../assets/images/destinations/sydney.jpg";
 import hkImage from "../../assets/images/destinations/hongkong.jpg";
 import UserStatistics from "../../components/UserStatistics/UserStatistics.jsx";
 
-export default function UserItinerariesPage() {
+export default function UserItinerariesPage({ isOpen, setIsOpen }) {
   const [userItineraries, setUserItineraries] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
   const { userId } = useParams();
   const baseUrl = import.meta.env.VITE_API_URL;
 

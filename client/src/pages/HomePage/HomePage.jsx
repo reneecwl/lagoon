@@ -3,8 +3,9 @@ import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AboutUs from "../../components/AboutUs/AboutUs.jsx";
 import Discover from "../../components/Discover/Discover.jsx";
+import CreateItineraryForm from "../../components/CreateItineraryForm/CreateItineraryForm.jsx";
 
-export default function HomePage({ handleNavigation }) {
+export default function HomePage({ handleNavigation, isOpen, setIsOpen }) {
   const aboutRef = useRef(null);
   const discoverRef = useRef(null);
   const location = useLocation();
@@ -39,8 +40,13 @@ export default function HomePage({ handleNavigation }) {
         </div>
       </div>
       <div id="discover" ref={discoverRef}>
-        <Discover />
+        <Discover isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
+      {isOpen && (
+        <div className="create-itinerary__overlay">
+          <CreateItineraryForm setIsOpen={setIsOpen} />
+        </div>
+      )}
       <div id="about" ref={aboutRef}>
         <AboutUs />
       </div>
