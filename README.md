@@ -1,18 +1,3 @@
-## Table of Contents
-
-1. [Overview](#overview)
-2. [Problem Space](#problem-space)
-3. [User Profile](#user-profile)
-4. [Features](#features)
-5. [Tech Stack](#tech-stack)
-6. [APIs](#apis)
-7. [Sitemap](#sitemap)
-8. [Mockups](#mockups)
-9. [Data](#data)
-10. [Endpoints](#endpoints)
-11. [Roadmap](#roadmap)
-12. [Future Implementations](#future-implementations)
-
 # Lagoon 🌍✈️
 
 **Your all-in-one travel planner and digital travel journal.**  
