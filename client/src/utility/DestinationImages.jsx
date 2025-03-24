@@ -7,6 +7,7 @@ import tokyoImage from "../../src/assets/images/destinations/tokyo.jpg";
 import sydneyImage from "../../src/assets/images/destinations/sydney.jpg";
 import granadaImage from "../../src/assets/images/destinations/granada.jpg";
 import parisImage from "../../src/assets/images/destinations/paris.jpg";
+import bangkokImage from "../../src/assets/images/destinations/bangkok.jpg";
 
 export const locationImages = {
   London: londonImage,
@@ -17,6 +18,7 @@ export const locationImages = {
   Tokyo: tokyoImage,
   Sydney: sydneyImage,
   Granada: granadaImage,
+  Bangkok: bangkokImage,
 };
 
 export const getDestinationImage = (location) => {

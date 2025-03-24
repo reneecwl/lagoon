@@ -5,14 +5,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import londonImage from "../../assets/images/destinations/london.jpg";
 import CreateItineraryForm from "../../components/CreateItineraryForm/CreateItineraryForm.jsx";
 import JourneyMap from "../../components/JourneyMap/JourneyMap";
+import londonImage from "../../assets/images/destinations/london.jpg";
 import parisImage from "../../assets/images/destinations/paris.jpg";
 import romeImage from "../../assets/images/destinations/rome.jpg";
 import barcelonaImage from "../../assets/images/destinations/barcelona.jpg";
 import tokyoImage from "../../assets/images/destinations/tokyo.jpg";
 import sydneyImage from "../../assets/images/destinations/sydney.jpg";
+import bangkokImage from "../../assets/images/destinations/bangkok.jpg";
 import hkImage from "../../assets/images/destinations/hongkong.jpg";
 import UserStatistics from "../../components/UserStatistics/UserStatistics.jsx";
 
@@ -70,6 +71,7 @@ export default function UserItinerariesPage({ isOpen, setIsOpen }) {
     Tokyo: tokyoImage,
     Sydney: sydneyImage,
     HongKong: hkImage,
+    Bangkok: bangkokImage,
   };
 
   const getDestinationImage = (location) => {
