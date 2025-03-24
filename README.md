@@ -69,9 +69,10 @@ npm run dev
 
 Visit: http://localhost:5173
 
-### Important Note:
+**Important Note:**
 
-Weather Forecast: The current version of Lagoon supports a 14-day weather forecast. Cities: The app currently only supports attraction data for the following cities: Bangkok, Barcelona, London, Paris, Rome, Sydney, Tokyo. Future updates will expand coverage to more cities.
+- Weather Forecast: The current version of Lagoon supports a 14-day weather forecast.
+- Cities: The app currently only supports attraction data for the following cities: Bangkok, Barcelona, London, Paris, Rome, Sydney, Tokyo. Future updates will expand coverage to more cities.
 
 ### Problem Space
 
@@ -87,11 +88,11 @@ And after the trip? It’s all too easy to forget the details of where you’ve 
 
 ### Features
 
-### Add New Trip:
+**Add New Trip:**
 
 - Start your journey by simply entering a location and dates.
 
-### Trip Planning:
+**Trip Planning:**
 
 - Add trips by entering destination and dates
 - Update trip names
@@ -101,7 +102,7 @@ And after the trip? It’s all too easy to forget the details of where you’ve 
 - Real-time weather and holiday data
 - Downloadable itineraries
 
-### Travel Journal & Map:
+**Travel Journal & Map:**
 
 - Dashboard of past and upcoming trips
 - Interactive map with color-coded pins to distinguish between completed and upcoming trips
