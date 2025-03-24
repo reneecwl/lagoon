@@ -20,7 +20,7 @@ export default function ItineraryOutline({
     itinerary.itinerary_name || `${daysCount} Days trip in ${itinerary.location}`
   );
 
-  const [activeTab, setActiveTab] = useState("holidays");
+  const [activeTab, setActiveTab] = useState("map");
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
