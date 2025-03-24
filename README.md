@@ -1,229 +1,489 @@
-## Table of Contents
+# Lagoon 🌍✈️
 
-1. [Overview](#overview)
-2. [Problem Space](#problem-space)
-3. [User Profile](#user-profile)
-4. [Features](#features)
-5. [Tech Stack](#tech-stack)
-6. [APIs](#apis)
-7. [Sitemap](#sitemap)
-8. [Mockups](#mockups)
-9. [Data](#data)
-10. [Endpoints](#endpoints)
-11. [Roadmap](#roadmap)
-12. [Future Implementations](#future-implementations)
-
-# Project Title
-Lagoon: Your Travel Planner 🌍✈️
+**Your all-in-one travel planner and digital travel journal.**  
+_From planning your trip to remembering every moment._
 
 ## Overview
 
-Tired of juggling multiple tabs to plan your trips?
+Tired of juggling multiple tabs when planning trips?
 
-Lagoon simplifies the process by integrating weather forecasts, public holidays, and activity suggestions into a single, intuitive platform.
+Lagoon brings weather forecasts, public holidays, and attraction suggestions into a single platform. Track past travels with a dynamic map and trip statistics — plan, save, and relive your adventures all in one place.
+
+## Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/reneecwl/lagoon.git
+cd lagoon
+```
+
+### 2. Install Dependencies
+
+- Frontend
+
+```bash
+cd client
+npm install
+```
+
+- Backend
+
+```bash
+cd server
+npm install
+```
+
+### 3. Environment Variables
+
+- Copy .env.example files in both server/ and client/ folders and rename them to .env.
+- Fill in your database credentials and API keys.
+
+```bash
+cp server/.env.example server/.env
+cp client/.env.example client/.env
+```
+
+🔎 VITE_WEATHER_API_KEY — get from WeatherAPI 🔎 VITE_API_KEY_GOOGLE — get from Google Cloud Platform
+
+### 4. Set Up the Database In /server:
+
+```bash
+npx knex migrate:latest
+npx knex seed:run
+```
+
+### 5. Start the App Backend:
+
+```bash
+cd server
+npm run dev
+```
+
+Frontend:
+
+```bash
+cd client
+npm run dev
+```
+
+Visit: http://localhost:5173
+
+**Important Note:**
+
+- Weather Forecast: The current version of Lagoon supports a 14-day weather forecast.
+- Cities: The app currently only supports attraction data for the following cities: Bangkok, Barcelona, London, Paris, Rome, Sydney, Tokyo. Future updates will expand coverage to more cities.
 
 ### Problem Space
 
-Planning a trip often requires juggling multiple websites or apps to check weather forecasts, public holidays, and activity options, leading to a fragmented and time-consuming experience. Lagoon addresses this pain point by consolidating essential travel planning information into a single, user-friendly interface, reducing the need for multiple tabs and streamlining the process.
+Planning a trip often means bouncing between different websites or apps to check weather forecasts, public holidays, and attraction ideas — a process that quickly becomes fragmented and time-consuming. Lagoon simplifies this by bringing all the essential travel planning tools into one user-friendly platform, so you can focus on the excitement of planning rather than managing endless tabs. No more scattered Google Sheets or Docs shared among friends.
+
+And after the trip? It’s all too easy to forget the details of where you’ve been. When friends ask for recommendations, you’re left digging through old files and memories. That’s where Lagoon comes in. It doubles as a digital travel journal — saving your itineraries, offering trip stats, and displaying your journeys on a world map — making it effortless to revisit and share your adventures anytime.
 
 ### User Profile
 
-Key User Stories:
-
-- 🧳 As a traveller, I want to plan my trip in one place so that I don’t have to switch between multiple tabs.
-
-- 🧳 As a traveller, I want to be able to revisit my itinerary and resume planning later.
+- 🧳 Plan trips in one place without switching between multiple tabs
+- 🧳 Share itineraries with friends and family effortlessly
+- 🧳 Keep track of travel history with downloadable and shareable trip records
 
 ### Features
 
-- Trip Input: Users input location, travel dates, days and user name on the Homepage; submitting creates an initial itinerary with weather and holiday data.
+**Add New Trip:**
 
-- Trip Planning: Users add the itinerary_name, browse curated attractions and add them to their itinerary, updating the saved plan.
+- Start your journey by simply entering a location and dates.
 
-- Itinerary Builder: Users can view all their itineraries in one page, allowing them to add new itinerary or click the itinerary and route back to the planning page.
+**Trip Planning:**
+
+- Add trips by entering destination and dates
+- Update trip names
+- Add/remove attractions for each day
+- Personal notes for each attraction
+- Daily route maps with connecting paths
+- Real-time weather and holiday data
+- Downloadable itineraries
+
+**Travel Journal & Map:**
+
+- Dashboard of past and upcoming trips
+- Interactive map with color-coded pins to distinguish between completed and upcoming trips
+- Trip statistics overview - including counts of upcoming and completed journeys
 
 ## Implementation
 
-### Tech Stack
+### Tech Stack:
 
-- Frontend: ⚛️ React (React Router, Axios, React-Datepicker, React-Responsive)
+- **Frontend**:
 
-- Backend: 🖥️ Express.js (Node.js framework) 📦 Knex.js (SQL query builder)
+  - ⚛️ **React** (React Router, Axios, React-Datepicker)
+  - 🎨 **SCSS** (Styling)
+  - 🧩 **Date-fns** (Date manipulation)
+  - 🖼️ **html2canvas** (Rendering HTML to images)
+  - 📄 **jsPDF** (Generating PDFs)
 
-- Database: 🗄️ MySQL
+- **Backend**:
 
-Optional Features: 🖱️ React-Draggable (Drag-and-drop activity planning) 📊 React-ChartJS-2 (Weather data visualization)
+  - 🖥️ **Express.js** (Node.js framework)
+  - 📦 **Knex.js** (SQL query builder)
+
+- **Database**:
+  - 🗄️ **MySQL**
 
 ### APIs
 
-- External:
+- **External**
 
-1. **OpenWeatherMap**: Provides weather forecasts (e.g., GET /forecast?q={city}&appid={key}). Limited to 30-day forecasts.
-2. **Nager.Date**: Fetches public holiday data by year and country (e.g., GET /PublicHolidays/{year}/{countryCode}).
-3. **Google Places API (Stretch)**: Enhances location search with autocomplete (optional).
+  - **Weather API**: 14-day weather forecast
+  - **Nager.Date**: Public holiday data
+  - **Google Geocoding Api**: Location coordinates
+  - **Google Maps JavaScript API:**: Maps & attraction routes
 
-- Internal:
-
-Custom endpoints for fetching attractions, saving itineraries, and managing user data (see Endpoints section).
+- **Internal**
+  - Custom endpoints for fetching attractions, saving itineraries, and managing user data (see Endpoints section).
 
 ### Sitemap
 
-<img width="1364" alt="sitemap" src="https://github.com/user-attachments/assets/ba40e23f-2096-4f67-9c5a-e1b80c336eef" />
-
-
-1. **Homepage**:
-
-- Users create new itinerary by input location, travel dates days and name; submits to fetch data. Connection: Leads to Trip Planning Page on submission.
-- Users able to retrieve exisitng itinerary, connect lead to Itinerary Page.
-
-2. **Trip Planning Page**: Displays weather, holidays, and activity options; users add attractions to their plan. Connection: Links back to Homepage or forward to Itinerary Page.
-
-3. **Itinerary Page**: Shows the finalized itinerary with weather, holidays, and selected attractions. Connection: Links back to Trip Planning Page for edits or Homepage to start over.
+```
+🏠 Homepage
+│
+├── 🌏 Travel Journal Page
+│     ├── Add New Trip (input location + dates → redirects to Trip Planning Page)
+│     ├── Trip Statistics (Upcoming trips, Completed trips, Countdown to next trip)
+│     ├── Map (Visited & Upcoming Trips, with pins & images)
+│     └── Trips List (Upcoming + Completed)
+│           ├── Edit button (for upcoming → Trip Planning Page)
+│           └── View button (for past trips → Trip Planning Page)
+│
+├── 📅 Trip Planning Page
+│     ├── Weather and Holiday Display
+│     ├── Daily Route Map
+│     ├── Attractions List (Add/Delete attractions, Add notes)
+│     └── Planner by day (Hover to delete attraction + Download itinerary + Edit notes)
+│
+└── ℹ️ About Us
+└── ℹ️ Discover (Cities suggestions & Plan your trip button → redirects to Trip Planning Page)
+```
 
 ### Mockups
-![HomePage](https://github.com/user-attachments/assets/c5e26d81-5989-4d60-8a73-c1d4fe05322f)
-![HomePage-create](https://github.com/user-attachments/assets/da39b1ff-7fd1-4eb5-b9f6-78187eae30d6)
-![TripPlanningPage](https://github.com/user-attachments/assets/74fa13a9-efee-439d-a288-695464573de1)
-![ItineraryPage](https://github.com/user-attachments/assets/d12cd7d8-0164-4d09-8563-efde021f2bd8)
+
+![Lagoon Mockup](https://github.com/user-attachments/assets/81e3a78a-8597-4724-9fb9-6cec40d31de2)
 
 ### Data
-![sql-diagram](https://github.com/user-attachments/assets/0522c6b3-22d8-4c5d-b769-0c159a4d1424)
+
+![sql-diagram](https://github.com/user-attachments/assets/96b5cb03-1770-4202-b1d3-59f9a9f3a97d)
 
 ### Endpoints
+
+**GET /api/users**
+
+- Retreve the list of users
+- Parameters: none
+- Response:
+
+```
+[
+{
+        "id": 2,
+        "user_name": "Benson",
+        "created_at": "2025-03-12T19:08:47.000Z",
+        "updated_at": "2025-03-12T19:08:47.000Z"
+    },
+    {
+        "id": 3,
+        "user_name": "Charlie",
+        "created_at": "2025-03-12T19:08:47.000Z",
+        "updated_at": "2025-03-12T19:08:47.000Z"
+},
+]
+```
 
 **POST /api/users**
 
 - Creates or retrieves a user based on user_name.
-- Parameters:
-Request Body:
-```
-{
-  "user_name": "JohnDoe"
-}
-```
-Response: If user exists: Returns the existing user_id. If new user: Creates the user and returns the new user_id.
+- Parameters: Request Body:
 
 ```
 {
- "user_id": 1,
- "user_name": "John Doe",
- "message": "User retrieved/created"
+  "user_name": "John"
 }
+```
+
+Response: If user exists: Returns the existing user_id. If new user: Creates the user and returns the new user_id.
+
+```
+ {
+   "id": 4,
+    "user_name": "John",
+    "created_at": "2025-03-12T22:27:36.000Z",
+    "updated_at": "2025-03-12T22:27:36.000Z"
+}
+```
+
+**GET /api/users/:id/itineraries**
+
+- Retrieve all the itineraries of a single user
+- Parameters: userId
+- Response:
+
+```
+{
+    "username": "Benson",
+    "itineraries": [
+        {
+            "id": 37,
+            "user_id": 2,
+            "location": "Sydney",
+            "start_date": "2025-03-27T04:00:00.000Z",
+            "end_date": "2025-03-29T04:00:00.000Z",
+            "itinerary_name": null,
+            "attraction_count": 0
+        },
+        {
+            "id": 2,
+            "user_id": 2,
+            "location": "Tokyo",
+            "start_date": "2025-03-13T04:00:00.000Z",
+            "end_date": "2025-03-17T04:00:00.000Z",
+            "itinerary_name": "Golden Week in Tokyo",
+            "attraction_count": 0
+        }
+    ]
+}
+
 ```
 
 **GET /api/itineraries**
 
-- Retrieves a list of all itineraries in the system (for demo purposes, assuming one user).
-- Parameters: None
-Response
+- Retrieve the list of all itineraries
+- Parameters: none
+- Response:
+
 ```
 [
- {
- "itinerary_id": 1,
- "location": "London",
- "date": "May 13-20",
- "days": 4,
- "itinerary_name": "Autumn in London",
- "attractions": [...]
- }, ...
+    {
+        "id": 1,
+        "user_id": 1,
+        "location": "London",
+        "start_date": "2025-03-12T04:00:00.000Z",
+        "end_date": "2025-03-15T04:00:00.000Z",
+        "itinerary_name": "Spring in London",
+        "created_at": "2025-03-12T19:11:29.000Z",
+        "updated_at": "2025-03-12T19:11:29.000Z"
+    },
+    {
+        "id": 2,
+        "user_id": 2,
+        "location": "Tokyo",
+        "start_date": "2025-03-13T04:00:00.000Z",
+        "end_date": "2025-03-17T04:00:00.000Z",
+        "itinerary_name": "Golden Week in Tokyo",
+        "created_at": "2025-03-12T19:11:29.000Z",
+        "updated_at": "2025-03-12T19:11:29.000Z"
+    },
 ]
 ```
 
 **POST /api/itineraries**
 
-- Creates a new itinerary with weather, holiday, and attractions data, associating it with a user
-- -Parameters:
-Request body:
+- Creates a new itinerary
+- Parameters: Request Body:
+
 ```
-{
+ {
+ "user_id":4,
  "location": "London",
- "date": "May 13-20",
- "days": 4,
- "itinerary_name": "Autumn in London",
- "user_name": "John Doe"
-}
+ "start_date": "2025-03-20",
+ "end_date": "2025-03-24",
+ }
 ```
 
-Response: 
-```
-{
- "itinerary_id": 1,
- "user_id": 1, "weather": {...},
- "holidays": [...],
- "attractions": [...],
- "cityImage": "/images/london-city.jpg"
-}
-```
-
-**GET /api/itineraries/:id**
-- Retrieves a single itinerary with its associated attractions.
-- Parameters: URL: itinerary_id
 Response:
 
 ```
 {
- "itinerary_id": 1,
- "location": "London",
- "date": "May 13-20",
- "days": 4,
- "itinerary_name": "Autumn in London",
- "attractions":
-  [
-    { "attraction_id": 1,
-       "attraction_name": "London Eye",
-      "description": "Iconic Ferris wheel",
-      "tags": "outdoor,family",
-      "image": "/images/london-eye.jpg",
-      "user_notes": "Visit at sunset" }
-, ...
-  ]
+  "id": 3,
+  "user_id": 2,
+  "location": "Sydney",
+  "start_date": "2025-03-27T04:00:00.000Z",
+  "end_date": "2025-03-29T04:00:00.000Z",
+  "itinerary_name": "Weekend in Sydney"
+  "created_at": "2025-03-23T15:10:52.000Z"
+  "updated_at": "2025-03-23T15:10:52.000Z"
+}
+
+```
+
+**GET /api/itineraries/:id**
+
+- Retrieve a single itinerary with its attractions
+- Parameters: itineraryId
+- Response:
+
+```
+{
+    "id": 38,
+    "user_id": 1,
+    "location": "Sydney",
+    "start_date": "2025-03-30T04:00:00.000Z",
+    "end_date": "2025-04-04T04:00:00.000Z",
+    "itinerary_name": "Finding Koala in Australia",
+    "attractions": [
+        {
+            "id": 45,
+            "day": 1,
+            "attraction_name": "Sydney Opera House",
+            "description": "Iconic performing arts venue with distinctive sail-shaped design.",
+            "suggested_duration": "1-2 hr",
+            "tags": "landmark,architecture,culture",
+            "user_notes": "Must go! Cant wait to check this out.",
+            "image": "Photo-45.jpg"
+        },
+        {
+            "id": 46,
+            "day": 2,
+            "attraction_name": "Sydney Harbour Bridge",
+            "description": "Steel arch bridge spanning Sydney Harbour.",
+            "suggested_duration": "1-2 hr",
+            "tags": "landmark,view,iconic",
+            "user_notes": "Should we climb it as well?",
+            "image": "Photo-46.jpg"
+        },
+    ]
 }
 ```
 
 **PUT /api/itineraries/:id**
 
-- Updates an existing itinerary by adding attractions to the itinerary_attractions table
-- Parameters: URL:itinerary_id
-Request Body:
+- Update an existing itinerary
+- Parameters: itineraryId
+- Request Body:
+
+```
+ {
+   "id" : 1,
+   "user_id" :2
+   "location": "London"
+   "start_date": "2025-04-01",
+   "end_date": "2025-04-05",
+   "itinerary_name": "Lodon- Summer Getaway",
+ };
+
+```
+
+- Response:
 
 ```
 {
- "activity_id": 1,
- "user_notes": "Visit at sunset",
- "itinerary_name": "Autumn in London"
+   "id" : 1,
+   "user_id" :2
+   "location": "London"
+   "start_date": "2025-04-01",
+   "end_date": "2025-04-05",
+   "itinerary_name": "Lodon- Summer Getaway",
 }
 ```
 
-Response: 
+**POST/api/itineraries/:id**
+
+- Add an attraction to an itinerary
+- Parameters: itineraryId
+- Request Body:
+
 ```
 {
- "itinerary_id": 1,
- "message": "Itinerary updated"
+  "attraction_id": 3,
+  "user_notes": "Plan to arrive early to avoid crowds",
+  "day": 2
+}
+```
+
+- Response:
+
+```
+{
+  "message": "Attraction with id 3 is added to itinerary 1 on Day 2"
+}
+```
+
+**DELETE /api/itineraries/:id**
+
+- Remove an attraction from an itinerary
+- Parameters: itineraryId
+- Request Body:
+
+```
+{
+  "attraction_id": 3
+}
+```
+
+- Response:
+
+```
+{
+  "message": "Attraction deleted successfully"
+}
+```
+
+**PATCH /api/itineraries/:id**
+
+- Update user notes for an attraction in an itinerary
+- Parameters: itineraryId
+- Request Body:
+
+```
+{
+  "attraction_id": 1,
+  "user_notes": "Updated note: Visit at sunset and stay for the light show"
+}
+```
+
+- Response:
+
+```
+{
+  "itinerary_id": 1,
+  "attraction_id": 1,
+  "user_notes": "Updated note: Visit at sunset and stay for the light show",
+  "day": 1
 }
 ```
 
 **GET /api/attractions**
 
-- Retrieves a static list of pre-prepared attractions for the fixed location.
-- Parameters: Query: location (e.g., /api/attractions?location=London)
+- Retrieve attractions based on location
+- Parameters: Query parameter: location (required) Example: /api/attractions?location=Tokyo
+- Response:
 
-Response:
 ```
 [
- {
-   "activity_id": 1,
-   "location": "London",
-   "activity_name": "London Eye",
-   "description": "Iconic Ferris wheel",
-   "tags": "outdoor,family",
-   "image": "/images/london-eye.jpg"
- }, ...
+   {
+        "id": 13,
+        "location": "Tokyo",
+        "attraction_name": "Shibuya Crossing",
+        "description": "Famous busy pedestrian crossing.",
+        "suggested_duration": "1-2 hr",
+        "tags": "urban,landmark,iconic",
+        "image": "Photo-13.jpg",
+        "created_at": "2025-03-23T02:18:57.000Z",
+        "updated_at": "2025-03-23T02:18:57.000Z"
+    },
+    {
+        "id": 14,
+        "location": "Tokyo",
+        "attraction_name": "Senso-ji Temple",
+        "description": "Historic Buddhist temple in Asakusa.",
+        "suggested_duration": "1-2 hr",
+        "tags": "temple,culture,history",
+        "image": "Photo-14.jpg",
+        "created_at": "2025-03-23T02:18:57.000Z",
+        "updated_at": "2025-03-23T02:18:57.000Z"
+    }
 ]
 ```
 
 ## Roadmap
 
-Week 1
+Week 1:
 
 - Set up project (React frontend, Express backend, MySQL database, Knex config).
 - Build Homepage with form; implement POST /api/itineraries to create an initial itinerary
@@ -231,9 +491,8 @@ Week 1
 - Create Trip Planning Page to display weather, holidays, and attractions; add PATCH /api/itineraries/:id to update attractions.
 - Build Itinerary Page to show the saved plan; test GET /api/itineraries/:id.
 
-Week 2
+Week 2:
 
-- Add responsiveness
 - Test API endpoints and fix bugs.
 - Polish UI (e.g., activity cards, weather display); add Sydney attractions if time allows.
 - Final testing and documentation.
@@ -241,14 +500,7 @@ Week 2
 
 ## Future Implementations
 
-Login Page: Allows users to log in or register to save itineraries.
-
-Collaboration: Logged-in users can invite friends to view/edit itineraries and share plans.
-
-Travel Style incorporated in Homepage question (e.g., "chill" vs. "packed") to auto-suggest attractions using AI (e.g., Open AI integration).
-
-Social Features: Like/comment function on attractions, showing popularity among friends to help with the planning process.
-
-Travel Details: Link flight and hotel booking APIs (e.g., Google Travel) for seamless integration.
-
-Integrate Google Maps: Display the locations of selected attractions to enhance the user experience
+- Login Page: Allows users to log in or register to save itineraries.
+- Collaboration: Logged-in users can invite friends to view/edit itineraries and share plans.
+- Social Features: Like/comment function on attractions, showing popularity among friends to help with the planning process.
+- Travel Details: Link flight and hotel booking APIs (e.g., Google Travel) for seamless integration.
