@@ -84,11 +84,15 @@ npm run dev
 
 Visit: http://localhost:5173
 
+### Important Note:
+
+Weather Forecast: The current version of Lagoon supports a 14-day weather forecast. Cities: The app currently only supports attraction data for the following cities: Bangkok, Barcelona, London, Paris, Rome, Sydney, Tokyo. Future updates will expand coverage to more cities.
+
 ### Problem Space
 
-Planning a trip often means bouncing between different websites or apps to check weather forecasts, public holidays, and activity ideas — a process that can feel fragmented and time-consuming. Lagoon simplifies this by bringing all essential travel planning tools together in one user-friendly platform, so you can focus on dreaming up your next adventure.
+Planning a trip often means bouncing between different websites or apps to check weather forecasts, public holidays, and attraction ideas — a process that quickly becomes fragmented and time-consuming. Lagoon simplifies this by bringing all the essential travel planning tools into one user-friendly platform, so you can focus on the excitement of planning rather than managing endless tabs. No more scattered Google Sheets or Docs shared among friends.
 
-And the journey doesn’t end there. After traveling, it’s easy to lose track of where you’ve been. Lagoon doubles as a digital travel journal, saving your itineraries, offering trip stats, and showcasing your adventures on a world map — making it easy to relive and share your journeys.
+And after the trip? It’s all too easy to forget the details of where you’ve been. When friends ask for recommendations, you’re left digging through old files and memories. That’s where Lagoon comes in. It doubles as a digital travel journal — saving your itineraries, offering trip stats, and displaying your journeys on a world map — making it effortless to revisit and share your adventures anytime.
 
 ### User Profile
 
@@ -175,7 +179,7 @@ And the journey doesn’t end there. After traveling, it’s easy to lose track 
 
 ### Mockups
 
-![HomePage](https://github.com/user-attachments/assets/c5e26d81-5989-4d60-8a73-c1d4fe05322f) ![HomePage-create](https://github.com/user-attachments/assets/da39b1ff-7fd1-4eb5-b9f6-78187eae30d6) ![TripPlanningPage](https://github.com/user-attachments/assets/74fa13a9-efee-439d-a288-695464573de1) ![TravelJournalPage](https://github.com/user-attachments/assets/d12cd7d8-0164-4d09-8563-efde021f2bd8)
+![Lagoon Mockup](https://github.com/user-attachments/assets/81e3a78a-8597-4724-9fb9-6cec40d31de2)
 
 ### Data
 
