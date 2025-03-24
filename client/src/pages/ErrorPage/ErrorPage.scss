@@ -1,0 +1,48 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography";
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 88vh;
+  text-align: center;
+  padding: 0 $spacing-m;
+  background-color: $background-colour;
+
+  &__container {
+    max-width: 37.5rem;
+    padding: $spacing-l;
+    border-radius: $border-radius-l;
+    background-color: $white;
+    box-shadow: $shadow-md;
+  }
+
+  &__title {
+    font-size: $font-size-xxl;
+    margin-bottom: $spacing-xs;
+    color: $coral;
+  }
+
+  &__subtitle {
+    font-family: $font-secondary;
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-m;
+    color: $text-colour;
+  }
+
+  &__text {
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    margin-bottom: $spacing-l;
+    color: $dark-grey;
+  }
+
+  &__button {
+    @include primary-button;
+    display: inline-block;
+    text-decoration: none;
+  }
+}

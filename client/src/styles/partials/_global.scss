@@ -1,0 +1,38 @@
+@use "./typography";
+@use "./variables" as *;
+@use "./mixins" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: $font-primary;
+}
+
+ul {
+  list-style: none;
+}
+
+.navbar__nav-link,
+.navbar__nav-link:visited,
+.navbar__nav-link:active {
+  color: white;
+  text-decoration: none;
+}
+
+body {
+  font-family: $font-primary;
+  font-weight: 400;
+  color: $text-colour;
+}
+
+.map {
+  &__info {
+    font-family: $font-secondary;
+  }
+}
+
+option {
+  font-family: $font-secondary;
+}

@@ -1,0 +1,125 @@
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.weather {
+  padding: $spacing-l $spacing-l;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  &__empty {
+    @include empty;
+  }
+
+  &__container {
+    display: flex;
+    gap: $spacing-s;
+    overflow-x: auto;
+    justify-content: space-between;
+
+    &::-webkit-scrollbar {
+      height: 0.25rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $scrollbar-track-bg;
+      border-radius: 0.625rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $grey;
+      border-radius: 0.625rem;
+    }
+  }
+}
+
+.card {
+  flex: 1 1 10rem;
+  min-width: 8rem;
+  background-color: $weather-card-bg;
+  border-radius: $border-radius-m;
+  padding: $spacing-s;
+  text-align: center;
+  transition: $transition-fast;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-sm;
+  }
+
+  &__date {
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    font-weight: 500;
+    color: $secondary-colour;
+  }
+
+  &__image {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: $spacing-xs auto;
+  }
+
+  &__temp {
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    font-weight: 500;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__rain {
+    font-family: $font-secondary;
+    background-color: rgba($accent-colour, 0.15);
+    color: $accent-colour;
+    font-size: $font-size-s;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 0.75rem;
+    display: inline-block;
+  }
+
+  &--skeleton {
+    pointer-events: none;
+    background-color: $skeleton-container-bg;
+    border: 1px solid $skeleton-bg;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  &__date--skeleton {
+    @include skeleton-element(1rem, 60%);
+  }
+
+  &__image--skeleton {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: $spacing-s auto;
+    background-color: $skeleton-bg;
+    border-radius: 50%;
+    animation: pulse 1.3s infinite;
+  }
+
+  &__temp--skeleton {
+    @include skeleton-element(1.25rem, 80%);
+    margin-bottom: $spacing-xs;
+  }
+
+  &__rain--skeleton {
+    @include skeleton-element(1.5rem, 70%);
+    border-radius: $border-radius-s;
+  }
+}

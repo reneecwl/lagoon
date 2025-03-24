@@ -1,0 +1,123 @@
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+@use "sass:color";
+
+.discover {
+  padding: $spacing-xl 0;
+  background-color: $white;
+  position: relative;
+  margin: 5rem 0rem;
+
+  &__container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 $spacing-l;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5rem;
+    height: 0.1875rem;
+    background-color: $accent-colour;
+  }
+
+  &__title {
+    font-size: $font-size-xxl;
+    color: $text-colour;
+    margin-bottom: $spacing-s;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-family: $font-secondary;
+    font-size: $font-size-l;
+    color: $text-colour;
+    opacity: 0.8;
+    margin-bottom: $spacing-xl;
+    text-align: center;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-l;
+  }
+
+  &__card {
+    background-color: $white;
+    border-radius: $border-radius-m;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+    transition: transform $transition-medium, box-shadow $transition-medium;
+    width: 100%;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  &__image-container {
+    height: 21.875rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__content {
+    padding: $spacing-l;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__destination {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-s;
+    color: $text-colour;
+  }
+
+  &__city {
+    font-weight: 700;
+  }
+
+  &__country {
+    font-weight: 400;
+    margin-left: $spacing-xs;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: $accent-colour;
+  }
+
+  &__description {
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    color: $text-colour;
+    line-height: 1.6;
+    margin-bottom: $spacing-l;
+    max-height: 4.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  &__button {
+    @include primary-button;
+    width: 60%;
+  }
+}

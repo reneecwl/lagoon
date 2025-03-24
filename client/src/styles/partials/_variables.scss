@@ -1,0 +1,46 @@
+@use "./typography";
+
+$primary-colour: #40e0d0;
+$secondary-colour: #112b3c;
+$accent-colour: #087d8c;
+$background-colour: #f8f9fa;
+$text-colour: #333333;
+$black: #000000;
+$white: #ffffff;
+$grey: #cccccc;
+$dark-grey: #767676;
+$error-colour: #c94515;
+$coral: #e07a5f;
+
+$weather-card-bg: #f8f8f8;
+$skeleton-bg: #e0e0e0;
+$skeleton-container-bg: #f0f0f0;
+$scrollbar-track-bg: #f1f1f1;
+$border-light: rgba(0, 0, 0, 0.08);
+
+$font-primary: "Cormorant";
+$font-secondary: "Outfit";
+
+$font-size-s: 0.875rem;
+$font-size-m: 1rem;
+$font-size-l: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem;
+
+$spacing-xs: 0.5rem;
+$spacing-s: 1rem;
+$spacing-m: 1.5rem;
+$spacing-l: 2rem;
+$spacing-xl: 3rem;
+
+$border-radius-s: 0.25rem;
+$border-radius-m: 0.5rem;
+$border-radius-l: 1rem;
+
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+$transition-fast: 0.2s ease;
+$transition-medium: 0.3s ease;
+$transition-slow: 0.5s ease;

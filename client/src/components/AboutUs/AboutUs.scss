@@ -1,0 +1,215 @@
+@use "../../styles/partials/typography";
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "sass:color";
+
+.about-us {
+  padding: 8rem 1rem 6rem;
+  background-color: $background-colour;
+  position: relative;
+  min-height: 80vh;
+  width: 100%;
+
+  &__container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 $spacing-l;
+  }
+
+  &__heading-container {
+    text-align: center;
+    position: relative;
+
+    &--left {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 300;
+    color: $secondary-colour;
+    letter-spacing: 2px;
+    margin-bottom: $spacing-m;
+
+    &--highlight {
+      font-weight: 600;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+
+  &__description {
+    font-family: $font-secondary;
+    font-size: $font-size-m;
+    line-height: 1.8;
+    color: $text-colour;
+    margin-bottom: $spacing-l;
+
+    &--bold {
+      font-weight: 700;
+      font-family: $font-secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $spacing-m;
+    margin-top: $spacing-m;
+  }
+
+  &__button {
+    @include primary-button;
+    padding: $spacing-xs $spacing-l;
+    border: 2px solid rgba($accent-colour, 0.9);
+
+    &--secondary {
+      background-color: transparent;
+      color: $secondary-colour;
+      border: 2px solid $secondary-colour;
+
+      &:hover {
+        background-color: rgba($secondary-colour, 0.1);
+      }
+    }
+  }
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-s;
+  }
+
+  &__hero-image-container {
+    position: relative;
+    height: 600px;
+    border-radius: $border-radius-m;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba($secondary-colour, 0.1) 0%,
+        rgba($secondary-colour, 0.3) 80%,
+        rgba($secondary-colour, 0.5) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+
+  &__hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: saturate(0.95) brightness(0.98);
+  }
+
+  &__hero-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 2;
+    color: $white;
+  }
+
+  &__hero-location {
+    display: block;
+    font-family: $font-primary;
+    font-size: $font-size-l;
+    letter-spacing: 1.5px;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  &__hero-tagline {
+    display: block;
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    font-style: italic;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  &__hero-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $spacing-m;
+  }
+
+  &__hero-nav-btn {
+    background: transparent;
+    border: none;
+    color: $secondary-colour;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: $spacing-xs;
+    justify-content: center;
+    transition: all $transition-medium;
+
+    &:hover {
+      color: $accent-colour;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__hero-nav-arrow {
+    line-height: 1;
+  }
+
+  &__hero-indicators {
+    display: flex;
+    gap: $spacing-xs;
+  }
+
+  &__hero-indicator {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: rgba($secondary-colour, 0.3);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all $transition-medium;
+
+    &--active {
+      background-color: $accent-colour;
+      transform: scale(1.2);
+    }
+
+    &:hover {
+      background-color: rgba($accent-colour, 0.6);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

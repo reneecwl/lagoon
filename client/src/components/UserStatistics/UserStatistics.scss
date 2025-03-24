@@ -1,0 +1,73 @@
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
+.user {
+  &__statistics {
+    background-color: $white;
+    padding: $spacing-m $spacing-l;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba($accent-colour, 0.2);
+  }
+}
+
+.statistics {
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    color: $text-colour;
+    font-family: $font-secondary;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__trips-count {
+    display: flex;
+    gap: $spacing-s;
+  }
+
+  &__trip-status {
+    display: inline-block;
+    padding: $spacing-xs $spacing-s;
+    border-radius: 1.25rem;
+    font-family: $font-secondary;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    &--upcoming {
+      color: $accent-colour;
+      background-color: rgba($accent-colour, 0.1);
+      border: 1px solid rgba($accent-colour, 0.3);
+    }
+    &--completed {
+      background-color: rgba(#505050, 0.1);
+      color: #505050;
+      border: 1px solid rgba(#505050, 0.3);
+    }
+  }
+
+  &__countdown {
+    background-color: rgba($accent-colour, 0.1);
+    border: 1px solid rgba($accent-colour, 0.3);
+    padding: $spacing-s $spacing-m;
+    border-radius: $border-radius-m;
+    font-weight: 600;
+    color: $accent-colour;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    font-family: $font-secondary;
+
+    &::before {
+      content: "🗓️";
+      margin-right: $spacing-xs;
+      font-size: 1.2rem;
+    }
+  }
+}

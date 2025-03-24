@@ -1,0 +1,29 @@
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
+.planning {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $background-colour;
+  padding-top: 6rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all $transition-medium;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  &__main {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: $spacing-l;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $spacing-l;
+    margin-top: $spacing-l;
+  }
+}

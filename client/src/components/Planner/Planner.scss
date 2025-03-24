@@ -1,0 +1,403 @@
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
+.planner {
+  background-color: $white;
+  border-radius: $border-radius-m;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+
+  &__header {
+    position: relative;
+    padding: $spacing-l;
+    color: $white;
+    text-align: start;
+    margin-bottom: $spacing-xs;
+    background-image: var(--header-image, url("../../assets/images/destinations/granada.jpg"));
+    background-size: cover;
+    background-position: center;
+    background-color: $secondary-colour;
+    max-height: 6rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(135deg, rgba($secondary-colour, 0.85), rgba($accent-colour, 0.75));
+      z-index: 1;
+    }
+
+    &-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-title {
+      font-size: $font-size-xxl;
+      font-weight: 700;
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  &__content {
+    padding: $spacing-l;
+    background-color: rgba($coral, 0.02);
+  }
+
+  &__byday {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: $spacing-xl;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 3.8rem;
+      bottom: 0;
+      left: 0;
+      width: 0.25rem;
+      background-color: rgba($accent-colour, 0.7);
+      border-radius: $border-radius-m;
+      z-index: 1;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__day {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-m;
+    width: 100%;
+  }
+
+  &__day-index {
+    font-family: $font-secondary;
+    font-size: $font-size-l;
+    font-weight: 700;
+    color: $secondary-colour;
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -9px;
+      left: 0;
+      width: 3.25rem;
+      height: 0.1rem;
+      background-color: $accent-colour;
+      border-radius: 0.125rem;
+    }
+  }
+
+  &__weather-container {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba($accent-colour, 0.08);
+    padding: 0.3rem 0.8rem;
+    border-radius: $border-radius-s;
+  }
+
+  &__weather-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  &__weather-date {
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    color: rgba($text-colour, 0.8);
+    margin-left: 0.3rem;
+    font-weight: 500;
+  }
+
+  &__attraction {
+    border-radius: $border-radius-m;
+    border: 1px solid rgba($text-colour, 0.1);
+    padding: $spacing-m;
+    margin-bottom: $spacing-m;
+    transition: $transition-medium;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    background-color: $white;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -1.25rem;
+      top: 1.25rem;
+      width: 0.375rem;
+      height: 0.375rem;
+      background-color: $accent-colour;
+      z-index: 3;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -1.25rem;
+      top: 1.4rem;
+      width: 1.25rem;
+      height: 0.0625rem;
+      background-color: rgba($accent-colour, 0.3);
+      z-index: 2;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+
+      border-color: rgba($accent-colour, 0.3);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+
+      .planner__delete {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .planner__edit {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__attraction-content {
+    display: flex;
+    gap: $spacing-m;
+    margin-bottom: $spacing-s;
+  }
+  &__attraction-thumbnail {
+    width: 5rem;
+    height: 4.375rem;
+    border-radius: $border-radius-s;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: $transition-medium;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__attraction-details {
+    flex: 1;
+  }
+  &__attraction-name {
+    font-size: $font-size-l;
+    font-weight: 700;
+    color: $secondary-colour;
+    margin: 0 0 $spacing-xs;
+    padding-right: 2.5rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 1.125rem;
+      height: 1.125rem;
+      margin-right: $spacing-xs;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23087d8c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3Cpath d='M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      vertical-align: middle;
+      opacity: 0.8;
+    }
+  }
+
+  &__duration {
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    color: rgba($text-colour, 0.8);
+    margin: $spacing-xs;
+    align-items: center;
+    display: inline-flex;
+    padding: 0.35rem 0.9rem;
+    border-radius: 0.625rem;
+    background-color: rgba($accent-colour, 0.1);
+    width: auto;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 1.1rem;
+      height: 1.1rem;
+      background-image: url("../../assets/icon/timer-24px.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-right: 0.2rem;
+      opacity: 0.7;
+    }
+  }
+
+  &__notes-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    background-color: rgba($secondary-colour, 0.03);
+    border-radius: $border-radius-s;
+    border-left: 3px solid rgba($secondary-colour, 0.1);
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.4rem;
+      top: 0.6rem;
+      width: 0.875rem;
+      height: 0.875rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cline x1='16' y1='13' x2='8' y2='13'/%3E%3Cline x1='16' y1='17' x2='8' y2='17'/%3E%3Cpolyline points='10 9 9 9 8 9'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+    }
+  }
+  &__notes {
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    color: rgba($text-colour, 0.8);
+    font-style: italic;
+  }
+  &__notes-input {
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    width: 100%;
+    padding: 0.3rem;
+    border: 1px none rgba($accent-colour, 0.4);
+    border-radius: $border-radius-s;
+
+    &:focus {
+      outline: none;
+      border-color: $accent-colour;
+      box-shadow: 0 0 0 2px rgba($accent-colour, 0.2);
+    }
+  }
+  &__edit {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: rgba($accent-colour, 0.8);
+    cursor: pointer;
+    transition: $transition-medium;
+    opacity: 0;
+    transform: translateX(10px);
+
+    background-color: rgba($accent-colour, 0.1);
+    padding: 0.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: $accent-colour;
+      fill: $white;
+    }
+  }
+
+  &__delete {
+    position: absolute;
+    top: $spacing-m;
+    right: $spacing-m;
+    background-color: rgba($error-colour, 0.1);
+    border: none;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: $transition-medium;
+    opacity: 0;
+    transform: translateX(10px);
+
+    &:hover {
+      background-color: $error-colour;
+
+      .planner__delete-icon {
+        fill: $white;
+      }
+    }
+  }
+
+  &__delete-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: $error-colour;
+    transition: $transition-fast;
+  }
+
+  &__empty-day {
+    padding: $spacing-m;
+    background-color: rgba($secondary-colour, 0.03);
+    border-radius: $border-radius-m;
+    font-family: $font-secondary;
+    font-size: $font-size-s;
+    color: rgba($text-colour, 0.6);
+    font-style: italic;
+    text-align: center;
+  }
+
+  &:empty {
+    &::after {
+      content: "No attractions planned yet. Add attractions from the list on the right.";
+      font-family: $font-secondary;
+      font-size: $font-size-m;
+      color: rgba($text-colour, 0.7);
+      font-style: italic;
+      display: block;
+      text-align: center;
+      padding: $spacing-xl 0;
+    }
+  }
+
+  &__download-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: $transition-medium;
+
+    &:hover {
+      background-color: rgba($white, 0.15);
+      .planner__download {
+        transform: translateY(-2px);
+        fill: rgba($white, 1);
+      }
+    }
+  }
+
+  &__download {
+    width: 1.8rem;
+    height: 1.8rem;
+    cursor: pointer;
+    fill: rgba($white, 0.7);
+    transition: $transition-medium;
+  }
+}

@@ -1,0 +1,83 @@
+@use "./../../styles/partials/typography";
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+
+  &--itinerary {
+    background-color: $secondary-colour;
+  }
+
+  &__logo-container {
+    @include logo-container;
+  }
+
+  &__logo {
+    @include logo;
+  }
+
+  &__title {
+    @include logo-title;
+  }
+
+  &__right {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+}
+.navbar {
+  &__list {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__subtitle {
+    @include nav-bar;
+  }
+  .nav-link {
+    color: inherit;
+    display: inline-block;
+    padding-bottom: 2px;
+  }
+}
+
+.user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
+    cursor: pointer;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__initial {
+    font-family: $font-secondary;
+    text-transform: uppercase;
+    color: white;
+    font-size: $font-size-l;
+  }
+}
