@@ -148,16 +148,18 @@ And after the trip? It’s all too easy to forget the details of where you’ve 
 ├── 🌏 Travel Journal Page
 │     ├── Add New Trip (input location + dates → redirects to Trip Planning Page)
 │     ├── Trip Statistics (Upcoming trips, Completed trips, Countdown to next trip)
-│     ├── Map (Visited & Upcoming Trips, with pins & images)
+│     ├── Map (Visited & Upcoming Trips with pins )
 │     └── Trips List (Upcoming + Completed)
 │           ├── Edit button (for upcoming → Trip Planning Page)
 │           └── View button (for past trips → Trip Planning Page)
 │
 ├── 📅 Trip Planning Page
-│     ├── Weather and Holiday Display
+│     ├── Weather & Public Holiday Display
 │     ├── Daily Route Map
+│     ├── Add/edit trip name
 │     ├── Attractions List (Add/Delete attractions, Add notes)
-│     └── Planner by day (Hover to delete attraction + Download itinerary + Edit notes)
+│     ├── Planner by day (Hover to delete attraction + Edit notes)
+│     └── Download itinerary as pdf
 │
 └── ℹ️ About Us
 └── ℹ️ Discover (Cities suggestions & Plan your trip button → redirects to Trip Planning Page)
@@ -165,7 +167,7 @@ And after the trip? It’s all too easy to forget the details of where you’ve 
 
 ### Mockups
 
-![Lagoon Mockup](https://github.com/user-attachments/assets/81e3a78a-8597-4724-9fb9-6cec40d31de2)
+![Lagoon Mockup](https://github.com/user-attachments/assets/b7288af4-4efc-4b19-9b89-aa0588f3c3c7)
 
 ### Data
 
