@@ -59,6 +59,8 @@ export default function CreateItineraryForm({ setIsOpen }) {
         startDate: null,
         endDate: null,
       });
+
+      setIsOpen(false);
       navigate(`/itineraries/${newItineraryId}`);
     } catch (error) {
       console.error("Error submitting form", error);
