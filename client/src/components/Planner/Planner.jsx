@@ -23,7 +23,6 @@ export default function Planner({
   const handleDeleteClick = (attraction) => {
     setDeleteModal(true);
     setAttractionData(attraction);
-    console.log("Delete Clicked");
   };
 
   const handleEditClick = (id, currentNotes) => {
@@ -43,7 +42,6 @@ export default function Planner({
         user_notes: notes,
       });
       fetchItinerary();
-      console.log("Trip notes updated");
     } catch (error) {
       console.error("Error updating trip notes:", error);
     }

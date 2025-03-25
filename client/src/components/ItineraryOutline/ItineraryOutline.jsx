@@ -45,7 +45,6 @@ export default function ItineraryOutline({
     try {
       await axios.put(`${baseUrl}/itineraries/${itinerary.id}`, editTripDetails);
       fetchItinerary();
-      console.log("Trip name updated");
     } catch (error) {
       console.error("Error updating trip name:", error);
     }
