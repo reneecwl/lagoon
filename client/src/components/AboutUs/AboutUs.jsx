@@ -40,7 +40,7 @@ export default function AboutUs() {
           <div className="about-us__text">
             <div className="about-us__heading-container about-us__heading-container--left">
               <h2 className="about-us__title">
-                Our <span className="about-us__title--highlight">Story</span>
+                about <span className="about-us__title--highlight">Lagoon</span>
               </h2>
               <div className="about-us__title-decoration"></div>
             </div>
